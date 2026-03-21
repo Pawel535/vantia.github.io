@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio &#8212; VANTIA Studio</title>
+<meta name="description" content="Wybrane realizacje VANTIA Studio &#8212; strony internetowe, landing page'e i aplikacje webowe."/>
+<meta property="og:title" content="Portfolio &#8212; VANTIA Studio"/>
+<meta property="og:url" content="https://vantia.vercel.app/portfolio.html"/>
+<link rel="canonical" href="https://vantia.vercel.app/portfolio.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Syne:wght@300;400;500;600;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080A10;--bg2:#0C0E16;--bg3:#12141C;
+  --gold:#C8A96E;--gold-a15:rgba(200,169,110,.15);
+  --line:rgba(255,255,255,.055);--line2:rgba(255,255,255,.03);
+  --text:#DDD9D1;--text-mid:#9A9890;--text-dim:#5A5855;
+  --white:#F2EFE9;--ease:cubic-bezier(.25,.46,.45,.94);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:28px 60px;transition:padding .4s,background .5s,border-color .5s;border-bottom:1px solid transparent}
+nav.stuck{background:rgba(8,10,16,.92);backdrop-filter:blur(28px);border-color:var(--line);padding:18px 60px}
+.logo{font-family:'Cormorant',serif;font-size:20px;font-weight:500;letter-spacing:.2em;color:var(--white);text-decoration:none}
+.logo b{color:var(--gold);font-weight:400}
+.nav-right{display:flex;align-items:center;gap:28px}
+.nav-back{font-size:10.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color .3s;display:flex;align-items:center;gap:10px}
+.nav-back:hover{color:var(--text)}
+.nav-back svg{transition:transform .3s}
+.nav-back:hover svg{transform:translateX(-3px)}
+.nav-cta{font-size:10.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,169,110,.3);padding:10px 24px;text-decoration:none;transition:background .3s,border-color .3s,color .3s}
+.nav-cta:hover{background:var(--gold-a15);border-color:var(--gold);color:var(--white)}
+
+/* HERO */
+.hero{min-height:72vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 60px 80px;position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(ellipse,rgba(200,169,110,.08),transparent 70%);top:-100px;right:-100px;pointer-events:none}
+.hero-tag{font-size:10px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;display:flex;align-items:center;gap:14px;opacity:0;animation:up .9s var(--ease) .1s forwards}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
+.hero-h{font-family:'Cormorant',serif;font-size:clamp(60px,8vw,130px);font-weight:300;line-height:.9;letter-spacing:-.02em;color:var(--white);margin-bottom:32px;opacity:0;animation:up 1.1s var(--ease) .3s forwards}
+.hero-h em{font-style:italic;color:var(--gold)}
+.hero-bottom{display:flex;align-items:center;gap:48px;opacity:0;animation:up .9s var(--ease) .55s forwards}
+.hero-count{font-family:'DM Mono',monospace;font-size:11px;font-weight:300;color:var(--text-dim);letter-spacing:.06em}
+.hero-divider{width:1px;height:32px;background:var(--line)}
+.hero-sub{font-size:14px;font-weight:300;color:var(--text-mid);max-width:400px;line-height:1.85}
+
+/* FILTER */
+.filter-bar{padding:36px 60px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.filter-bar::-webkit-scrollbar{display:none}
+.fbtn{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--line);padding:8px 18px;background:none;cursor:pointer;transition:all .3s;white-space:nowrap;font-family:'Syne',sans-serif}
+.fbtn:hover{border-color:rgba(200,169,110,.25);color:var(--text)}
+.fbtn.active{border-color:rgba(200,169,110,.4);color:var(--gold);background:rgba(200,169,110,.05)}
+
+/* GRID */
+.grid-wrap{padding:0 60px 140px;max-width:1400px;margin:0 auto}
+.proj-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1px;background:var(--line);margin-top:80px}
+
+/* PROJECT CARDS */
+.pcard{background:var(--bg);overflow:hidden;position:relative;text-decoration:none;display:flex;flex-direction:column;transition:background .4s}
+.pcard:hover{background:var(--bg2)}
+.pcard-top-line{position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background .45s;z-index:2}
+.pcard:hover .pcard-top-line{background:var(--gold)}
+.pcard.span7{grid-column:span 7}
+.pcard.span5{grid-column:span 5}
+.pcard.span6{grid-column:span 6}
+.pcard.span12{grid-column:span 12}
+.pcard.span4{grid-column:span 4}
+
+/* THUMB */
+.pthumb{width:100%;overflow:hidden;position:relative;flex-shrink:0}
+.pcard.span7 .pthumb,.pcard.span12 .pthumb{aspect-ratio:16/7}
+.pcard.span5 .pthumb,.pcard.span6 .pthumb,.pcard.span4 .pthumb{aspect-ratio:4/3}
+.pthumb-inner{width:100%;height:100%;transition:transform .7s var(--ease);display:flex;align-items:center;justify-content:center;position:relative}
+.pcard:hover .pthumb-inner{transform:scale(1.04)}
+
+/* THUMB BACKGROUNDS */
+.pt-law  {background:linear-gradient(135deg,#0c0e18 0%,#161a28 55%,#090b14 100%)}
+.pt-fit  {background:linear-gradient(135deg,#100e08 0%,#1e1608 55%,#0c0a06 100%)}
+.pt-photo{background:linear-gradient(135deg,#080d10 0%,#0c1618 55%,#060a0c 100%)}
+.pt-book {background:linear-gradient(135deg,#0f0810 0%,#180e18 55%,#0a060c 100%)}
+.pt-launch{background:linear-gradient(135deg,#08080f 0%,#10101e 55%,#060609 100%)}
+.pt-rest {background:linear-gradient(135deg,#100a06 0%,#1c1008 55%,#0e0806 100%)}
+
+.pthumb-glow{position:absolute;width:240px;height:240px;border-radius:50%;filter:blur(80px);top:-60px;right:-60px;pointer-events:none}
+.pt-law  .pthumb-glow{background:rgba(100,120,220,.1)}
+.pt-fit  .pthumb-glow{background:rgba(200,169,110,.1)}
+.pt-photo .pthumb-glow{background:rgba(80,180,160,.08)}
+.pt-book .pthumb-glow{background:rgba(160,80,180,.1)}
+.pt-launch .pthumb-glow{background:rgba(200,169,110,.09)}
+.pt-rest .pthumb-glow{background:rgba(200,120,80,.1)}
+
+.pthumb-frame{border:1px solid rgba(255,255,255,.07);padding:22px 30px;text-align:center;position:relative;min-width:160px}
+.pthumb-frame::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:55%;height:1px;background:var(--gold);opacity:.3}
+.pthumb-name{font-family:'Cormorant',serif;font-size:clamp(16px,2.2vw,26px);font-weight:300;color:rgba(255,255,255,.5);letter-spacing:.06em;line-height:1.2;margin-bottom:8px}
+.pthumb-type{font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.5}
+
+/* LIVE BADGE */
+.live-badge{position:absolute;top:20px;left:20px;z-index:3;font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:5px 12px;display:flex;align-items:center;gap:6px}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--bg);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* CARD BODY */
+.pbody{padding:32px 36px 52px;flex:1}
+.pmeta{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.ptype{font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.pyear{font-family:'DM Mono',monospace;font-size:10px;font-weight:300;color:var(--text-dim)}
+.ptitle{font-family:'Cormorant',serif;font-size:clamp(22px,2.8vw,36px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:12px}
+.pdesc{font-size:13px;font-weight:300;color:var(--text-mid);line-height:1.8;margin-bottom:22px}
+.ptags{display:flex;flex-wrap:wrap;gap:6px}
+.ptag{font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--line);padding:4px 10px}
+
+/* ARROW */
+.parrow{position:absolute;bottom:28px;right:28px;width:36px;height:36px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s,border-color .3s}
+.pcard:hover .parrow{opacity:1;transform:translateY(0);border-color:rgba(200,169,110,.3)}
+
+/* COMING SOON */
+.pcard.coming .pthumb-inner{opacity:.4}
+.coming-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:9px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--line);padding:8px 16px;white-space:nowrap;z-index:2}
+
+/* BOTTOM CTA */
+.bottom-cta{padding:100px 60px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:60px}
+.bcta-h{font-family:'Cormorant',serif;font-size:clamp(40px,5vw,72px);font-weight:300;line-height:1;color:var(--white);margin-bottom:16px}
+.bcta-h em{font-style:italic;color:var(--gold)}
+.bcta-sub{font-size:14px;font-weight:300;color:var(--text-mid);max-width:400px;line-height:1.85}
+.bcta-btns{display:flex;flex-direction:column;gap:12px;flex-shrink:0}
+.btn-gold{font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:16px 44px;text-decoration:none;transition:opacity .3s,transform .3s;text-align:center;display:block}
+.btn-gold:hover{opacity:.82;transform:translateY(-2px)}
+.btn-line{font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--text-mid);border:1px solid var(--line);padding:16px 44px;text-decoration:none;transition:border-color .3s,color .3s;text-align:center;display:block}
+.btn-line:hover{border-color:rgba(200,169,110,.3);color:var(--white)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:44px 60px;display:flex;align-items:center;justify-content:space-between}
+.foot-logo{font-family:'Cormorant',serif;font-size:18px;font-weight:500;letter-spacing:.2em;color:var(--text-dim);text-decoration:none}
+.foot-logo b{color:var(--gold);font-weight:400}
+.foot-url{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);letter-spacing:.04em}
+.foot-url a{color:var(--text-dim);text-decoration:none;transition:color .3s}
+.foot-url a:hover{color:var(--gold)}
+.foot-copy{font-size:10.5px;font-weight:300;color:var(--text-dim)}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(32px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.rev.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:20px 24px}nav.stuck{padding:14px 24px}
+  .hero{padding:0 24px 60px;min-height:55vh}
+  .filter-bar{padding:24px}
+  .grid-wrap{padding:0 24px 100px}
+  .proj-grid{grid-template-columns:1fr;margin-top:52px}
+  .pcard.span7,.pcard.span5,.pcard.span6,.pcard.span12,.pcard.span4{grid-column:span 1}
+  .pcard.span7 .pthumb,.pcard.span12 .pthumb{aspect-ratio:4/3}
+  .bottom-cta{padding:80px 24px;flex-direction:column;gap:40px}
+  .bcta-btns{flex-direction:row;flex-wrap:wrap}
+  footer{padding:32px 24px;flex-direction:column;gap:16px;text-align:center}
+}
+@media(max-width:600px){.hero-bottom{flex-direction:column;align-items:flex-start;gap:16px}.hero-divider{display:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="https://vantia.vercel.app" class="logo">VANTIA<b>.</b></a>
+  <div class="nav-right">
+    <a href="https://vantia.vercel.app" class="nav-back">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M6 1L1 5L6 9" stroke="currentColor" stroke-width="1.2"/><line x1="1" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.2"/></svg>
+      Strona g&#322;&#243;wna
+    </a>
+    <a href="https://vantia.vercel.app#kontakt" class="nav-cta">Skontaktuj si&#281;</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-tag">Portfolio &#8212; wybrane realizacje</div>
+  <h1 class="hero-h">Nasze<br/><em>prace.</em></h1>
+  <div class="hero-bottom">
+    <span class="hero-count">06 projekt&#243;w</span>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Strony, landing page&#8217;e i proste aplikacje &#8212; ka&#380;dy projekt robiony z g&#322;ow&#261; i z dbao&#347;ci&#261; o detal.</p>
+  </div>
+</section>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <button class="fbtn active" onclick="doFilter(this,'all')">Wszystkie</button>
+  <button class="fbtn" onclick="doFilter(this,'strona')">Strony internetowe</button>
+  <button class="fbtn" onclick="doFilter(this,'landing')">Landing Pages</button>
+  <button class="fbtn" onclick="doFilter(this,'aplikacja')">Aplikacje</button>
+</div>
+
+<!-- GRID -->
+<div class="grid-wrap">
+  <div class="proj-grid" id="pgrid">
+
+    <!-- 1 ── Kancelaria (wide) -->
+    <a href="#kancelaria" class="pcard span7 rev" id="kancelaria" data-cat="strona">
+      <div class="pcard-top-line"></div>
+      <div class="pthumb">
+        <div class="pthumb-inner pt-law">
+          <div class="pthumb-glow"></div>
+          <div class="pthumb-frame">
+            <div class="pthumb-name">Kancelaria<br/>Adwokacka</div>
+            <div class="pthumb-type">Strona firmowa</div>
+          </div>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="pmeta"><span class="ptype">Strona internetowa</span><span class="pyear">2025</span></div>
+        <div class="ptitle">Kancelaria Adwokacka<br/>&#8212; Wiz&#243;wka premium</div>
+        <p class="pdesc">Elegancka strona firmowa dla kancelarii adwokackiej. Ciemna paleta buduj&#261;ca prestige&#380;, formularz kontaktowy, pe&#322;na responsywno&#347;&#263; i szybkie &#322;adowanie.</p>
+        <div class="ptags"><span class="ptag">Wiz&#243;wka</span><span class="ptag">Prawo</span><span class="ptag">Formularz</span><span class="ptag">Dark theme</span></div>
+      </div>
+      <div class="parrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" stroke-width="1.2"/></svg></div>
+    </a>
+
+    <!-- 2 ── FitCoach (narrow) -->
+    <a href="#fitcoach" class="pcard span5 rev d1" id="fitcoach" data-cat="landing">
+      <div class="pcard-top-line"></div>
+      <div class="pthumb">
+        <div class="pthumb-inner pt-fit">
+          <div class="pthumb-glow"></div>
+          <div class="pthumb-frame">
+            <div class="pthumb-name">FitCoach<br/>Pro</div>
+            <div class="pthumb-type">Landing Page</div>
+          </div>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="pmeta"><span class="ptype">Landing Page</span><span class="pyear">2025</span></div>
+        <div class="ptitle">Trener personalny<br/>&#8212; Landing + zapis</div>
+        <p class="pdesc">Landing page z formularzem zapisu na konsultacje, sekcj&#261; cennika i opiniami klient&#243;w. Cel: maksymalna konwersja.</p>
+        <div class="ptags"><span class="ptag">Sport &amp; fitness</span><span class="ptag">Lead gen</span><span class="ptag">CTA</span></div>
+      </div>
+      <div class="parrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" stroke-width="1.2"/></svg></div>
+    </a>
+
+    <!-- 3 ── Fotograf (narrow) -->
+    <a href="#fotograf" class="pcard span5 rev d1" id="fotograf" data-cat="strona">
+      <div class="pcard-top-line"></div>
+      <div class="pthumb">
+        <div class="pthumb-inner pt-photo">
+          <div class="pthumb-glow"></div>
+          <div class="pthumb-frame">
+            <div class="pthumb-name">Studio<br/>Foto</div>
+            <div class="pthumb-type">Portfolio</div>
+          </div>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="pmeta"><span class="ptype">Strona / Portfolio</span><span class="pyear">2025</span></div>
+        <div class="ptitle">Fotograf<br/>&#8212; Portfolio minimalistyczne</div>
+        <p class="pdesc">Minimalistyczne portfolio dla fotografa. Galeria z lightboxem, sekcja o mnie i formularz kontaktowy.</p>
+        <div class="ptags"><span class="ptag">Portfolio</span><span class="ptag">Galeria</span><span class="ptag">Minimalizm</span></div>
+      </div>
+      <div class="parrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" stroke-width="1.2"/></svg></div>
+    </a>
+
+    <!-- 4 ── Booking (wide) -->
+    <a href="#booking" class="pcard span7 rev d2" id="booking" data-cat="aplikacja">
+      <div class="pcard-top-line"></div>
+      <div class="pthumb">
+        <div class="pthumb-inner pt-book">
+          <div class="pthumb-glow"></div>
+          <div class="pthumb-frame">
+            <div class="pthumb-name">Booking<br/>System</div>
+            <div class="pthumb-type">Aplikacja webowa</div>
+          </div>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="pmeta"><span class="ptype">Aplikacja webowa</span><span class="pyear">2025</span></div>
+        <div class="ptitle">System rezerwacji<br/>&#8212; Gabinet kosmetyczny</div>
+        <p class="pdesc">Prosta aplikacja do rezerwacji termin&#243;w. Klient wybiera dat&#281; i godzin&#281; online, w&#322;a&#347;ciciel zarz&#261;dza kalendarzem. Zero instalacji &#8212; dzia&#322;a w przegl&#261;darce.</p>
+        <div class="ptags"><span class="ptag">Aplikacja</span><span class="ptag">Kalendarz</span><span class="ptag">Cloud</span><span class="ptag">Kosmetyka</span></div>
+      </div>
+      <div class="parrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" stroke-width="1.2"/></svg></div>
+    </a>
+
+    <!-- 5 ── Launch (half) -->
+    <a href="#launch" class="pcard span6 rev d2" id="launch" data-cat="landing">
+      <div class="pcard-top-line"></div>
+      <div class="pthumb">
+        <div class="pthumb-inner pt-launch">
+          <div class="pthumb-glow"></div>
+          <div class="pthumb-frame">
+            <div class="pthumb-name">Produkt<br/>Launch</div>
+            <div class="pthumb-type">Landing Page</div>
+          </div>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="pmeta"><span class="ptype">Landing Page</span><span class="pyear">2025</span></div>
+        <div class="ptitle">Launch Page<br/>&#8212; Premiera produktu</div>
+        <p class="pdesc">Strona premiery z countdown timerem, sekcj&#261; FAQ i formularzem zapisu na list&#281; oczekuj&#261;cych.</p>
+        <div class="ptags"><span class="ptag">Premiera</span><span class="ptag">Countdown</span><span class="ptag">Waitlist</span></div>
+      </div>
+      <div class="parrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" stroke-width="1.2"/></svg></div>
+    </a>
+
+    <!-- 6 ── Restauracja (half) -->
+    <a href="#restauracja" class="pcard span6 rev d3" id="restauracja" data-cat="strona">
+      <div class="pcard-top-line"></div>
+      <div class="pthumb">
+        <div class="pthumb-inner pt-rest">
+          <div class="pthumb-glow"></div>
+          <div class="pthumb-frame">
+            <div class="pthumb-name">Bella<br/>Roma</div>
+            <div class="pthumb-type">Strona firmowa</div>
+          </div>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="pmeta"><span class="ptype">Strona internetowa</span><span class="pyear">2025</span></div>
+        <div class="ptitle">Restauracja Bella Roma<br/>&#8212; Menu online</div>
+        <p class="pdesc">Ciep&#322;a strona dla restauracji w&#322;oskiej &#8212; menu, godziny otwarcia, rezerwacja stolika i mapa dojazdu.</p>
+        <div class="ptags"><span class="ptag">Gastronomia</span><span class="ptag">Menu</span><span class="ptag">Rezerwacja</span></div>
+      </div>
+      <div class="parrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" stroke-width="1.2"/></svg></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta rev">
+  <div>
+    <h2 class="bcta-h">Tw&#243;j projekt<br/>mo&#380;e by&#263; <em>nast&#281;pny.</em></h2>
+    <p class="bcta-sub">Napisz do nas &#8212; wycena jest bezp&#322;atna, odpowiadamy tego samego dnia. Zaczynamy od rozmowy, nie od faktury.</p>
+  </div>
+  <div class="bcta-btns">
+    <a href="https://vantia.vercel.app#kontakt" class="btn-gold">Zacznij projekt</a>
+    <a href="https://vantia.vercel.app#cennik" class="btn-line">Zobacz cennik</a>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <a href="https://vantia.vercel.app" class="foot-logo">VANTIA<b>.</b></a>
+    <div class="foot-url" style="margin-top:6px"><a href="https://vantia.vercel.app">vantia.vercel.app</a></div>
+  </div>
+  <p class="foot-copy">&copy; 2025 VANTIA Studio. Wszelkie prawa zastrze&#380;one.</p>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('stuck',window.scrollY>50);},{passive:true});
+
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.rev').forEach(function(el){obs.observe(el);});
+
+function doFilter(btn,cat){
+  document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.pcard').forEach(function(c){
+    var show=cat==='all'||c.dataset.cat===cat;
+    c.style.transition='opacity .35s, transform .35s';
+    c.style.opacity=show?'1':'0.15';
+    c.style.pointerEvents=show?'':'none';
+  });
+}
+</script>
+</body>
+</html>
