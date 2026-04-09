@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>404 — Strona nie znaleziona | VANTIA Studio</title>
+<meta name="description" content="Strona nie znaleziona. Wróć do strony głównej VANTIA Studio."/>
+<meta name="robots" content="noindex, follow"/>
+<link rel="canonical" href="https://vantia.vercel.app/404.html"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Syne:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Syne:wght@300;400;500;600;700&display=swap"/></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080A10;--gold:#C8A96E;--gold-a08:rgba(200,169,110,.08);
+  --line:rgba(255,255,255,.055);--text:#DDD9D1;--text-dim:#5A5855;--white:#F2EFE9;
+}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;font-size:16px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.container{text-align:center;padding:40px 20px}
+.logo{font-family:'Cormorant',serif;font-size:21px;font-weight:500;letter-spacing:.2em;color:var(--white);text-decoration:none;margin-bottom:60px;display:inline-block}
+.logo b{color:var(--gold);font-weight:400}
+.error-code{font-family:'Cormorant',serif;font-size:clamp(120px,25vw,220px);font-weight:300;line-height:1;color:var(--gold);opacity:.15;margin-bottom:-20px}
+.error-title{font-family:'Cormorant',serif;font-size:clamp(28px,5vw,48px);font-weight:300;color:var(--white);margin-bottom:16px}
+.error-text{font-size:15px;font-weight:300;color:var(--text-dim);max-width:400px;margin:0 auto 48px;line-height:1.8}
+.links{display:flex;flex-direction:column;gap:12px;align-items:center}
+.btn-primary{font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:15px 38px;text-decoration:none;transition:opacity .3s,transform .3s;display:inline-block}
+.btn-primary:hover{opacity:.82;transform:translateY(-2px)}
+.btn-ghost{font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color .3s}
+.btn-ghost:hover{color:var(--white)}
+footer{position:fixed;bottom:0;left:0;right:0;padding:20px;text-align:center;border-top:1px solid var(--line)}
+footer p{font-size:10.5px;color:var(--text-dim);letter-spacing:.04em}
+</style>
+</head>
+<body>
+<main class="container">
+  <a href="https://vantia.vercel.app" class="logo">VANTIA<b>.</b></a>
+  <div class="error-code">404</div>
+  <h1 class="error-title">Strona nie istnieje</h1>
+  <p class="error-text">Przepraszamy, ale strona której szukasz nie została znaleziona. Może została przeniesiona lub usunięta.</p>
+  <div class="links">
+    <a href="https://vantia.vercel.app" class="btn-primary">Wróć na stronę główną</a>
+    <a href="https://vantia.vercel.app/portfolio.html" class="btn-ghost">Zobacz portfolio</a>
+  </div>
+</main>
+<footer>
+  <p>&copy; 2025 VANTIA Studio</p>
+</footer>
+</body>
+</html>

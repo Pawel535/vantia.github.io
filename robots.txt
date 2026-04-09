@@ -30,9 +30,5 @@ Allow: /
 
 User-agent: *
 Sitemap: https://vantia.vercel.app/sitemap.xml
-Sitemap: https://vantia.vercel.app/sitemap.xml
-
-# Disallow niepotrzebne
-Disallow: 
 
 Host: https://vantia.vercel.app
