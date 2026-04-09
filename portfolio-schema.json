@@ -1,0 +1,65 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Portfolio — VANTIA Studio",
+  "description": "Wybrane realizacje VANTIA Studio — strony internetowe, landing page'e i aplikacje webowe stworzone dla klientów z Polski.",
+  "url": "https://vantia.vercel.app/portfolio.html",
+  "inLanguage": "pl-PL",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "VANTIA — Studio Cyfrowe",
+    "url": "https://vantia.vercel.app"
+  },
+  "about": {
+    "@type": "Service",
+    "name": "Tworzenie stron internetowych i aplikacji webowych"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "Projekty VANTIA Studio",
+    "itemListElement": [
+      {
+        "@type": "CreativeWork",
+        "position": 1,
+        "name": "Kancelaria Adwokacka",
+        "description": "Elegancka strona firmowa dla kancelarii adwokackiej z ciemną paletą budującą prestiż, formularzem kontaktowym i pełną responsywnością.",
+        "url": "https://kancelaria-vantia.netlify.app/",
+        "dateCreated": "2025",
+        "creator": {
+          "@type": "Organization",
+          "name": "VANTIA Studio"
+        },
+        "genre": "Strona internetowa",
+        "keywords": "kancelaria, adwokat, strona prawnicza, wizytówka firmowa"
+      },
+      {
+        "@type": "CreativeWork",
+        "position": 2,
+        "name": "FitCoach Pro",
+        "description": "Landing page dla trenera personalnego z formularzem zapisu na konsultacje, sekcją cennika i opiniami klientów.",
+        "url": "https://fitcoach-vantia.netlify.app/",
+        "dateCreated": "2025",
+        "creator": {
+          "@type": "Organization",
+          "name": "VANTIA Studio"
+        },
+        "genre": "Landing Page",
+        "keywords": "trener personalny, fitness, landing page, lead generation"
+      },
+      {
+        "@type": "CreativeWork",
+        "position": 3,
+        "name": "Studio Foto",
+        "description": "Minimalistyczne portfolio dla fotografa z galerią i lightboxem.",
+        "url": "https://fotograf-vantia.netlify.app/",
+        "dateCreated": "2025",
+        "creator": {
+          "@type": "Organization",
+          "name": "VANTIA Studio"
+        },
+        "genre": "Portfolio",
+        "keywords": "fotograf, portfolio, galeria, minimalizm"
+      }
+    ]
+  }
+}

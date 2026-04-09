@@ -1,0 +1,38 @@
+# ============================================
+# VANTIA Studio - robots.txt
+# https://vantia.vercel.app
+# ============================================
+
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: *
+Sitemap: https://vantia.vercel.app/sitemap.xml
+Sitemap: https://vantia.vercel.app/sitemap.xml
+
+# Disallow niepotrzebne
+Disallow: 
+
+Host: https://vantia.vercel.app
