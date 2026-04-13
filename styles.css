@@ -143,6 +143,7 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
   padding:28px var(--gutter);
   transition:padding .5s var(--ease-smooth),background .5s,border-color .5s,backdrop-filter .5s;
   border-bottom:1px solid transparent;
+  width:100%;max-width:100%;box-sizing:border-box;
 }
 .nav--scrolled{
   padding-top:16px;padding-bottom:16px;
@@ -251,7 +252,7 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 /* ══════════════════════════════════════
    LAYOUT
    ══════════════════════════════════════ */
-.container{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--gutter);width:100%;box-sizing:border-box}
 .section{padding:var(--section-pad) 0;position:relative}
 .section--alt{background:var(--bg-elevated)}
 .section__label{
@@ -266,6 +267,8 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 .hero{
   min-height:100vh;display:flex;flex-direction:column;justify-content:center;
   padding:0 var(--gutter);position:relative;overflow:hidden;
+  width:100%;max-width:100%;box-sizing:border-box;
+  align-items: flex-start;
 }
 /* Corner ornaments */
 .hero__corner{
@@ -287,6 +290,7 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
   font-size:clamp(56px,9vw,140px);font-weight:400;
   line-height:.92;letter-spacing:-.02em;color:var(--text-bright);
   max-width:960px;margin-bottom:28px;
+  text-align: left;
 }
 .hero__title-line{
   display:block;overflow:hidden;
@@ -302,10 +306,12 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
   font-size:15px;font-weight:300;color:var(--text-secondary);
   max-width:480px;line-height:1.9;margin-bottom:56px;
   opacity:0;transform:translateY(28px);
+  text-align: left;
 }
 .hero__actions{
   display:flex;gap:20px;align-items:center;flex-wrap:wrap;
   opacity:0;transform:translateY(28px);
+  text-align: left;
 }
 
 /* Buttons */
@@ -955,7 +961,14 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
    CANVAS BACKGROUND
    ══════════════════════════════════════ */
 .canvas-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
-.page{position:relative;z-index:1}
+.page{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0;
+}
 
 /* ══════════════════════════════════════
    REVEAL ANIMATIONS

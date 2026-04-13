@@ -68,10 +68,11 @@
         }
       };
       tick();
-      window.addEventListener('load', () => {
-        if (this.fill) this.fill.style.width = '100%';
-        setTimeout(() => this.hide(), 600);
-      });
+window.addEventListener('load', () => {
+          if (this.fill) this.fill.style.width = '100%';
+          // Hide preloader immediately on load to avoid LCP delay
+          this.hide();
+        });
       // Fallback: hide after 4s max
       setTimeout(() => this.hide(), 4000);
     },
@@ -96,13 +97,29 @@
     init() {
       if (isTouchDevice()) return;
       qsa('.magnetic').forEach((el) => {
+        let rAFId = null;
+        let cachedRect = null;
+        
+        const updateRect = () => {
+          cachedRect = el.getBoundingClientRect();
+        };
+        
+        el.addEventListener('mouseenter', updateRect);
+        window.addEventListener('resize', updateRect, { passive: true });
+        
         el.addEventListener('mousemove', (e) => {
-          const rect = el.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+          if (!cachedRect) return;
+          
+          if (rAFId) cancelAnimationFrame(rAFId);
+          rAFId = requestAnimationFrame(() => {
+            const x = e.clientX - cachedRect.left - cachedRect.width / 2;
+            const y = e.clientY - cachedRect.top - cachedRect.height / 2;
+            el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+          });
         });
+        
         el.addEventListener('mouseleave', () => {
+          if (rAFId) cancelAnimationFrame(rAFId);
           el.style.transform = 'translate(0, 0)';
         });
       });
@@ -300,18 +317,29 @@
   /* ══════════════════════════════════════
      9. SCROLL PROGRESS BAR
      ══════════════════════════════════════ */
-  const ScrollProgress = {
+const ScrollProgress = {
     bar: null,
+    ticking: false,
+    maxScroll: 0,
     init() {
-      this.bar = qs('.scroll-progress');
-      if (!this.bar) return;
-      window.addEventListener('scroll', () => {
-        const h = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = h > 0 ? window.scrollY / h : 0;
-        this.bar.style.transform = `scaleX(${progress})`;
-      }, { passive: true });
+        this.bar = qs('.scroll-progress');
+        if (!this.bar) return;
+        // Compute max scroll height once and update on resize
+        const computeMax = () => { this.maxScroll = document.documentElement.scrollHeight - window.innerHeight; };
+        computeMax();
+        window.addEventListener('resize', computeMax);
+        window.addEventListener('scroll', () => this.update(), { passive: true });
+    },
+    update() {
+        if (this.ticking) return;
+        this.ticking = true;
+        requestAnimationFrame(() => {
+            const progress = this.maxScroll > 0 ? window.scrollY / this.maxScroll : 0;
+            this.bar.style.transform = `scaleX(${progress})`;
+            this.ticking = false;
+        });
     }
-  };
+};
 
   /* ══════════════════════════════════════
      10. CANVAS BACKGROUND — Deep Dark Luxe
