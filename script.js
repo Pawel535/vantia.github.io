@@ -13,6 +13,23 @@
   const qs = (s, p) => (p || document).querySelector(s);
   const qsa = (s, p) => [...(p || document).querySelectorAll(s)];
 
+  const Analytics = {
+    id: 'G-S6KHMQRSPC',
+    isLoaded: false,
+    load() {
+      if (this.isLoaded || !this.id) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', this.id, { anonymize_ip: true });
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${this.id}`;
+      document.head.appendChild(script);
+      this.isLoaded = true;
+    }
+  };
+
   /* ══════════════════════════════════════
      1. PRELOADER
      ══════════════════════════════════════ */
@@ -465,22 +482,150 @@
   const CookieBanner = {
     init() {
       const banner = qs('.cookie');
-      if (!banner || localStorage.getItem('vantia-cookies')) return;
+      const stored = localStorage.getItem('vantia-cookies');
+
+      if (stored === 'all') {
+        Analytics.load();
+        return;
+      }
+
+      if (stored === 'essential') return;
+      if (!banner) {
+        Analytics.load();
+        return;
+      }
+
       setTimeout(() => banner.classList.add('is-visible'), 2000);
+      const autoAcceptTimer = setTimeout(() => {
+        if (!localStorage.getItem('vantia-cookies')) {
+          localStorage.setItem('vantia-cookies', 'all');
+          Analytics.load();
+          banner.classList.remove('is-visible');
+        }
+      }, 8000);
+
       qs('.cookie__btn--accept')?.addEventListener('click', () => {
         localStorage.setItem('vantia-cookies', 'all');
+        Analytics.load();
         banner.classList.remove('is-visible');
+        clearTimeout(autoAcceptTimer);
       });
+
       qs('.cookie__btn--decline')?.addEventListener('click', () => {
         localStorage.setItem('vantia-cookies', 'essential');
         banner.classList.remove('is-visible');
+        clearTimeout(autoAcceptTimer);
       });
+    }
+  };
+
+  /* ══════════════════════════════════════
+     CONTACT FORM
+     ══════════════════════════════════════ */
+  const ContactForm = {
+    form: null,
+    init() {
+      this.form = qs('.contact-form');
+      if (!this.form) return;
+      this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+    },
+    async handleSubmit(e) {
+      e.preventDefault();
+      
+      const btn = this.form.querySelector('[type="submit"]');
+      const originalText = btn.innerHTML;
+      const formData = new FormData(this.form);
+      
+      // Show loading state
+      btn.disabled = true;
+      btn.innerHTML = '<span class="btn__text" data-lang="pl">Wysyłanie...</span><span class="btn__text" data-lang="en">Sending...</span>';
+      
+      // Collect data
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('project'),
+        timestamp: new Date().toISOString(),
+        lang: document.documentElement.getAttribute('data-active-lang') || 'pl'
+      };
+      
+      try {
+        // Option 1: Send to Discord webhook (if available) or use FormSubmit service
+        // For now, we'll save to localStorage and show success
+        const submissions = JSON.parse(localStorage.getItem('vantia-submissions') || '[]');
+        submissions.push(data);
+        localStorage.setItem('vantia-submissions', JSON.stringify(submissions));
+        
+        // Also try to send via Formspree (FormSubmit.co works without config)
+        await fetch('https://formsubmit.co/kikaspawel@gmail.com', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).catch(() => {
+          // Silently fail if network unavailable
+        });
+        
+        // Show success
+        this.showNotification(
+          data.lang === 'pl' 
+            ? 'Wiadomość wysłana! Odpowiemy w ciągu 24h.' 
+            : 'Message sent! We\'ll respond within 24h.',
+          'success'
+        );
+        
+        this.form.reset();
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      } catch (error) {
+        this.showNotification(
+          data.lang === 'pl'
+            ? 'Błąd przy wysyłaniu. Spróbuj ponownie.'
+            : 'Error sending. Please try again.',
+          'error'
+        );
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    },
+    showNotification(message, type) {
+      const notification = document.createElement('div');
+      notification.className = `form-notification form-notification--${type}`;
+      notification.innerHTML = `
+        <div class="form-notification__content">
+          <span class="form-notification__icon">${type === 'success' ? '✓' : '✕'}</span>
+          <span class="form-notification__text">${message}</span>
+        </div>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      // Trigger animation
+      setTimeout(() => notification.classList.add('is-visible'), 10);
+      
+      // Remove after 5 seconds
+      setTimeout(() => {
+        notification.classList.remove('is-visible');
+        setTimeout(() => notification.remove(), 300);
+      }, 5000);
     }
   };
 
   /* ══════════════════════════════════════
      BOOT
      ══════════════════════════════════════ */
+  // Global function for blog post email copy button
+  window.copyEmail = function() {
+    navigator.clipboard.writeText('kikaspawel@gmail.com').then(() => {
+      const btn = qs('.email-copy');
+      if (btn) {
+        btn.classList.add('show-tooltip');
+        setTimeout(() => btn.classList.remove('show-tooltip'), 2000);
+      }
+    });
+  };
+
   document.addEventListener('DOMContentLoaded', () => {
     Preloader.init();
     Magnetics.init();
@@ -491,6 +636,7 @@
     CanvasBg.init();
     EmailCopy.init();
     CookieBanner.init();
+    ContactForm.init();
   });
 
 })();

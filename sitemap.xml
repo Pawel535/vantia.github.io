@@ -21,6 +21,49 @@
   </url>
   
   <url>
+    <loc>https://vantia.vercel.app/blog.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://vantia.vercel.app/blog.html"/>
+  </url>
+
+  <url>
+    <loc>https://vantia.vercel.app/blog/design-sprzedaz.html</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://vantia.vercel.app/blog/seo-2026.html</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://vantia.vercel.app/blog/branding-premium.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://vantia.vercel.app/blog/ux-konwersja.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://vantia.vercel.app/blog/wydajnosc-personalizacja.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
     <loc>https://vantia.vercel.app/#uslugi</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
