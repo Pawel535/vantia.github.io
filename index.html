@@ -846,6 +846,9 @@
       </div>
       <div>
         <form class="contact-form reveal" data-delay="2">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
           <div class="contact-form__group">
             <input type="text" name="name" id="name" class="contact-form__input" placeholder=" " required />
             <label for="name" class="contact-form__label"><span data-lang="pl">Imię lub Nazwa firmy</span><span data-lang="en">Name / Company</span></label>
@@ -855,7 +858,15 @@
             <label for="email" class="contact-form__label"><span data-lang="pl">Adres e-mail</span><span data-lang="en">Email address</span></label>
           </div>
           <div class="contact-form__group">
-            <textarea name="project" id="project" class="contact-form__input contact-form__textarea" placeholder=" " rows="4" required></textarea>
+            <input type="text" name="subject" id="subject" class="contact-form__input" placeholder=" " required minlength="5" maxlength="120" />
+            <label for="subject" class="contact-form__label"><span data-lang="pl">Tytuł zapytania</span><span data-lang="en">Inquiry title</span></label>
+          </div>
+          <div class="contact-form__group">
+            <input type="tel" name="phone" id="phone" class="contact-form__input" placeholder=" " inputmode="tel" />
+            <label for="phone" class="contact-form__label"><span data-lang="pl">Telefon (opcjonalnie)</span><span data-lang="en">Phone (optional)</span></label>
+          </div>
+          <div class="contact-form__group">
+            <textarea name="project" id="project" class="contact-form__input contact-form__textarea" placeholder=" " rows="5" required minlength="25"></textarea>
             <label for="project" class="contact-form__label"><span data-lang="pl">O czym marzysz w swoim projekcie?</span><span data-lang="en">What is your project vision?</span></label>
           </div>
           <button type="submit" class="btn btn--primary magnetic">
