@@ -309,8 +309,10 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 .hero__title-word.is-revealed{transform:translateY(0)}
 .hero__title em,.hero__title i{font-style:italic;color:var(--gold)}
 .hero__title em{
-  text-shadow:0 0 22px rgba(212,175,55,.22);
+  display:inline-block;
+  text-shadow:0 0 15px rgba(212,175,55,.3);
   animation:goldPulse 6s ease-in-out infinite;
+  will-change:transform,opacity;
 }
 
 .hero__subtitle{
@@ -991,8 +993,9 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
   100%{transform:translate3d(-2%,1.5%,0) scale(1.04)}
 }
 @keyframes goldPulse{
-  0%,100%{text-shadow:0 0 18px rgba(212,175,55,.15)}
-  50%{text-shadow:0 0 30px rgba(212,175,55,.34)}
+  0%{opacity:.8;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.02)}
+  100%{opacity:.8;transform:scale(1)}
 }
 @keyframes borderSpark{
   0%,100%{opacity:.35}
@@ -1111,6 +1114,10 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
   margin:0;
   padding:0;
 }
+#main{
+  min-height:100vh;
+  display:block;
+}
 
 /* ══════════════════════════════════════
    REVEAL ANIMATIONS
@@ -1131,6 +1138,10 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 }
 .reveal.is-visible{opacity:1;transform:translateY(0)}
 .reveal.is-visible{will-change:auto}
+.is-revealed{
+  opacity:1 !important;
+  transform:translate(0,0) !important;
+}
 .reveal--clip.is-visible{clip-path:inset(0 0 0 0)}
 .reveal--scale.is-visible{opacity:1;transform:scale(1)}
 /* Stagger delays */

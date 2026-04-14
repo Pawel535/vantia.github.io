@@ -24,6 +24,21 @@
     } catch (e) {}
   })();
 </script>
+<script>
+  (function () {
+    document.documentElement.style.visibility = 'hidden';
+    if ('fonts' in document) {
+      document.fonts.ready.then(function () {
+        document.documentElement.style.visibility = 'visible';
+      });
+    } else {
+      document.documentElement.style.visibility = 'visible';
+    }
+    setTimeout(function () {
+      document.documentElement.style.visibility = 'visible';
+    }, 1200);
+  })();
+</script>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://vantia.vercel.app/"/>
 <meta property="og:title" content="VANTIA Studio - Premium Web Design & Digital Solutions"/>
@@ -146,14 +161,12 @@
   .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); width: 100%; box-sizing: border-box; }
 </style>
 
-<!-- Non-blocking font load (keep off critical rendering path) -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=DM+Mono:wght@400&display=optional">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=DM+Mono:wght@400&display=optional" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 
 <!-- Main Stylesheet (non-blocking after critical inline CSS) -->
 <link rel="preload" as="style" href="styles.css" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=DM+Mono:wght@400&display=optional" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </noscript>
 <script type="application/ld+json">
