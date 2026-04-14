@@ -13,6 +13,17 @@
 <meta name="geo.country" content="PL"/>
 <meta name="theme-color" content="#0A0A0A"/>
 <meta name="google-site-verification" content="QiwREeYWDiOBoogdUntctZhJzb2UtMAUnt2iWqeZWCQ"/>
+<script>
+  (function () {
+    try {
+      var storedLang = localStorage.getItem('vantia-lang');
+      var browserLang = (navigator.language || 'pl').slice(0, 2);
+      var initialLang = storedLang || (browserLang === 'pl' ? 'pl' : 'en');
+      document.documentElement.setAttribute('data-active-lang', initialLang);
+      document.documentElement.setAttribute('lang', initialLang === 'pl' ? 'pl-PL' : 'en');
+    } catch (e) {}
+  })();
+</script>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://vantia.vercel.app/"/>
 <meta property="og:title" content="VANTIA Studio - Premium Web Design & Digital Solutions"/>
@@ -51,6 +62,7 @@
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'Inter', sans-serif;
   }
+  html { scrollbar-gutter: stable; }
   body { background: var(--bg-primary); margin: 0; overflow-x: hidden; font-family: var(--font-body); }
   .nav { 
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000; 
@@ -166,6 +178,12 @@
 
 <!-- Canvas Background -->
 <canvas class="canvas-bg" aria-hidden="true"></canvas>
+<div class="ambient-bg" aria-hidden="true">
+  <div class="ambient-bg__layer ambient-bg__layer--aurora"></div>
+  <div class="ambient-bg__blob ambient-bg__blob--gold"></div>
+  <div class="ambient-bg__blob ambient-bg__blob--blue"></div>
+  <div class="ambient-bg__grid"></div>
+</div>
 
 <!-- ═══ PRELOADER ═══ -->
 <div class="preloader" aria-label="Loading">
@@ -252,11 +270,11 @@
 
   <h1 class="hero__title" id="hero-heading">
     <span data-lang="pl">
-      <span class="hero__title-line"><span class="hero__title-word">Cyfrowe&nbsp;doświadczenia</span></span>
-      <span class="hero__title-line"><span class="hero__title-word">klasy&nbsp;</span><span class="hero__title-word"><em>premium.</em></span></span>
+      <span class="hero__title-line"><span class="hero__title-word">Cyfrowe doświadczenia</span></span>
+      <span class="hero__title-line"><span class="hero__title-word">klasy </span><span class="hero__title-word"><em>premium.</em></span></span>
     </span>
     <span data-lang="en">
-      <span class="hero__title-line"><span class="hero__title-word">High-End&nbsp;Digital</span></span>
+      <span class="hero__title-line"><span class="hero__title-word">High-End Digital</span></span>
       <span class="hero__title-line"><span class="hero__title-word"><em>Experiences.</em></span></span>
     </span>
   </h1>

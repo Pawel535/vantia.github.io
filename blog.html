@@ -419,20 +419,6 @@ function doBlogFilter(btn, cat) {
     }
   });
 }
-
-// Cookie Choice
-function setCookieChoice(choice) {
-  localStorage.setItem('vantia-cookies', choice);
-  document.querySelector('.cookie').classList.remove('is-visible');
-}
-
-// Show cookie banner on load
-document.addEventListener('DOMContentLoaded', function() {
-  const cookieChoice = localStorage.getItem('vantia-cookies');
-  if (!cookieChoice) {
-    document.querySelector('.cookie').classList.add('is-visible');
-  }
-});
 </script>
 </body>
 </html>

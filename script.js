@@ -288,14 +288,11 @@ window.addEventListener('load', () => {
   const Lang = {
     current: 'pl',
     init() {
-      // Detect from localStorage or browser
+      // Initial language is set as early as possible in <head> to prevent CLS.
+      const rootLang = document.documentElement.getAttribute('data-active-lang');
       const stored = localStorage.getItem('vantia-lang');
-      if (stored) {
-        this.current = stored;
-      } else {
-        const browserLang = navigator.language?.substring(0, 2);
-        this.current = browserLang === 'pl' ? 'pl' : 'en';
-      }
+      const browserLang = navigator.language?.substring(0, 2);
+      this.current = stored || rootLang || (browserLang === 'pl' ? 'pl' : 'en');
       this.apply(this.current);
       qsa('.lang-switch__btn').forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -347,8 +344,11 @@ const ScrollProgress = {
   const CanvasBg = {
     cv: null, ctx: null, W: 0, H: 0, t: 0,
     mouse: { x: -9999, y: -9999 },
+    scrollY: 0,
     CELL: 80,
     isVisible: true,
+    frameInterval: 1000 / 30,
+    lastFrameTime: 0,
     orbs: [
       { fx: .78, fy: .12, r: 400, gold: true, a: .10, sp: .0007 },
       { fx: .1, fy: .82, r: 280, gold: false, a: .05, sp: .0005 },
@@ -359,9 +359,19 @@ const ScrollProgress = {
     init() {
       this.cv = qs('.canvas-bg');
       if (!this.cv) return;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const saveData = navigator.connection?.saveData;
+      const lowPowerViewport = window.innerWidth < 768;
+      const lowEndDevice = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
+        (navigator.deviceMemory && navigator.deviceMemory <= 4);
+      if (reduceMotion || saveData || lowPowerViewport || lowEndDevice) {
+        this.cv.style.display = 'none';
+        return;
+      }
       this.ctx = this.cv.getContext('2d');
       // Generate particles
-      for (let i = 0; i < 35; i++) {
+      const particleCount = (navigator.hardwareConcurrency && navigator.hardwareConcurrency >= 8) ? 28 : 20;
+      for (let i = 0; i < particleCount; i++) {
         this.particles.push({
           x: Math.random(), y: Math.random(),
           r: Math.random() * 1.2 + .3,
@@ -380,6 +390,9 @@ const ScrollProgress = {
         this.mouse.x = e.clientX;
         this.mouse.y = e.clientY;
       }, { passive: true });
+      window.addEventListener('scroll', () => {
+        this.scrollY = window.scrollY;
+      }, { passive: true });
       // Visibility
       const obs = new IntersectionObserver((entries) => {
         this.isVisible = entries[0].isIntersecting;
@@ -393,6 +406,12 @@ const ScrollProgress = {
     },
     render() {
       if (!this.isVisible) { requestAnimationFrame(() => this.render()); return; }
+      const now = performance.now();
+      if (now - this.lastFrameTime < this.frameInterval) {
+        requestAnimationFrame(() => this.render());
+        return;
+      }
+      this.lastFrameTime = now;
       const { ctx, W, H, CELL, mouse } = this;
       this.t += .003;
       ctx.clearRect(0, 0, W, H);
@@ -427,7 +446,7 @@ const ScrollProgress = {
       });
 
       // Grid
-      const gy = -(window.scrollY * .08) % CELL;
+      const gy = -(this.scrollY * .08) % CELL;
       ctx.lineWidth = .4;
       for (let x = 0; x < W + CELL; x += CELL) {
         const proximity = Math.max(.008, .04 - Math.abs(x - mouse.x) / W * .04);
@@ -517,33 +536,23 @@ const ScrollProgress = {
         return;
       }
 
-      if (stored === 'essential') return;
-      if (!banner) {
-        Analytics.load();
+      if (stored === 'essential' || !banner) {
         return;
       }
 
       setTimeout(() => banner.classList.add('is-visible'), 2000);
-      const autoAcceptTimer = setTimeout(() => {
-        if (!localStorage.getItem('vantia-cookies')) {
-          localStorage.setItem('vantia-cookies', 'all');
-          Analytics.load();
-          banner.classList.remove('is-visible');
-        }
-      }, 8000);
-
-      qs('.cookie__btn--accept')?.addEventListener('click', () => {
-        localStorage.setItem('vantia-cookies', 'all');
-        Analytics.load();
-        banner.classList.remove('is-visible');
-        clearTimeout(autoAcceptTimer);
+      qsa('.cookie__btn--accept, .cookie__btn--primary').forEach((btn) => {
+        btn.addEventListener('click', () => this.setChoice('all'));
       });
-
-      qs('.cookie__btn--decline')?.addEventListener('click', () => {
-        localStorage.setItem('vantia-cookies', 'essential');
-        banner.classList.remove('is-visible');
-        clearTimeout(autoAcceptTimer);
+      qsa('.cookie__btn--decline, .cookie__btn--secondary').forEach((btn) => {
+        btn.addEventListener('click', () => this.setChoice('essential'));
       });
+    },
+    setChoice(choice) {
+      localStorage.setItem('vantia-cookies', choice);
+      if (choice === 'all') Analytics.load();
+      const banner = qs('.cookie');
+      if (banner) banner.classList.remove('is-visible');
     }
   };
 
@@ -573,27 +582,18 @@ const ScrollProgress = {
         name: formData.get('name'),
         email: formData.get('email'),
         message: formData.get('project'),
-        timestamp: new Date().toISOString(),
         lang: document.documentElement.getAttribute('data-active-lang') || 'pl'
       };
       
       try {
-        // Option 1: Send to Discord webhook (if available) or use FormSubmit service
-        // For now, we'll save to localStorage and show success
-        const submissions = JSON.parse(localStorage.getItem('vantia-submissions') || '[]');
-        submissions.push(data);
-        localStorage.setItem('vantia-submissions', JSON.stringify(submissions));
-        
-        // Also try to send via Formspree (FormSubmit.co works without config)
-        await fetch('https://formsubmit.co/kikaspawel@gmail.com', {
+        const response = await fetch('https://formsubmit.co/kikaspawel@gmail.com', {
           method: 'POST',
           body: formData,
           headers: {
             'Accept': 'application/json'
           }
-        }).catch(() => {
-          // Silently fail if network unavailable
         });
+        if (!response.ok) throw new Error('Form submit failed');
         
         // Show success
         this.showNotification(
@@ -652,6 +652,9 @@ const ScrollProgress = {
         setTimeout(() => btn.classList.remove('show-tooltip'), 2000);
       }
     });
+  };
+  window.setCookieChoice = function(choice) {
+    CookieBanner.setChoice(choice);
   };
 
   document.addEventListener('DOMContentLoaded', () => {
