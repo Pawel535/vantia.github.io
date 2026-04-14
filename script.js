@@ -271,29 +271,24 @@
     bar: null,
     ticking: false,
     maxScroll: 0,
+    needsRecalc: true,
     init() {
       this.bar = qs('.scroll-progress');
       if (!this.bar) return;
-
-      /* Always defer geometry reads to next frame */
-      const computeMax = () => {
-        requestAnimationFrame(() => {
-          this.maxScroll = Math.max(
-            0,
-            document.documentElement.scrollHeight - window.innerHeight
-          );
-        });
-      };
-
-      computeMax();
-      window.addEventListener('load',   computeMax, { once: true });
-      window.addEventListener('resize', computeMax, { passive: true });
+      const markDirty = () => { this.needsRecalc = true; };
+      window.addEventListener('load', markDirty, { once: true });
+      window.addEventListener('resize', markDirty, { passive: true });
       window.addEventListener('scroll', () => this.update(), { passive: true });
+    },
+    computeMax() {
+      this.maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      this.needsRecalc = false;
     },
     update() {
       if (this.ticking) return;
       this.ticking = true;
       requestAnimationFrame(() => {
+        if (this.needsRecalc) this.computeMax();
         const progress = this.maxScroll > 0 ? window.scrollY / this.maxScroll : 0;
         /* scaleX stays on GPU compositor — no layout */
         this.bar.style.transform = `scaleX(${progress})`;
@@ -687,7 +682,6 @@
     window.addEventListener('load', () => {
       idle(() => {
         Magnetics.init();
-        HeroReveal.run();
         CountUp.init();
         ScrollProgress.init();
         EmailCopy.init();

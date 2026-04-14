@@ -1676,3 +1676,31 @@ body::after {
     transform: none !important;
   }
 }
+
+@media (max-width: 900px) {
+  .canvas-bg,
+  .ambient-bg {
+    display: none !important;
+  }
+
+  .hero__title-word,
+  .hero__tag,
+  .hero__subtitle,
+  .hero__actions,
+  .hero__corner,
+  .hero__scroll,
+  .hero__badge,
+  .reveal,
+  .service,
+  .portfolio-card,
+  .feature,
+  .plan,
+  .blog-card,
+  .btn,
+  .nav__cta {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+}
