@@ -321,10 +321,15 @@ const ScrollProgress = {
     init() {
         this.bar = qs('.scroll-progress');
         if (!this.bar) return;
-        // Compute max scroll height once and update on resize
-        const computeMax = () => { this.maxScroll = document.documentElement.scrollHeight - window.innerHeight; };
+        // Compute max scroll height after layout settles to avoid forced reflow.
+        const computeMax = () => {
+          requestAnimationFrame(() => {
+            this.maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+          });
+        };
         computeMax();
-        window.addEventListener('resize', computeMax);
+        window.addEventListener('load', computeMax, { once: true });
+        window.addEventListener('resize', computeMax, { passive: true });
         window.addEventListener('scroll', () => this.update(), { passive: true });
     },
     update() {
@@ -708,10 +713,10 @@ const ScrollProgress = {
   };
 
   document.addEventListener('DOMContentLoaded', () => {
+    Lang.init();
     Preloader.init();
     Magnetics.init();
     Nav.init();
-    Lang.init();
     CountUp.init();
     ScrollProgress.init();
     CanvasBg.init();
