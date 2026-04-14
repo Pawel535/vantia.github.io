@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════
    VANTIA STUDIO — Runtime Engine 2026
-   Modules: Preloader, Cursor, Magnetic, Canvas, ScrollReveal,
-            Navigation, Language, CountUp, ScrollProgress
+   Modules: Magnetic, Canvas, ScrollReveal, Navigation,
+            Language, CountUp, ScrollProgress
    ═══════════════════════════════════════════════════════════════ */
 
 (function () {
@@ -29,66 +29,6 @@
       this.isLoaded = true;
     }
   };
-
-  /* ══════════════════════════════════════
-     1. PRELOADER
-     ══════════════════════════════════════ */
-  const Preloader = {
-    el: null,
-    fill: null,
-    progress: 0,
-    init() {
-      this.el = qs('.preloader');
-      this.fill = qs('.preloader__fill');
-      if (!this.el) return;
-      
-      // Optymalizacja Premium: Nie katujemy usera ładowaniem przy każdym przejściu
-      if (sessionStorage.getItem('vantia-preloaded')) {
-        this.el.style.display = 'none';
-        setTimeout(() => {
-          HeroReveal.run();
-          ScrollReveal.init();
-        }, 50);
-        return;
-      }
-      
-      document.body.style.overflow = 'hidden';
-      this.simulateLoad();
-    },
-    simulateLoad() {
-      const steps = [30, 55, 75, 90, 100];
-      let i = 0;
-      const tick = () => {
-        if (i >= steps.length) return;
-        this.progress = steps[i];
-        if (this.fill) this.fill.style.width = this.progress + '%';
-        i++;
-        if (i < steps.length) {
-          setTimeout(tick, 200 + Math.random() * 200);
-        }
-      };
-      tick();
-window.addEventListener('load', () => {
-          if (this.fill) this.fill.style.width = '100%';
-          // Hide preloader immediately on load to avoid LCP delay
-          this.hide();
-        });
-      // Fallback: hide after 4s max
-      setTimeout(() => this.hide(), 4000);
-    },
-    hide() {
-      if (!this.el || this.el.classList.contains('is-done')) return;
-      this.el.classList.add('is-done');
-      document.body.style.overflow = '';
-      sessionStorage.setItem('vantia-preloaded', 'true');
-      setTimeout(() => {
-        HeroReveal.run();
-        ScrollReveal.init();
-      }, 300);
-    }
-  };
-
-
 
   /* ══════════════════════════════════════
      3. MAGNETIC BUTTONS
@@ -714,7 +654,8 @@ const ScrollProgress = {
 
   document.addEventListener('DOMContentLoaded', () => {
     Lang.init();
-    Preloader.init();
+    HeroReveal.run();
+    ScrollReveal.init();
     Nav.init();
     CookieBanner.init();
     ContactForm.init();
