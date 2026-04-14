@@ -587,10 +587,11 @@ const ScrollProgress = {
         const formData = new FormData(this.form);
 
         // 🔥 DODAJ TO
-        formData.append('_subject', '🔥 Nowa wiadomość ze strony Vantia!');
-        formData.append('_template', 'table'); // opcjonalnie ładny wygląd maila
+        formData.append('_subject', `📩 ${data.name} - Vantia`);
+        formData.append('_template', 'table');
+        formData.append('_captcha', 'false');
 
-        await fetch('https://formsubmit.co/kikaspawel@gmail.com', {
+        await fetch('https://formsubmit.co/ajax/kikaspawel@gmail.com', {
         method: 'POST',
         body: formData,
         headers: {
