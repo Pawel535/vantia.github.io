@@ -15,6 +15,10 @@ button{font:inherit;cursor:pointer;border:none;background:none}
 ul,ol{list-style:none}
 ::selection{background:rgba(212,175,55,.25);color:#F5F2EC}
 
+/* Font lifecycle classes: keep first paint stable and avoid heavy transition during font swap. */
+.fonts-loading *{transition:none !important}
+.fonts-loaded body{transition:opacity .2s ease-in}
+
 /* ── DESIGN TOKENS ── */
 :root{
   /* Surfaces (Sophisticated Graphite) */
@@ -144,14 +148,16 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 .nav__link{
   font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
   color:var(--text-muted);position:relative;padding:4px 0;
-  transition:color .4s;
+  transition:opacity .3s,transform .3s;
+  will-change:transform,opacity;
+  transform:translateZ(0);
 }
 .nav__link::after{
   content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;
   background:var(--gold);transform:scaleX(0);transform-origin:right;
   transition:transform .5s var(--ease-out);
 }
-.nav__link:hover{color:var(--text-primary)}
+.nav__link:hover{opacity:.82;transform:translateZ(0) scale(1.03)}
 .nav__link:hover::after{transform:scaleX(1);transform-origin:left}
 .nav__link--portfolio{color:var(--text-secondary)}
 .nav__link--portfolio:hover{color:var(--gold)}
@@ -498,6 +504,8 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
   font-size:9px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;
   color:var(--text-muted);border:1px solid var(--line);padding:5px 12px;
   transition:border-color .3s,color .3s;
+  will-change:transform,opacity;
+  transform:translateZ(0);
 }
 .service:hover .service__tag{border-color:var(--line-gold);color:var(--text-secondary)}
 

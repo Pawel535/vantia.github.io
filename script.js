@@ -140,13 +140,16 @@
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('is-visible');
+              entry.target.classList.add('is-revealed');
               this.observer.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
       );
-      qsa('.reveal').forEach((el) => this.observer.observe(el));
+      qsa('.reveal, .hero__tag, .hero__title-word, .hero__subtitle, .service, .portfolio-card').forEach((el) => {
+        this.observer.observe(el);
+      });
     }
   };
 
