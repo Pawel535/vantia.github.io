@@ -1570,3 +1570,99 @@ article h1 b{color:var(--gold);font-weight:400}
   transition:top .3s;border-radius:0 0 8px 8px;
 }
 .skip-link:focus{top:0}
+
+/* ═══════════════════════════════════════════════════════════════
+   VANTIA STUDIO — Performance Patches 2026
+   ═══════════════════════════════════════════════════════════════ */
+
+/* 1. CANVAS: compositor-layer hint */
+.canvas-bg {
+  will-change: transform;
+}
+
+/* 2. BODY PSEUDO-ELEMENTS: composited-friendly animation */
+body::before {
+  animation: noiseOpacity 12s linear infinite;
+}
+body::after {
+  animation: vignetteBreath 11s ease-in-out infinite;
+  will-change: opacity;
+}
+@keyframes noiseOpacity {
+  0%, 100% { opacity: .04; }
+  50% { opacity: .06; }
+}
+
+/* 3. HERO REVEAL — CSS class based */
+.hero__tag,
+.hero__subtitle,
+.hero__actions {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
+  will-change: opacity, transform;
+}
+.hero__tag.is-revealed,
+.hero__subtitle.is-revealed,
+.hero__actions.is-revealed {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+.hero__corner {
+  transition: opacity 1s var(--ease-out);
+  will-change: opacity;
+}
+.hero__corner.is-revealed {
+  opacity: 1;
+  will-change: auto;
+}
+
+.hero__scroll,
+.hero__badge {
+  opacity: 0;
+  transition: opacity 1s;
+}
+.hero__scroll.is-revealed,
+.hero__badge.is-revealed {
+  opacity: 1;
+}
+
+.hero__title-word {
+  display: inline-block;
+  transform: translateY(60px);
+  opacity: 0;
+  transition: transform .7s var(--ease-out), opacity .7s var(--ease-out);
+  will-change: transform, opacity;
+}
+.hero__title-word.is-revealed {
+  transform: translateY(0);
+  opacity: 1;
+  will-change: auto;
+}
+
+/* 5. Reduced motion guard */
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after,
+  .hero::before,
+  .hero__title em,
+  .plan--featured::after,
+  .contact__glow,
+  .ambient-bg__layer--aurora,
+  .ambient-bg__blob,
+  .ambient-bg__grid,
+  .hero__tag,
+  .hero__subtitle,
+  .hero__actions,
+  .hero__title-word,
+  .hero__corner,
+  .hero__scroll,
+  .hero__badge {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
