@@ -715,14 +715,19 @@ const ScrollProgress = {
   document.addEventListener('DOMContentLoaded', () => {
     Lang.init();
     Preloader.init();
-    Magnetics.init();
     Nav.init();
-    CountUp.init();
-    ScrollProgress.init();
-    CanvasBg.init();
-    EmailCopy.init();
     CookieBanner.init();
     ContactForm.init();
+    const scheduleNonCritical = window.requestIdleCallback
+      ? window.requestIdleCallback.bind(window)
+      : (cb) => setTimeout(cb, 120);
+    scheduleNonCritical(() => {
+      Magnetics.init();
+      CountUp.init();
+      ScrollProgress.init();
+      EmailCopy.init();
+      CanvasBg.init();
+    });
   });
 
 })();
