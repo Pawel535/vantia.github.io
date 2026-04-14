@@ -15,10 +15,6 @@ button{font:inherit;cursor:pointer;border:none;background:none}
 ul,ol{list-style:none}
 ::selection{background:rgba(212,175,55,.25);color:#F5F2EC}
 
-/* Font lifecycle classes: keep first paint stable and avoid heavy transition during font swap. */
-.fonts-loading *{transition:none !important}
-.fonts-loaded body{transition:opacity .2s ease-in}
-
 /* ── DESIGN TOKENS ── */
 :root{
   /* Surfaces (Sophisticated Graphite) */

@@ -146,20 +146,14 @@
   .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); width: 100%; box-sizing: border-box; }
 </style>
 
-<!-- Font Load (stable and predictable) -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-<script>
-  document.documentElement.classList.add('fonts-loading');
-  document.fonts.ready.then(() => {
-    document.documentElement.classList.remove('fonts-loading');
-    document.documentElement.classList.add('fonts-loaded');
-  });
-</script>
+<!-- Non-blocking font load (keep off critical rendering path) -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=DM+Mono:wght@400&display=optional">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=DM+Mono:wght@400&display=optional" media="print" onload="this.media='all'">
 
 <!-- Main Stylesheet (non-blocking after critical inline CSS) -->
 <link rel="preload" as="style" href="styles.css" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=DM+Mono:wght@400&display=optional" />
   <link rel="stylesheet" href="styles.css" />
 </noscript>
 <script type="application/ld+json">
