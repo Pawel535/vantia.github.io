@@ -584,15 +584,18 @@ const ScrollProgress = {
         submissions.push(data);
         localStorage.setItem('vantia-submissions', JSON.stringify(submissions));
         
-        // Also try to send via Formspree (FormSubmit.co works without config)
+        const formData = new FormData(this.form);
+
+        // 🔥 DODAJ TO
+        formData.append('_subject', '🔥 Nowa wiadomość ze strony Vantia!');
+        formData.append('_template', 'table'); // opcjonalnie ładny wygląd maila
+
         await fetch('https://formsubmit.co/kikaspawel@gmail.com', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        }).catch(() => {
-          // Silently fail if network unavailable
+        method: 'POST',
+        body: formData,
+        headers: {
+        'Accept': 'application/json'
+        }
         });
         
         // Show success
