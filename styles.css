@@ -136,6 +136,7 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 }
 .nav__logo{
   font-family:var(--font-display);font-size:22px;letter-spacing:.15em;
+  font-size-adjust:.5;
   color:var(--text-bright);position:relative;z-index:1001;
 }
 .nav__logo-dot{color:var(--gold)}
@@ -287,6 +288,7 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 
 .hero__title{
   font-family:var(--font-display);
+  font-size-adjust:.5;
   font-size:clamp(56px,9vw,140px);font-weight:400;
   line-height:.92;letter-spacing:-.02em;color:var(--text-bright);
   max-width:960px;margin-bottom:28px;
@@ -309,6 +311,7 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 }
 
 .hero__subtitle{
+  font-size-adjust:.52;
   font-size:15px;font-weight:300;color:var(--text-secondary);
   max-width:480px;line-height:1.9;margin-bottom:56px;
   opacity:1;transform:none;
@@ -325,6 +328,7 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 /* Buttons */
 .btn{
   display:inline-flex;align-items:center;gap:12px;
+  font-size-adjust:.52;
   font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
   padding:16px 38px;position:relative;overflow:hidden;
   transition:all .4s var(--ease-smooth);
