@@ -561,60 +561,110 @@ const ScrollProgress = {
      ══════════════════════════════════════ */
   const ContactForm = {
     form: null,
+    endpoint: 'https://formsubmit.co/ajax/kikaspawel@gmail.com',
     init() {
       this.form = qs('.contact-form');
       if (!this.form) return;
       this.form.addEventListener('submit', (e) => this.handleSubmit(e));
     },
+    getLang() {
+      return document.documentElement.getAttribute('data-active-lang') || 'pl';
+    },
+    sanitize(value) {
+      return String(value || '').trim().replace(/\s+/g, ' ');
+    },
+    validate(data) {
+      const messages = {
+        name: data.lang === 'pl' ? 'Podaj poprawną nazwę lub imię.' : 'Please provide a valid name.',
+        email: data.lang === 'pl' ? 'Podaj poprawny adres e-mail.' : 'Please provide a valid email address.',
+        subject: data.lang === 'pl' ? 'Tytuł powinien mieć min. 5 znaków.' : 'Subject must have at least 5 characters.',
+        message: data.lang === 'pl' ? 'Opis projektu powinien mieć min. 25 znaków.' : 'Project description must have at least 25 characters.',
+        phone: data.lang === 'pl' ? 'Numer telefonu ma nieprawidłowy format.' : 'Phone number format is invalid.'
+      };
+
+      if (data.name.length < 2) return messages.name;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return messages.email;
+      if (data.subject.length < 5) return messages.subject;
+      if (data.message.length < 25) return messages.message;
+      if (data.phone && !/^[+()\-\s0-9]{7,20}$/.test(data.phone)) return messages.phone;
+      return null;
+    },
+    setButtonState(btn, loading) {
+      if (!btn) return;
+      if (loading) {
+        btn.disabled = true;
+        btn.innerHTML = '<span class="btn__text" data-lang="pl">Wysyłanie...</span><span class="btn__text" data-lang="en">Sending...</span>';
+        return;
+      }
+      btn.disabled = false;
+      btn.innerHTML = '<span class="btn__text" data-lang="pl">Wyślij zapytanie</span><span class="btn__text" data-lang="en">Submit Request</span>';
+    },
     async handleSubmit(e) {
       e.preventDefault();
-      
+
       const btn = this.form.querySelector('[type="submit"]');
-      const originalText = btn.innerHTML;
+      const lang = this.getLang();
       const formData = new FormData(this.form);
-      
-      // Show loading state
-      btn.disabled = true;
-      btn.innerHTML = '<span class="btn__text" data-lang="pl">Wysyłanie...</span><span class="btn__text" data-lang="en">Sending...</span>';
-      
-      // Collect data
+
       const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('project'),
-        lang: document.documentElement.getAttribute('data-active-lang') || 'pl'
+        name: this.sanitize(formData.get('name')),
+        email: this.sanitize(formData.get('email')).toLowerCase(),
+        subject: this.sanitize(formData.get('subject')),
+        phone: this.sanitize(formData.get('phone')),
+        message: this.sanitize(formData.get('project')),
+        lang
       };
-      
+
+      const validationError = this.validate(data);
+      if (validationError) {
+        this.showNotification(validationError, 'error');
+        return;
+      }
+
+      this.setButtonState(btn, true);
+
+      const payload = new FormData();
+      payload.append('name', data.name);
+      payload.append('email', data.email);
+      payload.append('subject', data.subject);
+      payload.append('phone', data.phone || '-');
+      payload.append('project', data.message);
+      payload.append('_subject', `[VANTIA] ${data.subject} - ${data.name}`);
+      payload.append('_template', 'table');
+      payload.append('_captcha', 'false');
+
       try {
-        const response = await fetch('https://formsubmit.co/kikaspawel@gmail.com', {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+        const response = await fetch(this.endpoint, {
           method: 'POST',
-          body: formData,
+          body: payload,
           headers: {
             'Accept': 'application/json'
-          }
+          },
+          signal: controller.signal
         });
+        clearTimeout(timeoutId);
         if (!response.ok) throw new Error('Form submit failed');
-        
-        // Show success
+
         this.showNotification(
-          data.lang === 'pl' 
-            ? 'Wiadomość wysłana! Odpowiemy w ciągu 24h.' 
+          data.lang === 'pl'
+            ? 'Wiadomość wysłana. Odpowiemy w ciągu 24h.'
             : 'Message sent! We\'ll respond within 24h.',
           'success'
         );
-        
+
         this.form.reset();
-        btn.innerHTML = originalText;
-        btn.disabled = false;
       } catch (error) {
         this.showNotification(
           data.lang === 'pl'
-            ? 'Błąd przy wysyłaniu. Spróbuj ponownie.'
+            ? 'Błąd wysyłki. Sprawdź dane i spróbuj ponownie.'
             : 'Error sending. Please try again.',
           'error'
         );
-        btn.innerHTML = originalText;
-        btn.disabled = false;
+      } finally {
+        this.setButtonState(btn, false);
       }
     },
     showNotification(message, type) {
