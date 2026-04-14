@@ -106,7 +106,7 @@
     text-align: left;
     min-height: 5.7em;
   }
-  .hero__actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+  .hero__actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; min-height: 56px; }
   .btn {
     display: inline-flex;
     align-items: center;
@@ -121,6 +121,9 @@
   .btn--primary { color: #18191B; background: linear-gradient(135deg, #D4AF37, #E8C94A); }
   .btn--ghost { color: var(--text-secondary); padding: 16px 0; }
   .btn__text { display: inline-block; line-height: 1; }
+  .hero__actions .btn--primary { min-width: 220px; justify-content: center; }
+  .hero__actions .btn--ghost { min-width: 190px; justify-content: flex-start; }
+  .hero__actions .btn__text { white-space: nowrap; }
   .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); width: 100%; box-sizing: border-box; }
 </style>
 

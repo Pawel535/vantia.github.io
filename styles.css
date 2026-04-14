@@ -319,6 +319,7 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
   display:flex;gap:20px;align-items:center;flex-wrap:wrap;
   opacity:1;transform:none;
   text-align: left;
+  min-height:56px;
 }
 
 /* Buttons */
@@ -346,6 +347,9 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 .btn--ghost:hover .btn__arrow{transform:translateX(6px)}
 .btn__arrow{transition:transform .4s var(--ease-out)}
 .btn__text{position:relative;z-index:1}
+.hero__actions .btn--primary{min-width:220px;justify-content:center}
+.hero__actions .btn--ghost{min-width:190px;justify-content:flex-start}
+.hero__actions .btn__text{white-space:nowrap}
 
 .hero__scroll{
   position:absolute;bottom:40px;left:var(--gutter);
