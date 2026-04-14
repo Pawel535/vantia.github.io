@@ -281,7 +281,7 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 .hero__tag{
   font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
   color:var(--gold);margin-bottom:40px;display:flex;align-items:center;gap:16px;
-  opacity:0;transform:translateY(28px);
+  opacity:1;transform:none;
 }
 .hero__tag::before{content:'';width:32px;height:1px;background:var(--gold)}
 
@@ -297,9 +297,9 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
   display:block;overflow:hidden;
 }
 .hero__title-word{
-  display:inline-block;transform:translateY(110%);
-  transition:transform 1s var(--ease-expo);
-  will-change:transform;
+  display:inline-block;transform:none;
+  transition:none;
+  will-change:auto;
 }
 .hero__title-word.is-revealed{transform:translateY(0)}
 .hero__title em,.hero__title i{font-style:italic;color:var(--gold)}
@@ -311,13 +311,13 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 .hero__subtitle{
   font-size:15px;font-weight:300;color:var(--text-secondary);
   max-width:480px;line-height:1.9;margin-bottom:56px;
-  opacity:0;transform:translateY(28px);
+  opacity:1;transform:none;
   text-align: left;
   min-height:5.7em;
 }
 .hero__actions{
   display:flex;gap:20px;align-items:center;flex-wrap:wrap;
-  opacity:0;transform:translateY(28px);
+  opacity:1;transform:none;
   text-align: left;
 }
 
@@ -351,7 +351,7 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
   position:absolute;bottom:40px;left:var(--gutter);
   font-size:9px;letter-spacing:.24em;text-transform:uppercase;
   color:var(--text-muted);display:flex;align-items:center;gap:16px;
-  opacity:0;
+  opacity:1;
 }
 .hero__scroll-line{
   width:48px;height:1px;background:var(--text-muted);
@@ -367,7 +367,7 @@ html[data-active-lang="en"] [data-lang-block="pl"]{display:none}
 .hero__badge{
   position:absolute;bottom:36px;right:var(--gutter);
   width:90px;height:90px;display:flex;align-items:center;justify-content:center;
-  opacity:0;
+  opacity:1;
 }
 .hero__badge svg{animation:spinBadge 24s linear infinite}
 .hero__badge-dot{position:absolute;color:var(--gold);font-size:15px}

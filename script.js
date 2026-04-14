@@ -36,7 +36,7 @@
   const Magnetics = {
     init() {
       if (isTouchDevice()) return;
-      qsa('.magnetic').forEach((el) => {
+      qsa('.magnetic:not(.nav__logo)').forEach((el) => {
         let rAFId = null;
         let cachedRect = null;
         
@@ -654,7 +654,6 @@ const ScrollProgress = {
 
   document.addEventListener('DOMContentLoaded', () => {
     Lang.init();
-    HeroReveal.run();
     ScrollReveal.init();
     Nav.init();
     CookieBanner.init();
@@ -662,12 +661,14 @@ const ScrollProgress = {
     const scheduleNonCritical = window.requestIdleCallback
       ? window.requestIdleCallback.bind(window)
       : (cb) => setTimeout(cb, 120);
-    scheduleNonCritical(() => {
-      Magnetics.init();
-      CountUp.init();
-      ScrollProgress.init();
-      EmailCopy.init();
-      CanvasBg.init();
+    window.addEventListener('load', () => {
+      scheduleNonCritical(() => {
+        Magnetics.init();
+        CountUp.init();
+        ScrollProgress.init();
+        EmailCopy.init();
+        CanvasBg.init();
+      });
     });
   });
 
