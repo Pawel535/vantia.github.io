@@ -12,6 +12,7 @@
 <meta name="geo.region" content="PL"/>
 <meta name="geo.country" content="PL"/>
 <meta name="theme-color" content="#0A0A0A"/>
+<meta name="format-detection" content="telephone=no"/>
 <meta name="google-site-verification" content="QiwREeYWDiOBoogdUntctZhJzb2UtMAUnt2iWqeZWCQ"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://vantia.vercel.app/"/>
@@ -39,6 +40,8 @@
 <!-- Preconnect to Font Servers -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="//www.googletagmanager.com" />
+<link rel="dns-prefetch" href="//formsubmit.co" />
 
 <!-- Critical CSS: Prevents Layout Shift (CLS) and Center-Collapse -->
 <style>
@@ -252,12 +255,12 @@
 
   <h1 class="hero__title" id="hero-heading">
     <span data-lang="pl">
-      <span class="hero__title-line"><span class="hero__title-word">Cyfrowe&nbsp;doświadczenia</span></span>
-      <span class="hero__title-line"><span class="hero__title-word">klasy&nbsp;</span><span class="hero__title-word"><em>premium.</em></span></span>
+      <span class="hero__title-line"><span class="hero__title-word">Cyfrowe doświadczenia</span></span>
+      <span class="hero__title-line hero__title-line--accent"><span class="hero__title-word"><em class="hero__title-premium">premium.</em></span></span>
     </span>
     <span data-lang="en">
-      <span class="hero__title-line"><span class="hero__title-word">High-End&nbsp;Digital</span></span>
-      <span class="hero__title-line"><span class="hero__title-word"><em>Experiences.</em></span></span>
+      <span class="hero__title-line"><span class="hero__title-word">High-End Digital</span></span>
+      <span class="hero__title-line hero__title-line--accent"><span class="hero__title-word"><em class="hero__title-premium">Experiences.</em></span></span>
     </span>
   </h1>
 
@@ -827,23 +830,37 @@
         </div>
       </div>
       <div>
-        <form class="contact-form reveal" data-delay="2">
+        <form class="contact-form reveal" data-delay="2" id="contact-form" novalidate>
+          <h3 class="contact-form__title">
+            <span data-lang="pl">Formularz szybkiej wyceny</span>
+            <span data-lang="en">Quick quote form</span>
+          </h3>
+          <p class="contact-form__hint">
+            <span data-lang="pl">Wypełnij 3 pola - wracamy z odpowiedzią maksymalnie w 24h.</span>
+            <span data-lang="en">Fill in 3 fields - we usually reply within 24h.</span>
+          </p>
+          <input type="hidden" name="_subject" value="Nowe zapytanie ze strony VANTIA" />
+          <input type="text" name="_honey" class="contact-form__honey" tabindex="-1" autocomplete="off" />
           <div class="contact-form__group">
-            <input type="text" name="name" id="name" class="contact-form__input" placeholder=" " required />
+            <input type="text" name="name" id="name" class="contact-form__input" placeholder=" " autocomplete="name organization" minlength="2" maxlength="80" required />
             <label for="name" class="contact-form__label"><span data-lang="pl">Imię lub Nazwa firmy</span><span data-lang="en">Name / Company</span></label>
+            <small class="contact-form__error" data-field-error="name"></small>
           </div>
           <div class="contact-form__group">
-            <input type="email" name="email" id="email" class="contact-form__input" placeholder=" " required />
+            <input type="email" name="email" id="email" class="contact-form__input" placeholder=" " autocomplete="email" maxlength="120" required />
             <label for="email" class="contact-form__label"><span data-lang="pl">Adres e-mail</span><span data-lang="en">Email address</span></label>
+            <small class="contact-form__error" data-field-error="email"></small>
           </div>
           <div class="contact-form__group">
-            <textarea name="project" id="project" class="contact-form__input contact-form__textarea" placeholder=" " rows="4" required></textarea>
+            <textarea name="project" id="project" class="contact-form__input contact-form__textarea" placeholder=" " rows="4" minlength="20" maxlength="1200" required></textarea>
             <label for="project" class="contact-form__label"><span data-lang="pl">O czym marzysz w swoim projekcie?</span><span data-lang="en">What is your project vision?</span></label>
+            <small class="contact-form__error" data-field-error="project"></small>
           </div>
           <button type="submit" class="btn btn--primary magnetic">
             <span class="btn__text" data-lang="pl">Wyślij zapytanie</span>
             <span class="btn__text" data-lang="en">Submit Request</span>
           </button>
+          <p class="contact-form__status" aria-live="polite"></p>
         </form>
       </div>
     </div>

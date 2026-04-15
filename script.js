@@ -10,6 +10,7 @@
   /* ── UTILS ── */
   const lerp = (a, b, t) => a + (b - a) * t;
   const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const qs = (s, p) => (p || document).querySelector(s);
   const qsa = (s, p) => [...(p || document).querySelectorAll(s)];
 
@@ -349,6 +350,7 @@ const ScrollProgress = {
     mouse: { x: -9999, y: -9999 },
     CELL: 80,
     isVisible: true,
+    isPaused: false,
     orbs: [
       { fx: .78, fy: .12, r: 400, gold: true, a: .10, sp: .0007 },
       { fx: .1, fy: .82, r: 280, gold: false, a: .05, sp: .0005 },
@@ -358,10 +360,11 @@ const ScrollProgress = {
     particles: [],
     init() {
       this.cv = qs('.canvas-bg');
-      if (!this.cv) return;
+      if (!this.cv || prefersReducedMotion()) return;
       this.ctx = this.cv.getContext('2d');
+      const particleCount = window.innerWidth < 900 ? 18 : 35;
       // Generate particles
-      for (let i = 0; i < 35; i++) {
+      for (let i = 0; i < particleCount; i++) {
         this.particles.push({
           x: Math.random(), y: Math.random(),
           r: Math.random() * 1.2 + .3,
@@ -385,6 +388,9 @@ const ScrollProgress = {
         this.isVisible = entries[0].isIntersecting;
       }, { threshold: 0 });
       obs.observe(this.cv);
+      document.addEventListener('visibilitychange', () => {
+        this.isPaused = document.hidden;
+      });
       this.render();
     },
     resize() {
@@ -392,7 +398,7 @@ const ScrollProgress = {
       this.H = this.cv.height = window.innerHeight;
     },
     render() {
-      if (!this.isVisible) { requestAnimationFrame(() => this.render()); return; }
+      if (!this.isVisible || this.isPaused) { requestAnimationFrame(() => this.render()); return; }
       const { ctx, W, H, CELL, mouse } = this;
       this.t += .003;
       ctx.clearRect(0, 0, W, H);
@@ -553,20 +559,58 @@ const ScrollProgress = {
   const ContactForm = {
     form: null,
     init() {
-      this.form = qs('.contact-form');
+      this.form = qs('#contact-form');
       if (!this.form) return;
+      qsa('.contact-form__input', this.form).forEach((field) => {
+        field.addEventListener('input', () => this.validateField(field));
+      });
       this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+    },
+    setStatus(message, type = 'neutral') {
+      const status = qs('.contact-form__status', this.form);
+      if (!status) return;
+      status.textContent = message;
+      status.style.color = type === 'error' ? '#e08c8c' : (type === 'success' ? '#9ad67a' : 'var(--text-secondary)');
+    },
+    getErrorMessage(field) {
+      const lang = document.documentElement.getAttribute('data-active-lang') || 'pl';
+      if (field.validity.valueMissing) return lang === 'pl' ? 'To pole jest wymagane.' : 'This field is required.';
+      if (field.validity.typeMismatch) return lang === 'pl' ? 'Podaj poprawny adres e-mail.' : 'Enter a valid email address.';
+      if (field.validity.tooShort) return lang === 'pl' ? `Minimum ${field.minLength} znakow.` : `Minimum ${field.minLength} characters.`;
+      if (field.validity.tooLong) return lang === 'pl' ? `Maksymalnie ${field.maxLength} znakow.` : `Maximum ${field.maxLength} characters.`;
+      return '';
+    },
+    validateField(field) {
+      const errorEl = qs(`[data-field-error="${field.name}"]`, this.form);
+      const message = this.getErrorMessage(field);
+      field.classList.toggle('is-invalid', Boolean(message));
+      if (errorEl) errorEl.textContent = message;
+      return !message;
+    },
+    validateAll() {
+      return qsa('.contact-form__input', this.form).every((field) => this.validateField(field));
     },
     async handleSubmit(e) {
       e.preventDefault();
+      if (!this.validateAll()) {
+        const lang = document.documentElement.getAttribute('data-active-lang') || 'pl';
+        this.setStatus(
+          lang === 'pl' ? 'Popraw oznaczone pola i sprobuj ponownie.' : 'Please fix highlighted fields and try again.',
+          'error'
+        );
+        return;
+      }
       
       const btn = this.form.querySelector('[type="submit"]');
       const originalText = btn.innerHTML;
       const formData = new FormData(this.form);
+      const honeypot = formData.get('_honey');
+      if (honeypot) return;
       
       // Show loading state
       btn.disabled = true;
       btn.innerHTML = '<span class="btn__text" data-lang="pl">Wysyłanie...</span><span class="btn__text" data-lang="en">Sending...</span>';
+      this.setStatus('');
       
       // Collect data
       const data = {
@@ -578,41 +622,40 @@ const ScrollProgress = {
       };
       
       try {
-        // Option 1: Send to Discord webhook (if available) or use FormSubmit service
-        // For now, we'll save to localStorage and show success
-        const submissions = JSON.parse(localStorage.getItem('vantia-submissions') || '[]');
-        submissions.push(data);
-        localStorage.setItem('vantia-submissions', JSON.stringify(submissions));
-        
-        // Also try to send via Formspree (FormSubmit.co works without config)
-        await fetch('https://formsubmit.co/kikaspawel@gmail.com', {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        const response = await fetch('https://formsubmit.co/ajax/kikaspawel@gmail.com', {
           method: 'POST',
-          body: formData,
+          body: JSON.stringify(data),
           headers: {
+            'Content-Type': 'application/json',
             'Accept': 'application/json'
-          }
-        }).catch(() => {
-          // Silently fail if network unavailable
+          },
+          signal: controller.signal
         });
+        clearTimeout(timeoutId);
+        if (!response.ok) throw new Error('Request failed');
         
         // Show success
-        this.showNotification(
+        const successMessage =
           data.lang === 'pl' 
             ? 'Wiadomość wysłana! Odpowiemy w ciągu 24h.' 
-            : 'Message sent! We\'ll respond within 24h.',
-          'success'
-        );
+            : 'Message sent! We\'ll respond within 24h.';
+        this.showNotification(successMessage, 'success');
+        this.setStatus(successMessage, 'success');
         
         this.form.reset();
+        qsa('.contact-form__error', this.form).forEach((errorEl) => { errorEl.textContent = ''; });
+        qsa('.contact-form__input', this.form).forEach((field) => field.classList.remove('is-invalid'));
         btn.innerHTML = originalText;
         btn.disabled = false;
       } catch (error) {
-        this.showNotification(
+        const errorMessage =
           data.lang === 'pl'
             ? 'Błąd przy wysyłaniu. Spróbuj ponownie.'
-            : 'Error sending. Please try again.',
-          'error'
-        );
+            : 'Error sending. Please try again.';
+        this.showNotification(errorMessage, 'error');
+        this.setStatus(errorMessage, 'error');
         btn.innerHTML = originalText;
         btn.disabled = false;
       }
@@ -656,7 +699,9 @@ const ScrollProgress = {
 
   document.addEventListener('DOMContentLoaded', () => {
     Preloader.init();
-    Magnetics.init();
+    if (!prefersReducedMotion()) {
+      Magnetics.init();
+    }
     Nav.init();
     Lang.init();
     CountUp.init();
