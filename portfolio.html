@@ -38,8 +38,7 @@
 <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap"/></noscript>
-<link rel="preload" as="style" href="styles.css" />
-<link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="styles.css" />
 <noscript>
   <link rel="stylesheet" href="styles.css" />
 </noscript>
@@ -105,22 +104,46 @@
 
 <!-- Mobile Menu -->
 <div class="nav__mobile-menu">
-  <a href="https://vantia.vercel.app#uslugi" class="nav__mobile-link">
-    <span data-lang="pl">Usługi</span><span data-lang="en">Services</span>
-  </a>
-  <a href="https://vantia.vercel.app#cennik" class="nav__mobile-link">
-    <span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span>
-  </a>
-  <a href="portfolio.html" class="nav__mobile-link">Portfolio</a>
-  <a href="blog.html" class="nav__mobile-link">
-    <span data-lang="pl">Blog</span><span data-lang="en">Blog</span>
-  </a>
-  <a href="https://vantia.vercel.app#o-nas" class="nav__mobile-link">
-    <span data-lang="pl">O nas</span><span data-lang="en">About</span>
-  </a>
-  <a href="https://vantia.vercel.app#kontakt" class="nav__mobile-link">
-    <span data-lang="pl">Kontakt</span><span data-lang="en">Contact</span>
-  </a>
+  <div class="nav__mobile-panel">
+    <div class="nav__mobile-top">
+      <div class="nav__mobile-label">
+        <span data-lang="pl">Menu</span>
+        <span data-lang="en">Menu</span>
+      </div>
+      <div class="lang-switch nav__mobile-lang">
+        <button class="lang-switch__btn is-active" data-lang-btn="pl">PL</button>
+        <button class="lang-switch__btn" data-lang-btn="en">EN</button>
+      </div>
+    </div>
+    <div class="nav__mobile-links">
+      <a href="https://vantia.vercel.app#uslugi" class="nav__mobile-link">
+        <span data-lang="pl">Us&#322;ugi</span><span data-lang="en">Services</span>
+      </a>
+      <a href="https://vantia.vercel.app#cennik" class="nav__mobile-link">
+        <span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span>
+      </a>
+      <a href="portfolio.html" class="nav__mobile-link">Portfolio</a>
+      <a href="blog.html" class="nav__mobile-link">
+        <span data-lang="pl">Blog</span><span data-lang="en">Blog</span>
+      </a>
+      <a href="https://vantia.vercel.app#o-nas" class="nav__mobile-link">
+        <span data-lang="pl">O nas</span><span data-lang="en">About</span>
+      </a>
+      <a href="https://vantia.vercel.app#kontakt" class="nav__mobile-link">
+        <span data-lang="pl">Kontakt</span><span data-lang="en">Contact</span>
+      </a>
+    </div>
+    <div class="nav__mobile-footer">
+      <a href="https://vantia.vercel.app#kontakt" class="nav__mobile-cta">
+        <span data-lang="pl">Zam&oacute;w wycen&#281;</span>
+        <span data-lang="en">Request a Quote</span>
+      </a>
+      <p class="nav__mobile-note">
+        <span data-lang="pl">Na ma&#322;ym ekranie portfolio ma teraz pe&#322;ne, przewijalne menu zamiast zablokowanej nak&#322;adki.</span>
+        <span data-lang="en">On small screens the portfolio now gets a full scrollable menu instead of a blocking overlay.</span>
+      </p>
+    </div>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════
@@ -331,7 +354,7 @@
   </div>
 </div>
 
-<script src="script.min.js" defer></script>
+<script src="script.js" defer></script>
 <script>
 
 function doFilter(btn,cat){

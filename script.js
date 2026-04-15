@@ -199,6 +199,11 @@
       this.mobileMenu = qs('.nav__mobile-menu');
       if (!this.el) return;
 
+      if (this.hamburger && this.mobileMenu) {
+        this.hamburger.setAttribute('aria-expanded', 'false');
+        this.mobileMenu.setAttribute('aria-hidden', 'true');
+      }
+
       window.addEventListener('scroll', () => {
         this.el.classList.toggle('nav--scrolled', window.scrollY > 60);
       }, { passive: true });
@@ -210,6 +215,20 @@
       qsa('.nav__mobile-link').forEach((link) => {
         link.addEventListener('click', () => this.closeMobile());
       });
+
+      if (this.mobileMenu) {
+        this.mobileMenu.addEventListener('click', (e) => {
+          if (e.target === this.mobileMenu) this.closeMobile();
+        });
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') this.closeMobile();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) this.closeMobile();
+      }, { passive: true });
 
       qsa('a[href^="#"]').forEach((a) => {
         a.addEventListener('click', (e) => {
@@ -223,14 +242,23 @@
       });
     },
     toggleMobile() {
+      if (!this.hamburger || !this.mobileMenu) return;
       const open = this.hamburger.classList.toggle('is-open');
       this.mobileMenu.classList.toggle('is-open', open);
+      this.hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      this.mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+      document.documentElement.style.overflow = open ? 'hidden' : '';
       document.body.style.overflow = open ? 'hidden' : '';
+      document.body.classList.toggle('menu-open', open);
     },
     closeMobile() {
       if (this.hamburger) this.hamburger.classList.remove('is-open');
       if (this.mobileMenu) this.mobileMenu.classList.remove('is-open');
+      if (this.hamburger) this.hamburger.setAttribute('aria-expanded', 'false');
+      if (this.mobileMenu) this.mobileMenu.setAttribute('aria-hidden', 'true');
+      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
+      document.body.classList.remove('menu-open');
     }
   };
 
@@ -316,6 +344,8 @@
     scrollY: 0,
     CELL: 80,
     isVisible: true,
+    frameInterval: 1000 / 30,
+    lastFrameTime: 0,
     orbs: [
       { fx: .78, fy: .12, r: 400, gold: true,  a: .10, sp: .0007 },
       { fx: .10, fy: .82, r: 280, gold: false, a: .05, sp: .0005 },
@@ -326,15 +356,26 @@
     init() {
       this.cv = qs('.canvas-bg');
       if (!this.cv) return;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        this.cv.style.display = 'none';
+        return;
+      }
+      const isMobile = window.innerWidth < 768;
+      const isLowPower = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4)
+        || (navigator.deviceMemory && navigator.deviceMemory <= 4);
+      const saveData = navigator.connection && navigator.connection.saveData;
+      this.frameInterval = isMobile ? 1000 / 24 : 1000 / 30;
       this.ctx = this.cv.getContext('2d');
       // Generate particles
-      for (let i = 0; i < 35; i++) {
+      const particleCount = saveData || isLowPower ? (isMobile ? 16 : 22) : (isMobile ? 24 : 42);
+      for (let i = 0; i < particleCount; i++) {
         this.particles.push({
           x: Math.random(), y: Math.random(),
           r:  Math.random() * 1.2 + .3,
           vx: (Math.random() - .5) * .00008,
           vy: (Math.random() - .5) * .00008,
-          a:  Math.random() * .25 + .06
+          a:  Math.random() * .35 + .12
         });
       }
 
@@ -347,6 +388,15 @@
       }, { passive: true });
 
       window.addEventListener('mousemove', (e) => {
+        this.mouse.x = e.clientX;
+        this.mouse.y = e.clientY;
+      }, { passive: true });
+      window.addEventListener('pointermove', (e) => {
+        if (e.pointerType === 'mouse') return;
+        this.mouse.x = e.clientX;
+        this.mouse.y = e.clientY;
+      }, { passive: true });
+      window.addEventListener('pointerdown', (e) => {
         this.mouse.x = e.clientX;
         this.mouse.y = e.clientY;
       }, { passive: true });
@@ -363,6 +413,12 @@
     },
     render() {
       if (!this.isVisible) { requestAnimationFrame(() => this.render()); return; }
+      const now = performance.now();
+      if (now - this.lastFrameTime < this.frameInterval) {
+        requestAnimationFrame(() => this.render());
+        return;
+      }
+      this.lastFrameTime = now;
       const { ctx, W, H, CELL, mouse } = this;
       this.t += .003;
 
@@ -372,13 +428,14 @@
 
       /* Mouse gradient follower */
       if (mouse.x > 0) {
-        const gf = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 450);
-        gf.addColorStop(0,   'rgba(212,175,55,0.04)');
-        gf.addColorStop(0.5, 'rgba(100,80,200,0.015)');
+        const radius = W < 900 ? 520 : 620;
+        const gf = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, radius);
+        gf.addColorStop(0,   'rgba(212,175,55,0.08)');
+        gf.addColorStop(0.45, 'rgba(100,80,200,0.03)');
         gf.addColorStop(1,   'rgba(0,0,0,0)');
         ctx.fillStyle = gf;
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 450, 0, Math.PI * 2);
+        ctx.arc(mouse.x, mouse.y, radius, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -450,7 +507,7 @@
         p.x += p.vx; p.y += p.vy;
         if (p.x < 0) p.x = 1; if (p.x > 1) p.x = 0;
         if (p.y < 0) p.y = 1; if (p.y > 1) p.y = 0;
-        ctx.fillStyle = `rgba(212,175,55,${p.a * .35})`;
+        ctx.fillStyle = `rgba(212,175,55,${p.a * .55})`;
         ctx.beginPath();
         ctx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2);
         ctx.fill();
@@ -486,8 +543,14 @@
 
       if (stored === 'all') { Analytics.load(); return; }
       if (stored === 'essential' || !banner) return;
-
-      setTimeout(() => banner.classList.add('is-visible'), 2000);
+      const showBanner = () => {
+        setTimeout(() => banner.classList.add('is-visible'), 1200);
+      };
+      if (document.readyState === 'complete') {
+        showBanner();
+      } else {
+        window.addEventListener('load', showBanner, { once: true });
+      }
 
       qsa('.cookie__btn--accept, .cookie__btn--primary').forEach((btn) => {
         btn.addEventListener('click', () => this.setChoice('all'));
@@ -613,9 +676,11 @@
      BOOT — DOMContentLoaded
      ══════════════════════════════════════ */
   document.addEventListener('DOMContentLoaded', () => {
-    Preloader.init();
-    Magnetics.init();
+    Lang.init();
     Nav.init();
+    HeroReveal.run();
+    ScrollReveal.init();
+    CanvasBg.init();
     CookieBanner.init();
     ContactForm.init();
 
@@ -630,7 +695,6 @@
         CountUp.init();
         ScrollProgress.init();
         EmailCopy.init();
-        CanvasBg.init();
       });
     });
   });

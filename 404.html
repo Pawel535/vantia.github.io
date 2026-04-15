@@ -146,19 +146,43 @@
 
 <!-- Mobile Menu -->
 <div class="nav__mobile-menu">
-  <a href="https://vantia.vercel.app#uslugi" class="nav__mobile-link">
-    <span data-lang="pl">Usługi</span><span data-lang="en">Services</span>
-  </a>
-  <a href="https://vantia.vercel.app#cennik" class="nav__mobile-link">
-    <span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span>
-  </a>
-  <a href="portfolio.html" class="nav__mobile-link">Portfolio</a>
-  <a href="https://vantia.vercel.app#o-nas" class="nav__mobile-link">
-    <span data-lang="pl">O nas</span><span data-lang="en">About</span>
-  </a>
-  <a href="https://vantia.vercel.app#kontakt" class="nav__mobile-link">
-    <span data-lang="pl">Kontakt</span><span data-lang="en">Contact</span>
-  </a>
+  <div class="nav__mobile-panel">
+    <div class="nav__mobile-top">
+      <div class="nav__mobile-label">
+        <span data-lang="pl">Menu</span>
+        <span data-lang="en">Menu</span>
+      </div>
+      <div class="lang-switch nav__mobile-lang">
+        <button class="lang-switch__btn is-active" data-lang-btn="pl">PL</button>
+        <button class="lang-switch__btn" data-lang-btn="en">EN</button>
+      </div>
+    </div>
+    <div class="nav__mobile-links">
+      <a href="https://vantia.vercel.app#uslugi" class="nav__mobile-link">
+        <span data-lang="pl">Us&#322;ugi</span><span data-lang="en">Services</span>
+      </a>
+      <a href="https://vantia.vercel.app#cennik" class="nav__mobile-link">
+        <span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span>
+      </a>
+      <a href="portfolio.html" class="nav__mobile-link">Portfolio</a>
+      <a href="https://vantia.vercel.app#o-nas" class="nav__mobile-link">
+        <span data-lang="pl">O nas</span><span data-lang="en">About</span>
+      </a>
+      <a href="https://vantia.vercel.app#kontakt" class="nav__mobile-link">
+        <span data-lang="pl">Kontakt</span><span data-lang="en">Contact</span>
+      </a>
+    </div>
+    <div class="nav__mobile-footer">
+      <a href="https://vantia.vercel.app" class="nav__mobile-cta">
+        <span data-lang="pl">Wr&oacute;&#263; na start</span>
+        <span data-lang="en">Back Home</span>
+      </a>
+      <p class="nav__mobile-note">
+        <span data-lang="pl">Nawet z poziomu 404 menu zostaje dost&#281;pne i przewijalne na ma&#322;ych ekranach.</span>
+        <span data-lang="en">Even on the 404 page the menu now stays available and scrollable on small screens.</span>
+      </p>
+    </div>
+  </div>
 </div>
 
 <main class="error-page" id="main">
@@ -241,6 +265,6 @@
   </div>
 </div>
 
-<script src="script.min.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>
