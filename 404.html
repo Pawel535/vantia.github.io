@@ -1,270 +1,170 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="pl-PL" data-active-lang="pl" data-theme="dark">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>404 — Strona nie znaleziona | VANTIA Studio</title>
+<title>404 - Strona nie znaleziona | VANTIA Studio</title>
 <meta name="description" content="Strona nie znaleziona. Wróć do strony głównej VANTIA Studio."/>
 <meta name="robots" content="noindex, follow"/>
 <link rel="canonical" href="https://vantia.vercel.app/404.html"/>
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap"/></noscript>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<link rel="manifest" href="site.webmanifest"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600;700&display=swap"></noscript>
 <link rel="stylesheet" href="styles.css" />
-
-<style>
-/* 404 SPECIFIC STYLES TO MAINTAIN THE $50k LOOK */
-.error-page {
-  position:relative;
-  z-index:1;
-  flex:1;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
-  padding:120px var(--gutter) 80px;
-  background: var(--bg-primary);
-  text-align: center;
-}
-.error-container {
-  max-width:900px;
-  margin:0 auto;
-  position:relative;
-}
-
-.error-code {
-  font-family:var(--font-display);
-  font-size:clamp(140px,22vw,280px);
-  font-weight:300;
-  line-height:.85;
-  color:var(--text-bright);
-  position:relative;
-  display:inline-block;
-  letter-spacing:-.02em;
-  opacity:0;
-  animation:up 1.2s var(--ease-out) forwards;
-}
-
-.error-code::before {
-  content:'404';
-  position:absolute;
-  inset:0;
-  color:var(--gold);
-  opacity:.06;
-  filter:blur(60px);
-  transform:scale(1.05);
-  z-index:-1;
-}
-
-.error-title {
-  font-family:var(--font-display);
-  font-size:clamp(32px,5vw,56px);
-  font-weight:300;
-  line-height:1.05;
-  color:var(--text-bright);
-  margin-top:20px;
-  margin-bottom:24px;
-  opacity:0;
-  animation:up 1s var(--ease-out) .3s forwards;
-}
-.error-title em {
-  font-style:italic;
-  color:var(--gold);
-}
-
-.error-text {
-  font-size:15px;
-  font-weight:300;
-  color:var(--text-secondary);
-  max-width:480px;
-  margin:0 auto 48px;
-  opacity:0;
-  animation:up 1s var(--ease-out) .4s forwards;
-}
-
-.error-actions {
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  opacity:0;
-  animation:up 1s var(--ease-out) .5s forwards;
-}
-
-@keyframes up {
-  from {opacity:0;transform:translateY(30px)}
-  to {opacity:1;transform:translateY(0)}
-}
-</style>
+<script>
+  (function () {
+    try {
+      var storedLang = localStorage.getItem('vantia-lang');
+      var initialLang = storedLang || 'pl';
+      var storedTheme = localStorage.getItem('vantia-theme');
+      var initialTheme = storedTheme || 'dark';
+      document.documentElement.setAttribute('data-active-lang', initialLang);
+      document.documentElement.setAttribute('lang', initialLang === 'pl' ? 'pl-PL' : 'en');
+      document.documentElement.setAttribute('data-theme', initialTheme);
+    } catch (e) {}
+  })();
+</script>
 </head>
-<body>
-
-<!-- Skip Link -->
-<a href="#main" class="skip-link">
+<body class="landing-editorial site-bento">
+<a href="#main" class="ed-skip skip-link">
   <span data-lang="pl">Przejdź do treści</span>
   <span data-lang="en">Skip to content</span>
 </a>
+<div class="ed-progress scroll-progress" aria-hidden="true"></div>
 
-<header>
-<nav class="nav" id="nav" aria-label="Main Navigation">
-  <a href="https://vantia.vercel.app" class="nav__logo magnetic">VANTIA<span class="nav__logo-dot">.</span></a>
-  
-  <div class="nav__center">
-    <a href="https://vantia.vercel.app#uslugi" class="nav__link">
-      <span data-lang="pl">Usługi</span>
-      <span data-lang="en">Services</span>
-    </a>
-    <a href="https://vantia.vercel.app#cennik" class="nav__link">
-      <span data-lang="pl">Cennik</span>
-      <span data-lang="en">Pricing</span>
-    </a>
-    <a href="portfolio.html" class="nav__link">Portfolio</a>
-    <a href="https://vantia.vercel.app#o-nas" class="nav__link">
-      <span data-lang="pl">O nas</span>
-      <span data-lang="en">About</span>
-    </a>
-  </div>
-
-  <div class="nav__right">
-    <div class="lang-switch">
-      <button class="lang-switch__btn is-active" data-lang-btn="pl">PL</button>
-      <button class="lang-switch__btn" data-lang-btn="en">EN</button>
+<header class="ed-nav" data-ed-nav>
+  <a class="ed-nav__brand" href="index.html"><span>VANTIA</span><span>Studio</span></a>
+  <nav class="ed-nav__links" aria-label="Główna nawigacja">
+    <a href="index.html#work"><span data-lang="pl">Projekty</span><span data-lang="en">Work</span></a>
+    <a href="index.html#disciplines"><span data-lang="pl">Usługi</span><span data-lang="en">Services</span></a>
+    <a href="index.html#pricing"><span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span></a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="blog.html">Blog</a>
+  </nav>
+  <div class="ed-nav__actions">
+    <div class="lang-switch ed-lang-switch">
+      <button class="lang-switch__btn is-active" type="button" data-lang-btn="pl">PL</button>
+      <button class="lang-switch__btn" type="button" data-lang-btn="en">EN</button>
     </div>
-    <a href="https://vantia.vercel.app#kontakt" class="nav__cta magnetic">
-      <span data-lang="pl">Kontakt</span>
-      <span data-lang="en">Get in Touch</span>
-    </a>
-    <button class="nav__hamburger" aria-label="Menu">
-      <span class="nav__hamburger-line"></span>
-      <span class="nav__hamburger-line"></span>
-      <span class="nav__hamburger-line"></span>
-    </button>
-  </div>
-</nav>
-</header>
-
-<!-- Mobile Menu -->
-<div class="nav__mobile-menu">
-  <div class="nav__mobile-panel">
-    <div class="nav__mobile-top">
-      <div class="nav__mobile-label">
-        <span data-lang="pl">Menu</span>
-        <span data-lang="en">Menu</span>
-      </div>
-      <div class="lang-switch nav__mobile-lang">
-        <button class="lang-switch__btn is-active" data-lang-btn="pl">PL</button>
-        <button class="lang-switch__btn" data-lang-btn="en">EN</button>
-      </div>
-    </div>
-    <div class="nav__mobile-links">
-      <a href="https://vantia.vercel.app#uslugi" class="nav__mobile-link">
-        <span data-lang="pl">Us&#322;ugi</span><span data-lang="en">Services</span>
-      </a>
-      <a href="https://vantia.vercel.app#cennik" class="nav__mobile-link">
-        <span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span>
-      </a>
-      <a href="portfolio.html" class="nav__mobile-link">Portfolio</a>
-      <a href="https://vantia.vercel.app#o-nas" class="nav__mobile-link">
-        <span data-lang="pl">O nas</span><span data-lang="en">About</span>
-      </a>
-      <a href="https://vantia.vercel.app#kontakt" class="nav__mobile-link">
-        <span data-lang="pl">Kontakt</span><span data-lang="en">Contact</span>
-      </a>
-    </div>
-    <div class="nav__mobile-footer">
-      <a href="https://vantia.vercel.app" class="nav__mobile-cta">
-        <span data-lang="pl">Wr&oacute;&#263; na start</span>
-        <span data-lang="en">Back Home</span>
-      </a>
-      <p class="nav__mobile-note">
-        <span data-lang="pl">Nawet z poziomu 404 menu zostaje dost&#281;pne i przewijalne na ma&#322;ych ekranach.</span>
-        <span data-lang="en">Even on the 404 page the menu now stays available and scrollable on small screens.</span>
-      </p>
-    </div>
-  </div>
-</div>
-
-<main class="error-page" id="main">
-  <div class="error-container">
-    <div class="error-code">404</div>
-    <h1 class="error-title">
-      <span data-lang="pl">Zagubiony w <em>wyrafinowaniu.</em></span>
-      <span data-lang="en">Lost in <em>sophistication.</em></span>
-    </h1>
-    <p class="error-text">
-        <span data-lang="pl">Strona, której szukasz nie istnieje, lub została przeniesiona. Zachęcamy do powrotu do strony głównej.</span>
-        <span data-lang="en">The page you're looking for doesn't exist or has been moved. We encourage you to return to the homepage.</span>
-    </p>
-    <div class="error-actions">
-        <a href="https://vantia.vercel.app" class="plan__cta plan__cta--solid">
-            <span data-lang="pl">Wróc do VANTIA</span>
-            <span data-lang="en">Return to VANTIA</span>
-        </a>
-    </div>
-  </div>
-</main>
-
-<!-- ═══════════════════════════════════════
-     FOOTER
-     ═══════════════════════════════════════ -->
-<footer class="footer">
-  <div class="footer__grid">
-    <div class="footer__col">
-      <a href="https://vantia.vercel.app" class="footer__brand-logo">VANTIA<span>.</span></a>
-      <p class="footer__brand-tagline">
-        <span data-lang="pl">Studio cyfrowe skupione na konwersji.</span>
-        <span data-lang="en">Digital studio focused on conversion.</span>
-      </p>
-      <button class="footer__email" aria-label="Copy email address">
-        <span class="footer__email-icon">✉</span>
-        <span class="footer__email-text">kikaspawel@gmail.com</span>
-        <span class="footer__email-tooltip">
-          <span data-lang="pl">Skopiowano!</span>
-          <span data-lang="en">Copied!</span>
-        </span>
+    <div class="theme-switch ed-theme-switch">
+      <button class="theme-switch__btn is-active" type="button" data-theme-btn="light">
+        <span data-lang="pl">Jasny</span><span data-lang="en">Light</span>
+      </button>
+      <button class="theme-switch__btn" type="button" data-theme-btn="dark">
+        <span data-lang="pl">Ciemny</span><span data-lang="en">Dark</span>
       </button>
     </div>
-    <div class="footer__col">
-      <h4><span data-lang="pl">Nawigacja</span><span data-lang="en">Navigation</span></h4>
-      <a href="https://vantia.vercel.app#uslugi"><span data-lang="pl">Usługi</span><span data-lang="en">Services</span></a>
-      <a href="https://vantia.vercel.app#cennik"><span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span></a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="https://vantia.vercel.app#o-nas"><span data-lang="pl">O nas</span><span data-lang="en">About</span></a>
-    </div>
-    <div class="footer__col">
-      <h4>Legal</h4>
-      <a href="privacy.html"><span data-lang="pl">Polityka Prywatności</span><span data-lang="en">Privacy Policy</span></a>
-      <a href="terms.html"><span data-lang="pl">Regulamin</span><span data-lang="en">Terms of Service</span></a>
-      <a href="sitemap.xml"><span data-lang="pl">Mapa Strony</span><span data-lang="en">Sitemap</span></a>
-    </div>
+    <a class="ed-nav__commission magnetic" href="index.html#contact">
+      <span data-lang="pl">Napisz</span>
+      <span data-lang="en">Contact</span>
+      <svg class="ed-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+    </a>
   </div>
-  <div class="footer__bottom">
-    <p class="footer__copyright">&copy; 2026 VANTIA Studio. <span data-lang="pl">Wszelkie prawa zastrzeżone. Rozliczenia przez system Useme.</span><span data-lang="en">All rights reserved. Secured by Useme.</span></p>
-    <p class="footer__status"><span class="footer__status-dot"></span> All systems operational</p>
+  <button class="ed-nav__toggle" type="button" aria-label="Otwórz menu" aria-expanded="false" data-ed-menu-toggle><span></span><span></span></button>
+</header>
+
+<div class="ed-mobile" aria-hidden="true" data-ed-mobile-menu>
+  <nav class="ed-mobile__panel" aria-label="Menu mobilne">
+    <div class="ed-mobile__controls">
+      <div class="lang-switch">
+        <button class="lang-switch__btn is-active" type="button" data-lang-btn="pl">PL</button>
+        <button class="lang-switch__btn" type="button" data-lang-btn="en">EN</button>
+      </div>
+      <div class="theme-switch">
+        <button class="theme-switch__btn is-active" type="button" data-theme-btn="light">
+          <span data-lang="pl">Jasny</span><span data-lang="en">Light</span>
+        </button>
+        <button class="theme-switch__btn" type="button" data-theme-btn="dark">
+          <span data-lang="pl">Ciemny</span><span data-lang="en">Dark</span>
+        </button>
+      </div>
+    </div>
+    <a href="index.html#work"><span data-lang="pl">Projekty</span><span data-lang="en">Work</span></a>
+    <a href="index.html#disciplines"><span data-lang="pl">Usługi</span><span data-lang="en">Services</span></a>
+    <a href="index.html#pricing"><span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span></a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contact"><span data-lang="pl">Kontakt</span><span data-lang="en">Contact</span></a>
+  </nav>
+</div>
+
+<main id="main" class="error-main">
+  <section class="error-hero ed-load">
+    <span class="ed-hero__kicker"><span data-lang="pl">Błąd 404</span><span data-lang="en">Error 404</span></span>
+    <h1 class="error-hero__code">404</h1>
+    <h2 class="error-hero__title">
+      <span data-lang="pl">Ta strona zniknęła.</span>
+      <span data-lang="en">This page is gone.</span>
+    </h2>
+    <p class="error-hero__text">
+      <span data-lang="pl">Strona, której szukasz nie istnieje lub została przeniesiona. Wróć do strony głównej albo zobacz, co realnie potrafię zrobić.</span>
+      <span data-lang="en">The page you are looking for does not exist or has moved. Head back to the homepage or see what I can really do.</span>
+    </p>
+    <div class="error-hero__actions">
+      <a class="bt-btn bt-btn--accent" href="index.html">
+        <span data-lang="pl">Wróć na stronę główną</span>
+        <span data-lang="en">Back to homepage</span>
+        <svg class="ed-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+      <a class="bt-btn bt-btn--ghost" href="portfolio.html">
+        <span data-lang="pl">Zobacz portfolio</span>
+        <span data-lang="en">View portfolio</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="ed-footer">
+  <div>
+    <a class="ed-footer__brand" href="index.html">VANTIA Studio</a>
+    <p><span data-lang="pl">Studio cyfrowe. Design, kod, kierunek.</span><span data-lang="en">Digital studio. Design, code, direction.</span></p>
+    <button class="footer__email-btn" type="button" aria-label="kikaspawel@gmail.com - Copy email address">
+      <span class="footer__email-text">kikaspawel@gmail.com</span>
+      <span class="footer__email-tooltip">
+        <span data-lang="pl">Skopiowano</span>
+        <span data-lang="en">Copied</span>
+      </span>
+    </button>
   </div>
+  <nav class="ed-footer__links" aria-label="Stopka">
+    <a href="index.html#pricing"><span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span></a>
+    <a href="blog.html">Blog</a>
+    <a href="privacy.html"><span data-lang="pl">Prywatność</span><span data-lang="en">Privacy</span></a>
+    <a href="terms.html"><span data-lang="pl">Regulamin</span><span data-lang="en">Terms</span></a>
+  </nav>
+  <p class="ed-footer__fine">&copy; 2026 VANTIA Studio. <span data-lang="pl">Wszelkie prawa zastrzeżone.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
 <!-- ═══ COOKIE BANNER ═══ -->
 <div class="cookie" role="dialog" aria-label="Cookie consent">
-  <div class="cookie__title">
-    <span data-lang="pl">Ciasteczka 🍪</span>
-    <span data-lang="en">Cookies 🍪</span>
-  </div>
-  <p class="cookie__text">
-    <span data-lang="pl">Używamy ciasteczek, aby analizować ruch i ulepszać VANTIA. Czy wyrażasz na to zgodę?</span>
-    <span data-lang="en">We use cookies to analyze traffic and improve VANTIA. Do you accept?</span>
-  </p>
-  <div class="cookie__actions">
-    <button class="cookie__btn cookie__btn--accept" aria-label="Accept cookies">
-      <span data-lang="pl">Akceptuję</span><span data-lang="en">Accept</span>
-    </button>
-    <button class="cookie__btn cookie__btn--decline" aria-label="Decline cookies">
-      <span data-lang="pl">Odrzucam</span><span data-lang="en">Decline</span>
-    </button>
+  <div class="cookie__inner">
+    <div class="cookie__title">
+      <span data-lang="pl">Ciasteczka</span>
+      <span data-lang="en">Cookies</span>
+    </div>
+    <p class="cookie__text">
+      <span data-lang="pl">Używamy ciasteczek do analizy ruchu i ulepszania VANTIA. Czy wyrażasz zgodę?</span>
+      <span data-lang="en">We use cookies to analyze traffic and improve VANTIA. Do you consent?</span>
+    </p>
+    <div class="cookie__actions">
+      <button class="cookie__btn cookie__btn--accept">
+        <span data-lang="pl">Akceptuję</span>
+        <span data-lang="en">Accept</span>
+      </button>
+      <button class="cookie__btn cookie__btn--decline">
+        <span data-lang="pl">Odrzucam</span>
+        <span data-lang="en">Decline</span>
+      </button>
+    </div>
   </div>
 </div>
 
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="script.js" defer></script>
 </body>
 </html>

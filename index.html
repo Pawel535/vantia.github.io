@@ -1,1118 +1,435 @@
 <!DOCTYPE html>
-<html lang="pl-PL" data-active-lang="pl">
+<html lang="pl-PL" data-active-lang="pl" data-theme="dark">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>VANTIA Studio - Premium Web Design | Strony WWW | Landing Page</title>
-<meta name="description" content="VANTIA Studio - butikowa agencja digital premium. Tworzymy strony internetowe, landing page'e i aplikacje webowe. Realizacja 48h. 100% zdalnie. Bezpłatna wycena."/>
-<meta name="keywords" content="strony internetowe premium, landing page, aplikacje webowe, butikowa agencja, web developer, front-end, studio webowe, portfolio, responsive, Polska"/>
-<meta name="author" content="VANTIA Studio"/>
-<meta name="robots" content="index, follow, max-image-preview:large"/>
-<meta name="revisit-after" content="7 days"/>
-<meta name="geo.region" content="PL"/>
-<meta name="geo.country" content="PL"/>
-<meta name="theme-color" content="#0A0A0A"/>
-<meta name="format-detection" content="telephone=no"/>
-<meta name="google-site-verification" content="QiwREeYWDiOBoogdUntctZhJzb2UtMAUnt2iWqeZWCQ"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VANTIA Studio - Strony internetowe premium</title>
+<meta name="description" content="VANTIA Studio projektuje i wdraża strony internetowe premium, landing page oraz proste aplikacje webowe dla firm, które chcą wyglądać profesjonalnie i sprzedawać skuteczniej.">
+<meta name="keywords" content="strony internetowe premium, landing page, portfolio, web design, front-end, VANTIA Studio, Polska">
+<meta name="author" content="VANTIA Studio">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#F4F5F7">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vantia.vercel.app/">
+<meta property="og:title" content="VANTIA Studio - Strony internetowe premium">
+<meta property="og:description" content="Strony internetowe, landing page i aplikacje webowe z mocnym designem, szybkim działaniem i jasną ofertą.">
+<meta property="og:site_name" content="VANTIA Studio">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://vantia.vercel.app/favicon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VANTIA Studio - Strony internetowe premium">
+<meta name="twitter:description" content="Design, kod i wdrożenie stron premium dla firm.">
+<meta name="twitter:image" content="https://vantia.vercel.app/favicon.png">
+<link rel="canonical" href="https://vantia.vercel.app/">
+<link rel="alternate" hreflang="pl" href="https://vantia.vercel.app/">
+<link rel="alternate" hreflang="en" href="https://vantia.vercel.app/en/">
+<link rel="alternate" hreflang="x-default" href="https://vantia.vercel.app/">
+<link rel="shortcut icon" href="favicon.png" type="image/png">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="styles.css">
 <script>
   (function () {
     try {
-      var storedLang = localStorage.getItem('vantia-lang');
-      var browserLang = (navigator.language || 'pl').slice(0, 2);
-      var initialLang = storedLang || (browserLang === 'pl' ? 'pl' : 'en');
-      document.documentElement.setAttribute('data-active-lang', initialLang);
-      document.documentElement.setAttribute('lang', initialLang === 'pl' ? 'pl-PL' : 'en');
+      var s = localStorage.getItem('vantia-lang');
+      var t = localStorage.getItem('vantia-theme');
+      document.documentElement.setAttribute('data-active-lang', s || 'pl');
+      document.documentElement.setAttribute('lang', (s || 'pl') === 'pl' ? 'pl-PL' : 'en');
+      document.documentElement.setAttribute('data-theme', t || 'dark');
     } catch (e) {}
   })();
 </script>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://vantia.vercel.app/"/>
-<meta property="og:title" content="VANTIA Studio - Premium Web Design & Digital Solutions"/>
-<meta property="og:description" content="Butikowa agencja digital premium. Strony www i landing page. Realizacja 48h. 100% zdalnie."/>
-<meta property="og:site_name" content="VANTIA Studio"/>
-<meta property="og:locale" content="pl_PL"/>
-<meta property="og:locale:alternate" content="en_US"/>
-<meta property="og:image" content="https://vantia.vercel.app/og-image.png"/>
-<meta property="og:image:width" content="1200"/>
-<meta property="og:image:height" content="630"/>
-<meta property="og:image:alt" content="VANTIA Studio — Premium Digital Agency"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:url" content="https://vantia.vercel.app/"/>
-<meta name="twitter:title" content="VANTIA Studio - Premium Web Design & Digital Solutions"/>
-<meta name="twitter:description" content="Butikowa agencja digital premium. Strony www i landing page. Realizacja 48h. 100% zdalnie."/>
-<meta name="twitter:image" content="https://vantia.vercel.app/og-image.png"/>
-<link rel="canonical" href="https://vantia.vercel.app/"/>
-<link rel="alternate" hreflang="pl" href="https://vantia.vercel.app/"/>
-<link rel="alternate" hreflang="en" href="https://vantia.vercel.app/index-en.html"/>
-<link rel="alternate" hreflang="x-default" href="https://vantia.vercel.app/"/>
-<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
-
-<!-- Preconnect to Font Servers -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="dns-prefetch" href="//www.googletagmanager.com" />
-<link rel="dns-prefetch" href="//formsubmit.co" />
-
-<!-- Critical CSS: Prevents Layout Shift (CLS) and Center-Collapse -->
-<style>
-  :root { 
-    --bg-primary: #18191B; 
-    --gutter: clamp(24px, 5vw, 72px); 
-    --container: 1280px; 
-    --text-bright: #F5F2EC;
-    --text-secondary: #C2BCAF;
-    --gold: #D4AF37;
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'Inter', sans-serif;
-  }
-  html { scrollbar-gutter: stable; }
-  body { background: var(--bg-primary); margin: 0; overflow-x: hidden; font-family: var(--font-body); }
-  p { margin: 0; }
-  a { color: inherit; text-decoration: none; }
-  .nav { 
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000; 
-    display: flex; align-items: center; justify-content: space-between; 
-    padding: 28px var(--gutter); width: 100%; max-width: 100vw; box-sizing: border-box;
-    min-height: 92px;
-  }
-  .nav__right { display: flex; align-items: center; justify-content: flex-end; gap: 24px; min-width: 190px; }
-  .lang-switch { display: inline-flex; align-items: center; min-height: 34px; }
-  .lang-switch__btn { min-width: 42px; }
-  .hero { 
-    min-height: 100svh; display: flex; flex-direction: column; 
-    justify-content: center; padding: 0 var(--gutter); 
-    width: 100%; max-width: 100vw; box-sizing: border-box;
-  }
-  .hero__tag {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin: 0 0 40px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .hero__tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
-  .hero__title {
-    font-family: var(--font-display);
-    font-size-adjust: 0.5;
-    font-size: clamp(56px, 9vw, 140px);
-    font-weight: 400;
-    line-height: .92;
-    letter-spacing: -.02em;
-    color: var(--text-bright);
-    max-width: 960px;
-    margin: 0 0 28px;
-    text-align: left;
-  }
-  .hero__title-line { display: block; overflow: hidden; }
-  .hero__title-word { display: inline-block; transform: none; opacity: 1; }
-  .hero__title em { font-style: italic; color: var(--gold); }
-  [data-lang="en"] { display: none; }
-  html[data-active-lang="en"] [data-lang="en"] { display: inline; }
-  html[data-active-lang="en"] [data-lang="pl"] { display: none; }
-  .hero__title { min-height: 1.9em; }
-  .hero__subtitle {
-    font-size-adjust: 0.52;
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--text-secondary);
-    max-width: 480px;
-    line-height: 1.9;
-    margin: 0 0 56px;
-    text-align: left;
-    min-height: 5.7em;
-  }
-  .hero__actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; min-height: 56px; }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-size-adjust: 0.52;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    padding: 16px 38px;
-    box-sizing: border-box;
-  }
-  .btn--primary { color: #18191B; background: linear-gradient(135deg, #D4AF37, #E8C94A); }
-  .btn--ghost { color: var(--text-secondary); padding: 16px 0; }
-  .btn__text { display: inline-block; line-height: 1; }
-  .hero__actions .btn--primary { min-width: 220px; justify-content: center; }
-  .hero__actions .btn--ghost { min-width: 190px; justify-content: flex-start; }
-  .hero__actions .btn__text { white-space: nowrap; }
-  .page { min-height: 100svh; }
-  .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); width: 100%; box-sizing: border-box; }
-</style>
-
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
-</noscript>
-
-<!-- Main Stylesheet -->
-<link rel="stylesheet" href="styles.css">
-<noscript>
-  <link rel="stylesheet" href="styles.css" />
-</noscript>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://vantia.vercel.app/#organization",
-      "name": "VANTIA Studio",
-      "alternateName": "VANTIA",
-      "url": "https://vantia.vercel.app",
-      "description": "Butikowa agencja digital premium - tworzymy strony internetowe, landing page'e i aplikacje webowe.",
-      "foundingDate": "2024",
-      "foundingLocation": "Poland",
-      "areaServed": "Worldwide",
-      "knowsAbout": ["Web Development","Landing Pages","UI/UX Design","Frontend Development","Website Optimization"],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "email": "kikaspawel@gmail.com",
-        "availableLanguage": ["Polish","English"]
-      },
-      "sameAs": ["https://discord.com/users/1316090115025670301"]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://vantia.vercel.app/#website",
-      "url": "https://vantia.vercel.app",
-      "name": "VANTIA Studio",
-      "alternateName": "VANTIA — Digital Studio",
-      "description": "Premium web design studio. Websites, landing pages & web applications.",
-      "inLanguage": ["pl-PL","en"],
-      "isPartOf": {"@id": "https://vantia.vercel.app/#organization"},
-      "publisher": {"@id": "https://vantia.vercel.app/#organization"},
-      "potentialAction": {
-        "@type": "ContactAction",
-        "name": "Get a Quote",
-        "target": {"@type": "EntryPoint", "urlTemplate": "https://vantia.vercel.app/#kontakt"}
-      }
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://vantia.vercel.app/#service",
-      "name": "VANTIA Studio",
-      "description": "Premium web design, landing pages & web applications for demanding clients.",
-      "provider": {"@id": "https://vantia.vercel.app/#organization"},
-      "areaServed": ["Poland","Europe","Worldwide"],
-      "priceRange": "$$",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Web Design Packages",
-        "itemListElement": [
-          {"@type": "Offer", "name": "Core", "price": "499", "priceCurrency": "PLN", "description": "One-page website with SEO optimization"},
-          {"@type": "Offer", "name": "Expand", "price": "999", "priceCurrency": "PLN", "description": "Multi-page website with advanced SEO & analytics"},
-          {"@type": "Offer", "name": "Custom", "price": "1999", "priceCurrency": "PLN", "description": "Custom web application with CMS & integrations"}
-        ]
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "09:00", "closes": "18:00", "timeZone": "Europe/Warsaw"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://vantia.vercel.app/#faq",
-      "mainEntity": [
-        {"@type": "Question", "name": "How much does a website cost at VANTIA?", "acceptedAnswer": {"@type": "Answer", "text": "Prices depend on project scope. We offer packages from 499 PLN for a business card to 1999+ PLN for custom solutions. Every quote is free."}},
-        {"@type": "Question", "name": "How fast do you deliver?", "acceptedAnswer": {"@type": "Answer", "text": "First concepts within 48 hours. Full projects are delivered in days, not weeks."}},
-        {"@type": "Question", "name": "Do you work remotely?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, we work 100% remotely with clients in Poland and worldwide."}}
-      ]
-    }
-  ]
-}
-</script>
 </head>
-<body>
-
-<!-- Skip Link -->
-<a href="#main" class="skip-link">
+<body class="landing-editorial site-bento">
+<a href="#main" class="ed-skip skip-link">
   <span data-lang="pl">Przejdź do treści</span>
   <span data-lang="en">Skip to content</span>
 </a>
+<div class="ed-progress scroll-progress" aria-hidden="true"></div>
 
-<!-- Scroll Progress -->
-<div class="scroll-progress" aria-hidden="true"></div>
-
-
-<!-- Canvas Background -->
-<canvas class="canvas-bg" aria-hidden="true"></canvas>
-<div class="ambient-bg" aria-hidden="true">
-  <div class="ambient-bg__layer ambient-bg__layer--aurora"></div>
-  <div class="ambient-bg__blob ambient-bg__blob--gold"></div>
-  <div class="ambient-bg__blob ambient-bg__blob--blue"></div>
-  <div class="ambient-bg__grid"></div>
-</div>
-
-<!-- ═══ NAVIGATION ═══ -->
-<header>
-<nav class="nav" id="nav" aria-label="Main Navigation">
-  <a href="https://vantia.vercel.app" class="nav__logo magnetic">VANTIA<span class="nav__logo-dot">.</span></a>
-  
-  <div class="nav__center">
-    <a href="#uslugi" class="nav__link">
-      <span data-lang="pl">Usługi</span>
-      <span data-lang="en">Services</span>
-    </a>
-    <a href="#cennik" class="nav__link">
-      <span data-lang="pl">Cennik</span>
-      <span data-lang="en">Pricing</span>
-    </a>
-    <a href="portfolio.html" class="nav__link nav__link--portfolio">Portfolio</a>
-    <a href="blog.html" class="nav__link">
-      <span data-lang="pl">Blog</span>
-      <span data-lang="en">Blog</span>
-    </a>
-    <a href="#o-nas" class="nav__link">
-      <span data-lang="pl">O nas</span>
-      <span data-lang="en">About</span>
-    </a>
-  </div>
-
-  <div class="nav__right">
-    <div class="lang-switch">
-      <button class="lang-switch__btn is-active" data-lang-btn="pl">PL</button>
-      <button class="lang-switch__btn" data-lang-btn="en">EN</button>
+<header class="ed-nav" data-ed-nav>
+  <a class="ed-nav__brand" href="index.html" aria-label="VANTIA Studio">
+    <span>VANTIA</span>
+    <span>Studio</span>
+  </a>
+  <nav class="ed-nav__links" aria-label="Główna nawigacja">
+    <a href="#work"><span data-lang="pl">Projekty</span><span data-lang="en">Work</span></a>
+    <a href="#disciplines"><span data-lang="pl">Usługi</span><span data-lang="en">Services</span></a>
+    <a href="#pricing"><span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span></a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="blog.html">Blog</a>
+  </nav>
+  <div class="ed-nav__actions" aria-label="Ustawienia strony">
+    <div class="lang-switch ed-lang-switch" aria-label="Język">
+      <button class="lang-switch__btn is-active" type="button" data-lang-btn="pl">PL</button>
+      <button class="lang-switch__btn" type="button" data-lang-btn="en">EN</button>
     </div>
-    <a href="#kontakt" class="nav__cta magnetic">
-      <span data-lang="pl">Kontakt</span>
-      <span data-lang="en">Get in Touch</span>
-    </a>
-    <button class="nav__hamburger" aria-label="Menu">
-      <span class="nav__hamburger-line"></span>
-      <span class="nav__hamburger-line"></span>
-      <span class="nav__hamburger-line"></span>
-    </button>
-  </div>
-</nav>
-</header>
-
-<!-- Mobile Menu -->
-<div class="nav__mobile-menu">
-  <div class="nav__mobile-panel">
-    <div class="nav__mobile-top">
-      <div class="nav__mobile-label">
-        <span data-lang="pl">Menu</span>
-        <span data-lang="en">Menu</span>
-      </div>
-      <div class="lang-switch nav__mobile-lang">
-        <button class="lang-switch__btn is-active" data-lang-btn="pl">PL</button>
-        <button class="lang-switch__btn" data-lang-btn="en">EN</button>
-      </div>
-    </div>
-    <div class="nav__mobile-links">
-      <a href="#uslugi" class="nav__mobile-link">
-        <span data-lang="pl">Us&#322;ugi</span><span data-lang="en">Services</span>
-      </a>
-      <a href="#cennik" class="nav__mobile-link">
-        <span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span>
-      </a>
-      <a href="portfolio.html" class="nav__mobile-link">Portfolio</a>
-      <a href="blog.html" class="nav__mobile-link">
-        <span data-lang="pl">Blog</span><span data-lang="en">Blog</span>
-      </a>
-      <a href="#o-nas" class="nav__mobile-link">
-        <span data-lang="pl">O nas</span><span data-lang="en">About</span>
-      </a>
-      <a href="#kontakt" class="nav__mobile-link">
-        <span data-lang="pl">Kontakt</span><span data-lang="en">Contact</span>
-      </a>
-    </div>
-    <div class="nav__mobile-footer">
-      <a href="#kontakt" class="nav__mobile-cta">
-        <span data-lang="pl">Rozpocznij projekt</span>
-        <span data-lang="en">Start a Project</span>
-      </a>
-      <p class="nav__mobile-note">
-        <span data-lang="pl">Pe&#322;ne menu, wyb&oacute;r j&#281;zyka i kontakt s&#261; dost&#281;pne tak&#380;e przy ma&#322;ych ekranach i przy footerze.</span>
-        <span data-lang="en">Full navigation, language switch and contact stay available on smaller screens and near the footer.</span>
-      </p>
-    </div>
-  </div>
-</div>
-
-<main class="page" id="main">
-
-<!-- ═══════════════════════════════════════
-     HERO
-     ═══════════════════════════════════════ -->
-<section class="hero" aria-labelledby="hero-heading">
-  <div class="hero__corner hero__corner--tl" aria-hidden="true"></div>
-  <div class="hero__corner hero__corner--br" aria-hidden="true"></div>
-
-  <div class="hero__tag">
-    <span data-lang="pl">Studio Cyfrowe — Remote / PL</span>
-    <span data-lang="en">Digital Studio — Remote / Worldwide</span>
-  </div>
-
-  <h1 class="hero__title" id="hero-heading">
-    <span data-lang="pl">
-      <span class="hero__title-line"><span class="hero__title-word">Cyfrowe doświadczenia</span></span>
-      <span class="hero__title-line hero__title-line--accent"><span class="hero__title-word"><em class="hero__title-premium">premium.</em></span></span>
-    </span>
-    <span data-lang="en">
-      <span class="hero__title-line"><span class="hero__title-word">High-End Digital</span></span>
-      <span class="hero__title-line hero__title-line--accent"><span class="hero__title-word"><em class="hero__title-premium">Experiences.</em></span></span>
-    </span>
-  </h1>
-
-  <p class="hero__subtitle">
-    <span data-lang="pl">Projektujemy i wdrażamy luksusowe strony internetowe, które stają się wizytówką najbardziej wymagających marek. Nasze realizacje łączą rzemieślniczą precyzję z bezkompromisową technologią, gwarantując najwyższe standardy konwersji i estetyki.</span>
-    <span data-lang="en">We design and develop luxury websites that become the digital flagship of the most meticulous brands. Our bespoke projects fuse artisanal precision with uncompromising technology to ensure the highest standards of conversion and aesthetics.</span>
-  </p>
-
-  <div class="hero__actions">
-    <a href="#kontakt" class="btn btn--primary magnetic">
-      <span class="btn__text" data-lang="pl">Rozpocznij projekt</span>
-      <span class="btn__text" data-lang="en">Start a Project</span>
-    </a>
-    <a href="portfolio.html" class="btn btn--ghost">
-      <span class="btn__text" data-lang="pl">Zobacz portfolio</span>
-      <span class="btn__text" data-lang="en">View Portfolio</span>
-      <svg class="btn__arrow" width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
-        <path d="M12 1L17 6L12 11" stroke="currentColor" stroke-width="1.2"/>
-        <line x1="0" y1="6" x2="17" y2="6" stroke="currentColor" stroke-width="1.2"/>
-      </svg>
-    </a>
-  </div>
-
-  <div class="hero__scroll" aria-hidden="true">
-    <div class="hero__scroll-line"></div>
-    <span data-lang="pl">Przewiń stronę</span>
-    <span data-lang="en">Scroll to explore</span>
-  </div>
-
-  <div class="hero__badge" aria-hidden="true">
-    <svg width="90" height="90" viewBox="0 0 90 90">
-      <defs><path id="cp" d="M45,45 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/></defs>
-      <text font-size="8" font-family="Inter" font-weight="500" fill="#D4AF37" letter-spacing="3.4">
-        <textPath href="#cp">VANTIA STUDIO &middot; DIGITAL &middot; WEB &middot; 2026 &middot;</textPath>
-      </text>
-    </svg>
-    <div class="hero__badge-dot">&#x2726;</div>
-  </div>
-</section>
-
-<!-- ═══ MARQUEE ═══ -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track">
-    <div class="marquee__item"><span data-lang="pl">Strony internetowe</span><span data-lang="en">Websites</span></div>
-    <div class="marquee__item">Landing Pages</div>
-    <div class="marquee__item"><span data-lang="pl">Aplikacje webowe</span><span data-lang="en">Web Applications</span></div>
-    <div class="marquee__item">Design &amp; Code</div>
-    <div class="marquee__item"><span data-lang="pl">100% zdalnie</span><span data-lang="en">100% Remote</span></div>
-    <div class="marquee__item"><span data-lang="pl">Szybka realizacja</span><span data-lang="en">Rapid Delivery</span></div>
-    <div class="marquee__item">Premium Quality</div>
-    <div class="marquee__item"><span data-lang="pl">Strony internetowe</span><span data-lang="en">Websites</span></div>
-    <div class="marquee__item">Landing Pages</div>
-    <div class="marquee__item"><span data-lang="pl">Aplikacje webowe</span><span data-lang="en">Web Applications</span></div>
-    <div class="marquee__item">Design &amp; Code</div>
-    <div class="marquee__item"><span data-lang="pl">100% zdalnie</span><span data-lang="en">100% Remote</span></div>
-    <div class="marquee__item"><span data-lang="pl">Szybka realizacja</span><span data-lang="en">Rapid Delivery</span></div>
-    <div class="marquee__item">Premium Quality</div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════
-     ABOUT
-     ═══════════════════════════════════════ -->
-<section class="section" id="o-nas" aria-labelledby="about-heading">
-  <div class="container">
-    <div class="section__label reveal">
-      <span data-lang="pl">O naszym studiu</span>
-      <span data-lang="en">About Our Studio</span>
-    </div>
-    <div class="about__grid">
-      <div>
-        <h2 class="about__heading reveal" data-delay="1" id="about-heading">
-          <span data-lang="pl">Ekskluzywne<br/>studio<br/><em>digitalowe.</em></span>
-          <span data-lang="en">A Boutique<br/>Digital<br/><em>Studio.</em></span>
-        </h2>
-      </div>
-      <div>
-        <p class="about__text reveal" data-delay="2">
-          <span data-lang="pl">VANTIA to butikowe studio powołane do współpracy z markami premium. Transformujemy wizje w wyrafinowane produkty cyfrowe, w których każdy z detali w interfejsie i architekturze projektowany z najwyższą dbałością eksponuje status Twojego biznesu.</span>
-          <span data-lang="en">VANTIA is a boutique studio dedicated to working with premium brands. We transform visions into sophisticated digital products, where every detail in the interface and architecture is designed with the utmost care to elevate the prestige of your business.</span>
-        </p>
-        <p class="about__text reveal" data-delay="3">
-          <span data-lang="pl">Dostarczamy bezkompromisową jakość w modelu w pełni zdalnym, co gwarantuje absolutną płynność współpracy i optymalizację czasu naszych Klientów. Inwestycja w rzemiosło cyfrowe to inwestycja w pozycję Twojej marki.</span>
-          <span data-lang="en">We deliver uncompromising quality in a fully remote model, guaranteeing absolute operational fluidity and optimizing the time of our high-end clientele. An investment in digital craftsmanship is a direct investment in your brand's market position.</span>
-        </p>
-        <div class="stats reveal" data-delay="4">
-          <div class="stats__item">
-            <div class="stats__number"><span data-count="48">0</span><em>h</em></div>
-            <div class="stats__label">
-              <span data-lang="pl">Czas do pierwszej koncepcji</span>
-              <span data-lang="en">Time to first concept</span>
-            </div>
-          </div>
-          <div class="stats__item">
-            <div class="stats__number"><span data-count="100">0</span><em>%</em></div>
-            <div class="stats__label">
-              <span data-lang="pl">Praca zdalna i online</span>
-              <span data-lang="en">Fully remote workflow</span>
-            </div>
-          </div>
-          <div class="stats__item">
-            <div class="stats__number">&#8734;</div>
-            <div class="stats__label">
-              <span data-lang="pl">Skalowalność rozwiązań</span>
-              <span data-lang="en">Scalable solutions</span>
-            </div>
-          </div>
-          <div class="stats__item">
-            <div class="stats__number"><span data-count="0">0</span><em>&#215;</em></div>
-            <div class="stats__label">
-              <span data-lang="pl">Zbędnych formalności</span>
-              <span data-lang="en">Unnecessary red tape</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     SERVICES
-     ═══════════════════════════════════════ -->
-<section class="section section--alt" id="uslugi" aria-labelledby="svc-heading">
-  <div class="container">
-    <div class="section__label reveal">
-      <span data-lang="pl">Usługi cyfrowe</span>
-      <span data-lang="en">Digital Services</span>
-    </div>
-  </div>
-  <div class="container">
-    <div class="services__grid">
-
-      <article class="service reveal">
-        <div class="service__number">01 / 03</div>
-        <div class="service__icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="1.5" y="1.5" width="19" height="19" stroke="currentColor" stroke-width="1.1"/><line x1="1.5" y1="7" x2="20.5" y2="7" stroke="currentColor" stroke-width="1.1"/><circle cx="5" cy="4.25" r=".9" fill="currentColor"/><circle cx="8.5" cy="4.25" r=".9" fill="currentColor"/></svg>
-        </div>
-        <h3 class="service__title" id="svc-heading">
-          <span data-lang="pl">Strony<br/>internetowe</span>
-          <span data-lang="en">Corporate<br/>Websites</span>
-        </h3>
-        <p class="service__desc">
-          <span data-lang="pl">Projektujemy i wdrażamy luksusowe strony wizytówkowe. Architektura oparta na wydajności i rzemieślniczy design natychmiast pozycjonują Twoją markę na fotelu lidera.</span>
-          <span data-lang="en">We engineer and craft luxury corporate websites. Performance-driven architecture combined with artisanal design immediately positions your brand as an industry leader.</span>
-        </p>
-        <div class="service__tags">
-          <span class="service__tag"><span data-lang="pl">Wizytówka</span><span data-lang="en">Business Card</span></span>
-          <span class="service__tag">Portfolio</span>
-          <span class="service__tag">Responsive</span>
-          <span class="service__tag">SEO</span>
-        </div>
-      </article>
-
-      <article class="service reveal" data-delay="2">
-        <div class="service__number">02 / 03</div>
-        <div class="service__icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 1.5L20.5 6.5V15.5L11 20.5L1.5 15.5V6.5L11 1.5Z" stroke="currentColor" stroke-width="1.1"/><circle cx="11" cy="11" r="3" stroke="currentColor" stroke-width="1.1"/></svg>
-        </div>
-        <h3 class="service__title">
-          <span data-lang="pl">Skuteczne<br/>Landing Pages</span>
-          <span data-lang="en">High-Converting<br/>Landing Pages</span>
-        </h3>
-        <p class="service__desc">
-          <span data-lang="pl">Inżynieria konwersji na poziomie VIP. Opracowujemy dedykowane platformy docelowe, dla których precyzyjny copywriting i psychologia designu bezkompromisowo multiplikują Twoją użyteczność i sprzedaż.</span>
-          <span data-lang="en">VIP-level conversion engineering. We develop dedicated landing pages where precise copywriting and design psychology robustly multiply your engagement and sales.</span>
-        </p>
-        <div class="service__tags">
-          <span class="service__tag"><span data-lang="pl">Sprzedaż</span><span data-lang="en">Sales</span></span>
-          <span class="service__tag">Lead Gen</span>
-          <span class="service__tag"><span data-lang="pl">Kampanie</span><span data-lang="en">Campaigns</span></span>
-          <span class="service__tag"><span data-lang="pl">Konwersja</span><span data-lang="en">Conversion</span></span>
-        </div>
-      </article>
-
-      <article class="service reveal" data-delay="4">
-        <div class="service__number">03 / 03</div>
-        <div class="service__icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.1"/><ellipse cx="11" cy="11" rx="4" ry="9" stroke="currentColor" stroke-width="1.1"/><line x1="2" y1="11" x2="20" y2="11" stroke="currentColor" stroke-width="1.1"/></svg>
-        </div>
-        <h3 class="service__title">
-          <span data-lang="pl">Aplikacje<br/>webowe</span>
-          <span data-lang="en">Web<br/>Applications</span>
-        </h3>
-        <p class="service__desc">
-          <span data-lang="pl">Programujemy inteligentne ekosystemy webowe — od wyrafinowanych portali partnerskich po wielomodułowe dashboardy SaaS. Płynność i bezbłędność architektury chmurowej.</span>
-          <span data-lang="en">We program intelligent web ecosystems — from sophisticated client portals to multi-modular SaaS dashboards. Absolute fluidity and flawlessness of cloud architecture.</span>
-        </p>
-        <div class="service__tags">
-          <span class="service__tag"><span data-lang="pl">Panele</span><span data-lang="en">Panels</span></span>
-          <span class="service__tag">SaaS</span>
-          <span class="service__tag"><span data-lang="pl">Automatyzacja</span><span data-lang="en">Automation</span></span>
-          <span class="service__tag">Cloud</span>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     PORTFOLIO PREVIEW
-     ═══════════════════════════════════════ -->
-<section class="section" id="portfolio" aria-labelledby="portfolio-heading">
-  <div class="container">
-    <div class="portfolio__header">
-      <div>
-        <div class="section__label reveal">
-          <span data-lang="pl">Realizacje</span>
-          <span data-lang="en">Selected Work</span>
-        </div>
-        <h2 class="portfolio__title reveal" data-delay="1" id="portfolio-heading">
-          <span data-lang="pl">Wybrane<br/><em>projekty.</em></span>
-          <span data-lang="en">Featured<br/><em>projects.</em></span>
-        </h2>
-      </div>
-      <a href="portfolio.html" class="portfolio__view-all reveal" data-delay="2">
-        Portfolio
-        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M10 1L15 6L10 11" stroke="currentColor" stroke-width="1.2"/><line x1="0" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
-      </a>
-    </div>
-
-    <div class="portfolio__grid">
-      <a href="portfolio.html#kancelaria" class="portfolio-card reveal">
-        <div class="portfolio-card__accent"></div>
-        <div class="portfolio-card__thumb">
-          <div class="portfolio-card__thumb-inner" style="background:linear-gradient(135deg,#0c0e18 0%,#161a28 55%,#090b14 100%)">
-            <div class="portfolio-card__glow portfolio-card__glow--blue"></div>
-            <div class="portfolio-card__frame">
-              <div class="portfolio-card__name">
-                <span data-lang="pl">Kancelaria<br/>Adwokacka</span>
-                <span data-lang="en">Law<br/>Firm</span>
-              </div>
-              <div class="portfolio-card__type">
-                <span data-lang="pl">Strona firmowa</span>
-                <span data-lang="en">Corporate Site</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-card__body">
-          <div class="portfolio-card__meta">
-            <span class="portfolio-card__category">
-              <span data-lang="pl">Strona internetowa</span>
-              <span data-lang="en">Website</span>
-            </span>
-            <span class="portfolio-card__year">2025</span>
-          </div>
-          <div class="portfolio-card__heading">
-            <span data-lang="pl">Wizytówka premium</span>
-            <span data-lang="en">Premium Business Card</span>
-          </div>
-          <p class="portfolio-card__desc">
-            <span data-lang="pl">Elegancka strona dla kancelarii — ciemna paleta, formularz kontaktowy, pełna responsywność.</span>
-            <span data-lang="en">Elegant law firm website — dark palette, contact form, fully responsive design.</span>
-          </p>
-        </div>
-        <div class="portfolio-card__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" stroke-width="1.2"/></svg></div>
-      </a>
-
-      <a href="portfolio.html#fitcoach" class="portfolio-card reveal" data-delay="1">
-        <div class="portfolio-card__accent"></div>
-        <div class="portfolio-card__thumb">
-          <div class="portfolio-card__thumb-inner" style="background:linear-gradient(135deg,#100e08 0%,#1e1608 55%,#0c0a06 100%)">
-            <div class="portfolio-card__glow portfolio-card__glow--gold"></div>
-            <div class="portfolio-card__frame">
-              <div class="portfolio-card__name">FitCoach<br/>Pro</div>
-              <div class="portfolio-card__type">Landing Page</div>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-card__body">
-          <div class="portfolio-card__meta">
-            <span class="portfolio-card__category">Landing Page</span>
-            <span class="portfolio-card__year">2025</span>
-          </div>
-          <div class="portfolio-card__heading">
-            <span data-lang="pl">Trener personalny</span>
-            <span data-lang="en">Personal Trainer</span>
-          </div>
-          <p class="portfolio-card__desc">
-            <span data-lang="pl">Landing page z formularzem zapisu na konsultacje i sekcją cennika.</span>
-            <span data-lang="en">Landing page with consultation booking form and pricing section.</span>
-          </p>
-        </div>
-        <div class="portfolio-card__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" stroke-width="1.2"/></svg></div>
-      </a>
-
-      <a href="portfolio.html#fotograf" class="portfolio-card reveal" data-delay="2">
-        <div class="portfolio-card__accent"></div>
-        <div class="portfolio-card__thumb">
-          <div class="portfolio-card__thumb-inner" style="background:linear-gradient(135deg,#080d10 0%,#0c1618 55%,#060a0c 100%)">
-            <div class="portfolio-card__glow portfolio-card__glow--teal"></div>
-            <div class="portfolio-card__frame">
-              <div class="portfolio-card__name">Studio<br/>Foto</div>
-              <div class="portfolio-card__type">Portfolio</div>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-card__body">
-          <div class="portfolio-card__meta">
-            <span class="portfolio-card__category">
-              <span data-lang="pl">Strona / Portfolio</span>
-              <span data-lang="en">Site / Portfolio</span>
-            </span>
-            <span class="portfolio-card__year">2025</span>
-          </div>
-          <div class="portfolio-card__heading">
-            <span data-lang="pl">Portfolio fotografa</span>
-            <span data-lang="en">Photographer Portfolio</span>
-          </div>
-          <p class="portfolio-card__desc">
-            <span data-lang="pl">Minimalistyczne portfolio dla fotografa. Galeria z lightboxem i formularz kontaktowy.</span>
-            <span data-lang="en">Minimalist photographer portfolio. Gallery with lightbox and contact form.</span>
-          </p>
-        </div>
-        <div class="portfolio-card__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" stroke-width="1.2"/></svg></div>
-      </a>
-    </div>
-
-    <div class="portfolio__cta reveal">
-      <a href="portfolio.html" class="portfolio__cta-link">
-        <span data-lang="pl">Wszystkie realizacje &#8594;</span>
-        <span data-lang="en">View all projects &#8594;</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     PROCESS
-     ═══════════════════════════════════════ -->
-<section class="section section--alt" id="proces">
-  <div class="container">
-    <div class="section__label reveal">
-      <span data-lang="pl">Jak działamy</span>
-      <span data-lang="en">Our Process</span>
-    </div>
-    <h2 class="process__heading reveal" data-delay="1">
-      <span data-lang="pl">Od pomysłu<br/>do <em>gotowego produktu</em></span>
-      <span data-lang="en">From concept<br/>to <em>finished product</em></span>
-    </h2>
-    <div class="process__steps">
-      <div class="step reveal" data-n="1">
-        <div class="step__number">01</div>
-        <div class="step__title">
-          <span data-lang="pl">Brief &amp; Zakres</span>
-          <span data-lang="en">Brief &amp; Scope</span>
-        </div>
-        <p class="step__desc">
-          <span data-lang="pl">Zrozumienie Twojego projektu, celów i grupy docelowej. Szybki, zdalny onboarding bez zbędnych formalności.</span>
-          <span data-lang="en">Understanding your project, goals, and target audience. Quick, remote onboarding without unnecessary formalities.</span>
-        </p>
-      </div>
-      <div class="step reveal" data-delay="1" data-n="2">
-        <div class="step__number">02</div>
-        <div class="step__title">
-          <span data-lang="pl">Design &amp; Prototyp</span>
-          <span data-lang="en">Design &amp; Prototype</span>
-        </div>
-        <p class="step__desc">
-          <span data-lang="pl">Tworzymy projekt wizualny. Widzisz efekty zanim ruszy kodowanie — żadnych niespodzianek.</span>
-          <span data-lang="en">We create the visual design. You see results before coding begins — no surprises.</span>
-        </p>
-      </div>
-      <div class="step reveal" data-delay="2" data-n="3">
-        <div class="step__number">03</div>
-        <div class="step__title">
-          <span data-lang="pl">Realizacja</span>
-          <span data-lang="en">Development</span>
-        </div>
-        <p class="step__desc">
-          <span data-lang="pl">Wdrożenie projektu — czysty kod, optymalizacja, testy responsywności. Szybko i bez kompromisów.</span>
-          <span data-lang="en">Project implementation — clean code, optimization, responsive testing. Fast and uncompromising.</span>
-        </p>
-      </div>
-      <div class="step reveal" data-delay="3" data-n="4">
-        <div class="step__number">04</div>
-        <div class="step__title">
-          <span data-lang="pl">Uruchomienie</span>
-          <span data-lang="en">Launch</span>
-        </div>
-        <p class="step__desc">
-          <span data-lang="pl">Deploy na produkcję, konfiguracja domeny, przekazanie dostępów. Gotowe — Twój projekt żyje w sieci.</span>
-          <span data-lang="en">Production deployment, domain setup, access handover. Done — your project is live.</span>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     WHY
-     ═══════════════════════════════════════ -->
-<section class="section">
-  <div class="container">
-    <div class="why__grid">
-      <div>
-        <div class="section__label reveal">
-          <span data-lang="pl">Dlaczego VANTIA</span>
-          <span data-lang="en">Why VANTIA</span>
-        </div>
-        <h2 class="why__heading reveal" data-delay="1">
-          <span data-lang="pl">Szybciej.<br/>Mądrzej.<br/><em>Lepiej.</em></span>
-          <span data-lang="en">Faster.<br/>Smarter.<br/><em>Better.</em></span>
-        </h2>
-        <p class="why__text reveal" data-delay="2">
-          <span data-lang="pl">Pracujemy zdalnie z każdym klientem bez ograniczeń geograficznych. Wyższa jakość, krótszy czas realizacji i bezpośrednia komunikacja.</span>
-          <span data-lang="en">We work remotely with every client without geographic limitations. Higher quality, shorter delivery times, and direct communication.</span>
-        </p>
-      </div>
-      <div class="features">
-        <div class="feature reveal">
-          <div class="feature__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#D4AF37" stroke-width="1.1"/><path d="M12 6v6l4 2" stroke="#D4AF37" stroke-width="1.1" stroke-linecap="round"/></svg></div>
-          <div class="feature__title"><span data-lang="pl">Ekspresowa realizacja</span><span data-lang="en">Rapid Delivery</span></div>
-          <p class="feature__desc"><span data-lang="pl">Pierwsze efekty w 48 godzin. Pełny projekt w ciągu dni, nie tygodni.</span><span data-lang="en">First results in 48 hours. Full project in days, not weeks.</span></p>
-        </div>
-        <div class="feature reveal" data-delay="1">
-          <div class="feature__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="1" stroke="#D4AF37" stroke-width="1.1"/><path d="M8 21h8M12 17v4" stroke="#D4AF37" stroke-width="1.1" stroke-linecap="round"/></svg></div>
-          <div class="feature__title"><span data-lang="pl">100% zdalnie</span><span data-lang="en">100% Remote</span></div>
-          <p class="feature__desc"><span data-lang="pl">Z każdym klientem w Polsce i za granicą. Bez spotkań, bez opóźnień.</span><span data-lang="en">With every client in Poland and abroad. No meetings, no delays.</span></p>
-        </div>
-        <div class="feature reveal" data-delay="2">
-          <div class="feature__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#D4AF37" stroke-width="1.1"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#D4AF37" stroke-width="1.1"/></svg></div>
-          <div class="feature__title"><span data-lang="pl">Pełen stack</span><span data-lang="en">Full Stack</span></div>
-          <p class="feature__desc"><span data-lang="pl">Design, front-end, back-end, wdrożenie — jeden team, jeden punkt kontaktu.</span><span data-lang="en">Design, front-end, back-end, deployment — one team, one point of contact.</span></p>
-        </div>
-        <div class="feature reveal" data-delay="3">
-          <div class="feature__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#D4AF37" stroke-width="1.1"/><path d="M9 12l2 2 4-4" stroke="#D4AF37" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="feature__title"><span data-lang="pl">Gwarancja jakości</span><span data-lang="en">Quality Guarantee</span></div>
-          <p class="feature__desc"><span data-lang="pl">Każdy projekt testujemy pod kątem responsywności, wydajności i jakości wizualnej.</span><span data-lang="en">Every project is tested for responsiveness, performance, and visual quality.</span></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     PRICING
-     ═══════════════════════════════════════ -->
-<section class="section section--alt" id="cennik">
-  <div class="container">
-    <div class="pricing__header">
-      <div>
-        <div class="section__label reveal">
-          <span data-lang="pl">Inwestycja</span>
-          <span data-lang="en">Investment</span>
-        </div>
-        <h2 class="pricing__title reveal" data-delay="1">
-          <span data-lang="pl">Pakiety<br/><em>dopasowane.</em></span>
-          <span data-lang="en">Tailored<br/><em>packages.</em></span>
-        </h2>
-      </div>
-      <div>
-        <p class="pricing__note reveal" data-delay="2">
-          <span data-lang="pl">Przejrzyste zasady, brak ukrytych kosztów. Wybierz rozwiązanie idealne dla etapu, na którym znajduje się Twój biznes.</span>
-          <span data-lang="en">Transparent terms, no hidden costs. Choose the solution ideal for your business stage.</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="pricing__grid">
-      <!-- Core -->
-      <div class="plan reveal">
-        <div class="plan__badge">RABAT -50%</div>
-        <h3 class="plan__name">Core</h3>
-        <div class="plan__old-price">1 199.99<span>zł</span></div>
-        <div class="plan__price">599.99<span>zł</span></div>
-        <p class="plan__desc">
-          <span data-lang="pl">Szybka i bezbłędna wizytówka Twojej firmy. Czysty kod i natychmiastowa obecność w Google.</span>
-          <span data-lang="en">Fast, flawless business card for your company. Clean code and instant Google presence.</span>
-        </p>
-        <ul class="plan__features">
-          <li class="plan__feature"><span data-lang="pl">Wdrożenie w 48 godzin</span><span data-lang="en">48-hour delivery</span></li>
-          <li class="plan__feature"><span data-lang="pl">Indywidualny Design (One-Page)</span><span data-lang="en">Custom Design (One-Page)</span></li>
-          <li class="plan__feature"><span data-lang="pl">Błyskawiczne ładowanie (90+ score)</span><span data-lang="en">Lightning-fast loading (90+ score)</span></li>
-          <li class="plan__feature"><span data-lang="pl">Podstawowa optymalizacja SEO</span><span data-lang="en">Basic SEO optimization</span></li>
-          <li class="plan__feature"><span data-lang="pl">Certyfikat SSL w cenie</span><span data-lang="en">SSL Certificate included</span></li>
-          <li class="plan__feature"><span data-lang="pl">Hosting i opieka (1 miesiąc)</span><span data-lang="en">Hosting & support (1 month)</span></li>
-          <li class="plan__feature plan__feature--dim"><span data-lang="pl">Analityka Google</span><span data-lang="en">Google Analytics</span></li>
-        </ul>
-        <a href="#kontakt" class="plan__cta plan__cta--outline magnetic">
-          <span data-lang="pl">ZAMÓW CORE</span>
-          <span data-lang="en">ORDER CORE</span>
-        </a>
-      </div>
-
-      <!-- Expand (Featured) -->
-      <div class="plan plan--featured reveal" data-delay="1">
-        <div class="plan__badge">BESTSELLER</div>
-        <h3 class="plan__name">Expand</h3>
-        <div class="plan__old-price">2 200.99<span>zł</span></div>
-        <div class="plan__price">1 499.99<span>zł</span></div>
-        <p class="plan__desc">
-          <span data-lang="pl">Maszyna do pozyskiwania klientów. Rozbudowana oferta, SEO lokalne i pełne statystyki.</span>
-          <span data-lang="en">Client acquisition machine. Extended offering, local SEO and full analytics.</span>
-        </p>
-        <ul class="plan__features">
-          <li class="plan__feature"><span data-lang="pl">Wszystko z pakietu Core</span><span data-lang="en">Everything from Core</span></li>
-          <li class="plan__feature"><span data-lang="pl">Struktura Multi-Page (do 5 podstron)</span><span data-lang="en">Multi-Page structure (up to 5)</span></li>
-          <li class="plan__feature"><span data-lang="pl">Copywriting AI & chwytliwe nagłówki</span><span data-lang="en">AI Copywriting & compelling headlines</span></li>
-          <li class="plan__feature"><span data-lang="pl">Zaawansowane SEO (Lokalne)</span><span data-lang="en">Advanced SEO (Local)</span></li>
-          <li class="plan__feature"><span data-lang="pl">Google Maps & Analytics</span><span data-lang="en">Google Maps & Analytics</span></li>
-          <li class="plan__feature"><span data-lang="pl">Powiadomienia SMS/Email</span><span data-lang="en">SMS/Email Notifications</span></li>
-          <li class="plan__feature"><span data-lang="pl">Hosting i opieka (2 miesiące)</span><span data-lang="en">Hosting & support (2 months)</span></li>
-        </ul>
-        <a href="#kontakt" class="plan__cta plan__cta--solid magnetic">
-          <span data-lang="pl">WYBIERZ BESTSELLER</span>
-          <span data-lang="en">CHOOSE BESTSELLER</span>
-        </a>
-      </div>
-
-      <!-- Custom -->
-      <div class="plan reveal" data-delay="2">
-        <h3 class="plan__name">Custom</h3>
-        <div class="plan__price"><em>od</em> 2 499.99<span>zł</span></div>
-        <p class="plan__desc">
-          <span data-lang="pl">Dla firm potrzebujących dedykowanych systemów, portali lub niestandardowych integracji.</span>
-          <span data-lang="en">For businesses needing custom systems, portals, or non-standard integrations.</span>
-        </p>
-        <ul class="plan__features">
-          <li class="plan__feature"><span data-lang="pl">Wszystko z pakietu Expand</span><span data-lang="en">Everything from Expand</span></li>
-          <li class="plan__feature"><span data-lang="pl">Unikalny interfejs UI/UX Premium</span><span data-lang="en">Unique Premium UI/UX</span></li>
-          <li class="plan__feature"><span data-lang="pl">System zarządzania treścią (CMS)</span><span data-lang="en">Content Management System (CMS)</span></li>
-          <li class="plan__feature"><span data-lang="pl">Integracje płatności (Stripe/PayU)</span><span data-lang="en">Payment integrations (Stripe/PayU)</span></li>
-          <li class="plan__feature"><span data-lang="pl">Zaawansowane zabezpieczenia</span><span data-lang="en">Advanced security</span></li>
-          <li class="plan__feature"><span data-lang="pl">Logo w cenie projektu</span><span data-lang="en">Logo design included</span></li>
-          <li class="plan__feature"><span data-lang="pl">Opieka VIP (3 miesiące)</span><span data-lang="en">VIP support (3 months)</span></li>
-        </ul>
-        <a href="#kontakt" class="plan__cta plan__cta--outline magnetic">
-          <span data-lang="pl">WYCEŃ PROJEKT</span>
-          <span data-lang="en">GET A QUOTE</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="pricing__footer reveal">
-      <span data-lang="pl">Wszystkie podane ceny są kwotami brutto. Wystawiamy faktury.<br/>Masz projekt wykraczający poza pakiety? <a href="#kontakt">Porozmawiajmy o wycenie indywidualnej</a>.</span>
-      <span data-lang="en">All prices include VAT. We issue invoices.<br/>Have a project beyond our packages? <a href="#kontakt">Let's discuss a custom quote</a>.</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     CONTACT
-     ═══════════════════════════════════════ -->
-<section class="section contact" id="kontakt">
-  <div class="contact__glow" aria-hidden="true"></div>
-  <div class="container">
-    <div class="contact__grid">
-      <div>
-        <div class="section__label reveal">
-          <span data-lang="pl">Kontakt</span>
-          <span data-lang="en">Get in Touch</span>
-        </div>
-        <h2 class="contact__heading reveal" data-delay="1">
-          <span data-lang="pl">Zbudujmy<br/><em>status.</em></span>
-          <span data-lang="en">Elevate<br/><em>together.</em></span>
-        </h2>
-        <p class="contact__text reveal" data-delay="2" style="margin-bottom: 40px;">
-          <span data-lang="pl">Szukasz butikowego partnera? Opisz nam swoją wizję, a my przygotujemy strategiczną propozycję i wycenę dostosowaną do rygorystycznych standardów marek premium.</span>
-          <span data-lang="en">Looking for a boutique digital partner? Describe your vision to us, and we will prepare a strategic proposal and a quote adapted to rigorous premium brand standards.</span>
-        </p>
-        <div class="contact__direct reveal" data-delay="3">
-          <p class="contact__direct-label"><span data-lang="pl">Napisz bezpośrednio na:</span><span data-lang="en">Email us directly:</span></p>
-          <a href="mailto:kikaspawel@gmail.com" class="contact__direct-link">kikaspawel@gmail.com</a>
-        </div>
-      </div>
-      <div>
-        <form class="contact-form reveal" data-delay="2">
-          <div class="contact-form__group">
-            <input type="text" name="name" id="name" class="contact-form__input" placeholder=" " autocomplete="name organization" minlength="2" maxlength="80" required />
-            <label for="name" class="contact-form__label"><span data-lang="pl">Imię lub Nazwa firmy</span><span data-lang="en">Name / Company</span></label>
-            <small class="contact-form__error" data-field-error="name"></small>
-          </div>
-          <div class="contact-form__group">
-            <input type="email" name="email" id="email" class="contact-form__input" placeholder=" " autocomplete="email" maxlength="120" required />
-            <label for="email" class="contact-form__label"><span data-lang="pl">Adres e-mail</span><span data-lang="en">Email address</span></label>
-            <small class="contact-form__error" data-field-error="email"></small>
-          </div>
-          <div class="contact-form__group">
-            <textarea name="project" id="project" class="contact-form__input contact-form__textarea" placeholder=" " rows="4" required></textarea>
-            <label for="project" class="contact-form__label"><span data-lang="pl">O czym marzysz w swoim projekcie?</span><span data-lang="en">What is your project vision?</span></label>
-            <small class="contact-form__error" data-field-error="project"></small>
-          </div>
-          <button type="submit" class="btn btn--primary magnetic">
-            <span class="btn__text" data-lang="pl">Wyślij zapytanie</span>
-            <span class="btn__text" data-lang="en">Submit Request</span>
-          </button>
-          <p class="contact-form__status" aria-live="polite"></p>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     BLOG
-     ═══════════════════════════════════════ -->
-<section class="section" id="blog">
-  <div class="container">
-    <div class="section__label reveal">
-      <span data-lang="pl">Blog</span>
-      <span data-lang="en">Insights</span>
-    </div>
-    <h2 style="font-family:var(--font-display);font-size:clamp(36px,5vw,56px);color:var(--text-bright);margin-bottom:48px" class="reveal" data-delay="1">
-      <span data-lang="pl">Ostatnie wpisy<span style="color:var(--gold)">.</span></span>
-      <span data-lang="en">Latest articles<span style="color:var(--gold)">.</span></span>
-    </h2>
-    <div class="blog__grid">
-      <article class="blog-card reveal" data-delay="2">
-        <span class="blog-card__date">12.04.2024 | DESIGN</span>
-        <h3 class="blog-card__title">
-          <span data-lang="pl">Jak nowoczesny design zwiększa sprzedaż?</span>
-          <span data-lang="en">How Modern Design Drives Sales</span>
-        </h3>
-        <p class="blog-card__excerpt">
-          <span data-lang="pl">Odkryj kluczowe zasady UX, które sprawią, że Twoja strona zacznie zarabiać...</span>
-          <span data-lang="en">Discover the key UX principles that will make your website start earning...</span>
-        </p>
-        <a href="blog/design-sprzedaz.html" class="blog-card__link">
-          <span data-lang="pl">Czytaj więcej</span><span data-lang="en">Read more</span> →
-        </a>
-      </article>
-      <article class="blog-card reveal" data-delay="3">
-        <span class="blog-card__date">10.04.2024 | SEO</span>
-        <h3 class="blog-card__title">
-          <span data-lang="pl">Pozycjonowanie stron w 2026 roku</span>
-          <span data-lang="en">SEO Strategy for 2026</span>
-        </h3>
-        <p class="blog-card__excerpt">
-          <span data-lang="pl">Wszystko, co musisz wiedzieć o Google Core Web Vitals i nowych algorytmach...</span>
-          <span data-lang="en">Everything you need to know about Google Core Web Vitals and new algorithms...</span>
-        </p>
-        <a href="blog/seo-2026.html" class="blog-card__link">
-          <span data-lang="pl">Czytaj więcej</span><span data-lang="en">Read more</span> →
-        </a>
-      </article>
-      <article class="blog-card reveal" data-delay="4">
-        <span class="blog-card__date">13.04.2026 | BRANDING</span>
-        <h3 class="blog-card__title">
-          <span data-lang="pl">Jak stworzyć premium branding online, który sprzedaje</span>
-          <span data-lang="en">How to Build Premium Branding That Sells</span>
-        </h3>
-        <p class="blog-card__excerpt">
-          <span data-lang="pl">Poznaj strategię, design i storytelling, które razem tworzą mocny wizerunek premium.</span>
-          <span data-lang="en">Learn the strategy, design and storytelling that create a powerful premium presence.</span>
-        </p>
-        <a href="blog/branding-premium.html" class="blog-card__link">
-          <span data-lang="pl">Czytaj więcej</span><span data-lang="en">Read more</span> →
-        </a>
-      </article>
-      <article class="blog-card reveal" data-delay="5">
-        <span class="blog-card__date">13.04.2026 | KONWERSJA</span>
-        <h3 class="blog-card__title">
-          <span data-lang="pl">UX, copy i konwersja: jak ruch staje się leadami premium</span>
-          <span data-lang="en">UX, Copy & Conversion: Turning Traffic into Premium Leads</span>
-        </h3>
-        <p class="blog-card__excerpt">
-          <span data-lang="pl">Zobacz, jak projekt i treść muszą współgrać, aby zwiększyć liczbę zapytań od klientów premium.</span>
-          <span data-lang="en">See how design and content must work together to increase premium inquiries.</span>
-        </p>
-        <a href="blog/ux-konwersja.html" class="blog-card__link">
-          <span data-lang="pl">Czytaj więcej</span><span data-lang="en">Read more</span> →
-        </a>
-      </article>
-      <article class="blog-card reveal" data-delay="6">
-        <span class="blog-card__date">13.04.2026 | PERFORMANCE</span>
-        <h3 class="blog-card__title">
-          <span data-lang="pl">Szybkość, bezpieczeństwo i personalizacja dla stron premium</span>
-          <span data-lang="en">Speed, Security & Personalization for Premium Websites</span>
-        </h3>
-        <p class="blog-card__excerpt">
-          <span data-lang="pl">Przeczytaj, dlaczego te trzy elementy razem tworzą doświadczenie, które klienci premium akceptują.</span>
-          <span data-lang="en">Read why these three elements together create an experience premium customers trust.</span>
-        </p>
-        <a href="blog/wydajnosc-personalizacja.html" class="blog-card__link">
-          <span data-lang="pl">Czytaj więcej</span><span data-lang="en">Read more</span> →
-        </a>
-      </article>
-    </div>
-    <div style="text-align:center; margin-top:60px">
-      <a href="blog.html" class="btn btn--ghost magnetic reveal" data-delay="7">
-        <span class="btn__text" data-lang="pl">Przejdź do wszystkich artykułów</span>
-        <span class="btn__text" data-lang="en">View All Articles</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ═══════════════════════════════════════
-     FOOTER
-     ═══════════════════════════════════════ -->
-<footer class="footer">
-  <div class="footer__grid">
-    <div class="footer__col">
-      <a href="https://vantia.vercel.app" class="footer__brand-logo">VANTIA<span>.</span></a>
-      <p class="footer__brand-tagline">
-        <span data-lang="pl">Studio cyfrowe skupione na konwersji.</span>
-        <span data-lang="en">Digital studio focused on conversion.</span>
-      </p>
-      <button class="footer__email" aria-label="Copy email address">
-        <span class="footer__email-icon">✉</span>
-        <span class="footer__email-text">kikaspawel@gmail.com</span>
-        <span class="footer__email-tooltip">
-          <span data-lang="pl">Skopiowano!</span>
-          <span data-lang="en">Copied!</span>
-        </span>
+    <div class="theme-switch ed-theme-switch">
+      <button class="theme-switch__btn is-active" type="button" data-theme-btn="light">
+        <span data-lang="pl">Jasny</span><span data-lang="en">Light</span>
+      </button>
+      <button class="theme-switch__btn" type="button" data-theme-btn="dark">
+        <span data-lang="pl">Ciemny</span><span data-lang="en">Dark</span>
       </button>
     </div>
-    <div class="footer__col">
-      <h4><span data-lang="pl">Nawigacja</span><span data-lang="en">Navigation</span></h4>
-      <a href="#uslugi"><span data-lang="pl">Usługi</span><span data-lang="en">Services</span></a>
-      <a href="#cennik"><span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span></a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="blog.html"><span data-lang="pl">Blog</span><span data-lang="en">Blog</span></a>
-      <a href="#o-nas"><span data-lang="pl">O nas</span><span data-lang="en">About</span></a>
-    </div>
-    <div class="footer__col">
-      <h4>Legal</h4>
-      <a href="privacy.html"><span data-lang="pl">Polityka Prywatności</span><span data-lang="en">Privacy Policy</span></a>
-      <a href="terms.html"><span data-lang="pl">Regulamin</span><span data-lang="en">Terms of Service</span></a>
-      <a href="sitemap.xml"><span data-lang="pl">Mapa Strony</span><span data-lang="en">Sitemap</span></a>
-    </div>
+    <a class="ed-nav__commission magnetic" href="#contact">
+      <span data-lang="pl">Napisz</span>
+      <span data-lang="en">Contact</span>
+      <svg class="ed-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+    </a>
   </div>
-  <div class="footer__bottom">
-    <p class="footer__copyright">&copy; 2026 VANTIA Studio. <span data-lang="pl">Wszelkie prawa zastrzeżone. Rozliczenia przez system Useme.</span><span data-lang="en">All rights reserved. Secured by Useme.</span></p>
-    <p class="footer__status"><span class="footer__status-dot"></span> All systems operational</p>
+  <button class="ed-nav__toggle" type="button" aria-label="Otwórz menu" aria-expanded="false" data-ed-menu-toggle>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<div class="ed-mobile" aria-hidden="true" data-ed-mobile-menu>
+  <nav class="ed-mobile__panel" aria-label="Menu mobilne">
+    <div class="ed-mobile__controls">
+      <div class="lang-switch" aria-label="Język">
+        <button class="lang-switch__btn is-active" type="button" data-lang-btn="pl">PL</button>
+        <button class="lang-switch__btn" type="button" data-lang-btn="en">EN</button>
+      </div>
+      <div class="theme-switch">
+        <button class="theme-switch__btn is-active" type="button" data-theme-btn="light">
+          <span data-lang="pl">Jasny</span><span data-lang="en">Light</span>
+        </button>
+        <button class="theme-switch__btn" type="button" data-theme-btn="dark">
+          <span data-lang="pl">Ciemny</span><span data-lang="en">Dark</span>
+        </button>
+      </div>
+    </div>
+    <a href="#work"><span data-lang="pl">Projekty</span><span data-lang="en">Work</span></a>
+    <a href="#disciplines"><span data-lang="pl">Usługi</span><span data-lang="en">Services</span></a>
+    <a href="#pricing"><span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span></a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="blog.html">Blog</a>
+    <a href="#contact"><span data-lang="pl">Kontakt</span><span data-lang="en">Contact</span></a>
+  </nav>
+</div>
+
+<main id="main" class="bt-page" data-page="home">
+
+  <!-- HERO -->
+  <section class="bt-hero" id="top" aria-labelledby="hero-title">
+    <div class="bt-hero__inner">
+      <p class="bt-hero__kicker ed-load">
+        <span data-lang="pl">Strony premium / landing page / aplikacje webowe</span>
+        <span data-lang="en">Premium websites / landing pages / web apps</span>
+      </p>
+      <h1 class="bt-hero__title ed-load" id="hero-title">
+        <span data-lang="pl">Strony, które wyglądają drożej,<br>ładują się szybciej - i <em>sprzedają.</em></span>
+        <span data-lang="en">Sites that look premium, load fast - and <em>sell.</em></span>
+      </h1>
+      <p class="bt-hero__sub ed-load">
+        <span data-lang="pl">Projektuję i wdrażam strony premium dla firm: czysty design, szybki kod i oferta, która jasno prowadzi klienta do kontaktu.</span>
+        <span data-lang="en">I design and ship premium websites for businesses: clean design, fast code, and an offer that guides clients clearly to contact.</span>
+      </p>
+      <div class="bt-hero__actions ed-load">
+        <a class="ed-hero__cta" href="portfolio.html">
+          <span data-lang="pl">Zobacz projekty</span>
+          <span data-lang="en">See projects</span>
+          <svg class="ed-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+        <a class="ed-hero__cta ed-hero__cta--ghost" href="#contact">
+          <span data-lang="pl">Napisz do mnie</span>
+          <span data-lang="en">Get in touch</span>
+        </a>
+      </div>
+      <ul class="bt-hero__proof ed-load">
+        <li><span data-lang="pl">Wdrożenie w 48 godzin</span><span data-lang="en">Launch within 48 h</span></li>
+        <li><span data-lang="pl">Wynik 90+ PageSpeed</span><span data-lang="en">90+ PageSpeed score</span></li>
+        <li><span data-lang="pl">Indywidualny design</span><span data-lang="en">Custom design</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BENTO / WORK -->
+  <section class="bt-section" id="work" aria-labelledby="work-title">
+    <div class="bt-section__head ed-reveal">
+      <span class="bt-chip">01 - <span data-lang="pl">Realne projekty</span><span data-lang="en">Real projects</span></span>
+      <h2 class="bt-section__title" id="work-title"><span data-lang="pl">Co dotychczas zrobiłem?</span><span data-lang="en">What have I built so far?</span></h2>
+      <p class="bt-section__note"><span data-lang="pl">Każdy projekt to realna strona dla klienta. Kliknij, żeby zobaczyć pełną realizację.</span><span data-lang="en">Every project is a real site for a real client. Click to see the full case.</span></p>
+    </div>
+    <div class="bt-grid">
+      <article class="bt-tile bt-tile--full bt-tile--manifesto ed-reveal">
+        <div class="bt-tile__lead">
+          <span class="bt-tag"><span data-lang="pl">Manifesto</span><span data-lang="en">Manifesto</span></span>
+          <h3 class="bt-tile__title">
+            <span data-lang="pl">Dobra strona nie ma tylko wyglądać - ma budować zaufanie i domykać decyzję.</span>
+            <span data-lang="en">A good site should not only look nice - it should build trust and help people decide.</span>
+          </h3>
+        </div>
+        <p class="bt-tile__text">
+          <span data-lang="pl">Dlatego łączę design, tekst, strukturę i kod. Bez pustych ozdobników: każda sekcja ma zadanie - wyjaśnić, przekonać albo poprowadzić dalej.</span>
+          <span data-lang="en">That is why I combine design, copy, structure and code. No empty decoration: every section has a job - explain, convince or guide forward.</span>
+        </p>
+      </article>
+
+      <a class="bt-tile bt-tile--quarter bt-tile--project ed-reveal" href="portfolio.html#kancelaria">
+        <span class="bt-tile__num">01</span>
+        <div>
+          <span class="bt-tag">Strona firmowa</span>
+          <h3 class="bt-tile__title">Kancelaria Adwokacka</h3>
+          <p class="bt-tile__text"><span data-lang="pl">Ciemny, prestiżowy design dla branży, gdzie pierwsze wrażenie to spokój i zaufanie.</span><span data-lang="en">Dark, prestigious design for an industry where first impressions mean calm and trust.</span></p>
+        </div>
+        <span class="bt-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="bt-tile bt-tile--quarter bt-tile--project ed-reveal" href="portfolio.html#fitcoach">
+        <span class="bt-tile__num">02</span>
+        <div>
+          <span class="bt-tag">Landing</span>
+          <h3 class="bt-tile__title">FitCoach Pro</h3>
+          <p class="bt-tile__text"><span data-lang="pl">Oferta, korzyści, opinie i mocny przycisk zapisu.</span><span data-lang="en">Offer, benefits, proof and a strong booking CTA.</span></p>
+        </div>
+        <span class="bt-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="bt-tile bt-tile--quarter bt-tile--project ed-reveal" href="portfolio.html#fotograf">
+        <span class="bt-tile__num">03</span>
+        <div>
+          <span class="bt-tag">Portfolio</span>
+          <h3 class="bt-tile__title">Studio Foto</h3>
+          <p class="bt-tile__text"><span data-lang="pl">Prosto do galerii i kontaktu.</span><span data-lang="en">Straight to gallery and contact.</span></p>
+        </div>
+        <span class="bt-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="bt-tile bt-tile--quarter bt-tile--project ed-reveal" href="blog.html">
+        <span class="bt-tile__num">04</span>
+        <div>
+          <span class="bt-tag">Blog</span>
+          <h3 class="bt-tile__title">Blog ekspercki</h3>
+          <p class="bt-tile__text"><span data-lang="pl">Content hub o designie, SEO i konwersji - czytelny, angażujący i lepszy w Google.</span><span data-lang="en">A content hub on design, SEO and conversion - clear, engaging and better in Google.</span></p>
+        </div>
+        <span class="bt-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="bt-tile bt-tile--full bt-tile--band ed-reveal" href="#contact">
+        <span class="bt-tag"><span data-lang="pl">Zacznij projekt</span><span data-lang="en">Start a project</span></span>
+        <h3 class="bt-tile__title"><span data-lang="pl">Napisz - odpowiem konkretnie.</span><span data-lang="en">Write to me - I will answer clearly.</span></h3>
+        <span class="bt-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- DISCIPLINES / SERVICES -->
+  <section class="bt-section" id="disciplines" aria-labelledby="disciplines-title">
+    <div class="bt-section__head ed-reveal">
+      <span class="bt-chip">02 - <span data-lang="pl">Usługi</span><span data-lang="en">Services</span></span>
+      <h2 class="bt-section__title" id="disciplines-title"><span data-lang="pl">Co konkretnie robię?</span><span data-lang="en">What do I actually do?</span></h2>
+    </div>
+    <div class="bt-services">
+      <article class="bt-service ed-reveal">
+        <span class="bt-service__icon">01</span>
+        <h3><span data-lang="pl">Kierunek i design</span><span data-lang="en">Direction and design</span></h3>
+        <p><span data-lang="pl">Ustalam wygląd, układ sekcji, typografię i sposób pokazania oferty. Premium, ale czytelnie.</span><span data-lang="en">I set the look, section order, type style and offer presentation. Premium but clear.</span></p>
+        <ul class="bt-service__list">
+          <li><span data-lang="pl">Koncepcja i moodboard</span><span data-lang="en">Concept and moodboard</span></li>
+          <li><span data-lang="pl">Układ sekcji i typografia</span><span data-lang="en">Section layout and typography</span></li>
+        </ul>
+      </article>
+      <article class="bt-service ed-reveal">
+        <span class="bt-service__icon">02</span>
+        <h3><span data-lang="pl">Kod i responsywność</span><span data-lang="en">Code and responsiveness</span></h3>
+        <p><span data-lang="pl">HTML, CSS i JS. Sprawdzam desktop, tablet i telefon, żeby nic się nie rozjeżdżało.</span><span data-lang="en">Built in HTML, CSS and JS. Tested on desktop, tablet and phone so layouts stay solid.</span></p>
+        <ul class="bt-service__list">
+          <li><span data-lang="pl">Czysty HTML, CSS, lekki JS</span><span data-lang="en">Clean HTML, CSS and light JS</span></li>
+          <li><span data-lang="pl">Testy desktop, tablet i mobile</span><span data-lang="en">Testing on desktop, tablet and mobile</span></li>
+        </ul>
+      </article>
+      <article class="bt-service ed-reveal">
+        <span class="bt-service__icon">03</span>
+        <h3><span data-lang="pl">Treść i konwersja</span><span data-lang="en">Content and conversion</span></h3>
+        <p><span data-lang="pl">Teksty ułożone tak, żeby oferta była prosta, a kontakt naturalnym kolejnym krokiem.</span><span data-lang="en">Copy arranged so the offer is easy to understand and contact feels like the next step.</span></p>
+        <ul class="bt-service__list">
+          <li><span data-lang="pl">Struktura nagłówków i tekstów</span><span data-lang="en">Heading and copy structure</span></li>
+          <li><span data-lang="pl">Ścieżka do kontaktu</span><span data-lang="en">A clear path to contact</span></li>
+        </ul>
+      </article>
+      <article class="bt-service ed-reveal">
+        <span class="bt-service__icon">04</span>
+        <h3><span data-lang="pl">Wdrożenie i SEO</span><span data-lang="en">Launch and SEO</span></h3>
+        <p><span data-lang="pl">Publikuję stronę, ustawiam podstawy SEO i sprawdzam szybkość przed oddaniem.</span><span data-lang="en">I publish the site, set SEO basics and check speed before final handoff.</span></p>
+        <ul class="bt-service__list">
+          <li><span data-lang="pl">Publikacja i hosting</span><span data-lang="en">Publishing and hosting</span></li>
+          <li><span data-lang="pl">Meta tagi i szybkość</span><span data-lang="en">Meta tags and speed</span></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="bt-section pricing-section" id="pricing" aria-labelledby="pricing-title">
+    <div class="bt-section__head ed-reveal"> 
+      <span class="bt-chip">03 - <span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span></span>
+      <h2 class="bt-section__title" id="pricing-title"><span data-lang="pl">Wybierz pakiet dla siebie</span><span data-lang="en">Choose your package</span></h2>
+      <p class="bt-section__note"><span data-lang="pl">Każdy pakiet to gotowa strona. Jeśli potrzebujesz czegoś większego - napisz, a wycenię indywidualnie.</span><span data-lang="en">Every package is a finished site. If you need something bigger - write to me for a custom quote.</span></p>
+    </div>
+    <div class="pricing-grid-new">
+
+      <!-- CORE -->
+      <article class="pkg-card ed-reveal">
+        <div class="pkg-card__badge pkg-card__badge--sale">-50%</div>
+        <div class="pkg-card__head">
+          <span class="pkg-card__name">Core</span>
+          <div class="pkg-card__price">
+            <span class="pkg-card__old">1 199,99 zł</span>
+            <strong>599,99 zł</strong>
+          </div>
+        </div>
+        <p class="pkg-card__desc"><span data-lang="pl">Szybka i bezbłędna wizytówka Twojej firmy. Czysty kod i natychmiastowa obecność w Google.</span><span data-lang="en">A fast, flawless business card site. Clean code and instant Google presence.</span></p>
+        <ul class="pkg-card__list">
+          <li><span data-lang="pl">Wdrożenie w 48 godzin</span><span data-lang="en">Launch in 48 hours</span></li>
+          <li><span data-lang="pl">Indywidualny Design (One-Page)</span><span data-lang="en">Custom Design (One-Page)</span></li>
+          <li><span data-lang="pl">Błyskawiczne ładowanie (90+ score)</span><span data-lang="en">Lightning-fast loading (90+ score)</span></li>
+          <li><span data-lang="pl">Podstawowa optymalizacja SEO</span><span data-lang="en">Basic SEO optimization</span></li>
+          <li><span data-lang="pl">Certyfikat SSL w cenie</span><span data-lang="en">SSL certificate included</span></li>
+          <li><span data-lang="pl">Hosting i opieka (1 miesiąc)</span><span data-lang="en">Hosting &amp; support (1 month)</span></li>
+          <li><span data-lang="pl">Analityka Google</span><span data-lang="en">Google Analytics</span></li>
+        </ul>
+        <a class="pkg-card__cta" href="#contact"><span data-lang="pl">Zamów Core</span><span data-lang="en">Order Core</span></a>
+      </article>
+
+      <!-- EXPAND -->
+      <article class="pkg-card pkg-card--featured ed-reveal">
+        <div class="pkg-card__badge pkg-card__badge--hot">BESTSELLER</div>
+        <div class="pkg-card__head">
+          <span class="pkg-card__name">Expand</span>
+          <div class="pkg-card__price">
+            <span class="pkg-card__old">2 200,99 zł</span>
+            <strong>1 499,99 zł</strong>
+          </div>
+        </div>
+        <p class="pkg-card__desc"><span data-lang="pl">Maszyna do pozyskiwania klientów. Rozbudowana oferta, SEO lokalne i pełne statystyki.</span><span data-lang="en">A client acquisition machine. Extended offer, local SEO and full analytics.</span></p>
+        <ul class="pkg-card__list">
+          <li class="pkg-card__list-incl"><span data-lang="pl">Wszystko z pakietu Core</span><span data-lang="en">Everything in Core</span></li>
+          <li><span data-lang="pl">Struktura Multi-Page (do 5 podstron)</span><span data-lang="en">Multi-Page structure (up to 5 pages)</span></li>
+          <li><span data-lang="pl">Copywriting AI &amp; chwytliwe nagłówki</span><span data-lang="en">AI Copywriting &amp; catchy headlines</span></li>
+          <li><span data-lang="pl">Zaawansowane SEO (Lokalne)</span><span data-lang="en">Advanced SEO (Local)</span></li>
+          <li><span data-lang="pl">Google Maps &amp; Analytics</span><span data-lang="en">Google Maps &amp; Analytics</span></li>
+          <li><span data-lang="pl">Powiadomienia SMS/Email</span><span data-lang="en">SMS/Email notifications</span></li>
+          <li><span data-lang="pl">Hosting i opieka (2 miesiące)</span><span data-lang="en">Hosting &amp; support (2 months)</span></li>
+        </ul>
+        <a class="pkg-card__cta pkg-card__cta--hot" href="#contact"><span data-lang="pl">Wybierz Bestseller</span><span data-lang="en">Choose Bestseller</span></a>
+      </article>
+
+      <!-- CUSTOM -->
+      <article class="pkg-card ed-reveal">
+        <div class="pkg-card__badge pkg-card__badge--custom">PREMIUM</div>
+        <div class="pkg-card__head">
+          <span class="pkg-card__name">Custom</span>
+          <div class="pkg-card__price">
+            <strong>od 2 499,99 zł</strong>
+          </div>
+        </div>
+        <p class="pkg-card__desc"><span data-lang="pl">Dla firm potrzebujących dedykowanych systemów, portali lub niestandardowych integracji.</span><span data-lang="en">For businesses that need dedicated systems, portals or custom integrations.</span></p>
+        <ul class="pkg-card__list">
+          <li class="pkg-card__list-incl"><span data-lang="pl">Wszystko z pakietu Expand</span><span data-lang="en">Everything in Expand</span></li>
+          <li><span data-lang="pl">Unikalny interfejs UI/UX Premium</span><span data-lang="en">Unique UI/UX Premium interface</span></li>
+          <li><span data-lang="pl">System zarządzania treścią (CMS)</span><span data-lang="en">Content Management System (CMS)</span></li>
+          <li><span data-lang="pl">Integracje płatności (Stripe/PayU)</span><span data-lang="en">Payment integrations (Stripe/PayU)</span></li>
+          <li><span data-lang="pl">Zaawansowane zabezpieczenia</span><span data-lang="en">Advanced security</span></li>
+          <li><span data-lang="pl">Logo w cenie projektu</span><span data-lang="en">Logo included</span></li>
+          <li><span data-lang="pl">Opieka VIP (3 miesiące)</span><span data-lang="en">VIP support (3 months)</span></li>
+        </ul>
+        <a class="pkg-card__cta" href="#contact"><span data-lang="pl">Wyceń projekt</span><span data-lang="en">Get a quote</span></a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="bt-contact" id="contact" aria-labelledby="contact-title">
+    <div class="bt-contact__grid">
+      <div class="bt-contact__card ed-reveal">
+        <div>
+          <h2 id="contact-title"><span data-lang="pl">Opisz projekt. Odpowiem konkretnie.</span><span data-lang="en">Describe the project. I will answer clearly.</span></h2>
+          <p><span data-lang="pl">Napisz, czego potrzebujesz: strona firmowa, landing, portfolio, blog albo aplikacja. Wrócę z zakresem i prostą wyceną.</span><span data-lang="en">Tell me what you need: business site, landing, portfolio, blog or app. I will return with scope and a clear quote.</span></p>
+        </div>
+        <a class="bt-contact__email" href="mailto:kikaspawel@gmail.com">kikaspawel@gmail.com</a>
+      </div>
+      <form id="contact-form" class="ed-form contact-form ed-reveal" action="https://formsubmit.co/kikaspawel@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New VANTIA Studio request">
+        <div class="ed-form__row">
+          <label class="ed-form__field">
+            <span><span data-lang="pl">Imię lub firma</span><span data-lang="en">Name or company</span></span>
+            <input class="ed-form__input contact-form__input" type="text" name="name" autocomplete="name" required>
+          </label>
+          <label class="ed-form__field">
+            <span>Email</span>
+            <input class="ed-form__input contact-form__input" type="email" name="email" autocomplete="email" required>
+          </label>
+        </div>
+        <label class="ed-form__field">
+          <span><span data-lang="pl">Co chcesz zrobić?</span><span data-lang="en">What do you want to build?</span></span>
+          <textarea class="ed-form__textarea contact-form__textarea" name="project" rows="6" required></textarea>
+        </label>
+        <button class="ed-form__submit contact-form__submit magnetic" type="submit">
+          <span class="btn__text" data-lang="pl">Wyślij wiadomość</span>
+          <span class="btn__text" data-lang="en">Send message</span>
+          <svg class="ed-icon btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="ed-footer">
+  <div>
+    <a class="ed-footer__brand" href="#top">VANTIA Studio</a>
+    <p><span data-lang="pl">Strony premium, landing page i proste aplikacje webowe.</span><span data-lang="en">Premium websites, landing pages and simple web apps.</span></p>
+    <button class="footer__email-btn" type="button" aria-label="kikaspawel@gmail.com - Copy email address">
+      <span class="footer__email-text">kikaspawel@gmail.com</span>
+      <span class="footer__email-tooltip">
+        <span data-lang="pl">Skopiowano</span>
+        <span data-lang="en">Copied</span>
+      </span>
+    </button>
   </div>
+  <nav class="ed-footer__links" aria-label="Stopka">
+    <a href="#work"><span data-lang="pl">Projekty</span><span data-lang="en">Work</span></a>
+    <a href="#disciplines"><span data-lang="pl">Usługi</span><span data-lang="en">Services</span></a>
+    <a href="#pricing"><span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span></a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="blog.html">Blog</a>
+    <a href="privacy.html"><span data-lang="pl">Prywatność</span><span data-lang="en">Privacy</span></a>
+  </nav>
+  <p class="ed-footer__fine">&copy; 2026 VANTIA Studio. <span data-lang="pl">Wszelkie prawa zastrzeżone.</span><span data-lang="en">All rights reserved.</span></p>
 </footer>
 
-<!-- ═══ COOKIE BANNER ═══ -->
 <div class="cookie" role="dialog" aria-label="Cookie consent">
-  <div class="cookie__title">
-    <span data-lang="pl">Ciasteczka 🍪</span>
-    <span data-lang="en">Cookies 🍪</span>
-  </div>
-  <p class="cookie__text">
-    <span data-lang="pl">Używamy ciasteczek, aby analizować ruch i ulepszać VANTIA. Czy wyrażasz na to zgodę?</span>
-    <span data-lang="en">We use cookies to analyze traffic and improve VANTIA. Do you consent?</span>
-  </p>
-  <div class="cookie__actions">
-    <button class="cookie__btn cookie__btn--accept"><span data-lang="pl">Akceptuję</span><span data-lang="en">Accept</span></button>
-    <button class="cookie__btn cookie__btn--decline"><span data-lang="pl">Odrzucam</span><span data-lang="en">Decline</span></button>
+  <div class="cookie__inner">
+    <div class="cookie__title">
+      <span data-lang="pl">Ciasteczka</span>
+      <span data-lang="en">Cookies</span>
+    </div>
+    <p class="cookie__text">
+      <span data-lang="pl">Używamy ciasteczek do analizy ruchu i ulepszania VANTIA. Czy wyrażasz zgodę?</span>
+      <span data-lang="en">We use cookies to analyze traffic and improve VANTIA. Do you consent?</span>
+    </p>
+    <div class="cookie__actions">
+      <button class="cookie__btn cookie__btn--accept">
+        <span data-lang="pl">Akceptuję</span>
+        <span data-lang="en">Accept</span>
+      </button>
+      <button class="cookie__btn cookie__btn--decline">
+        <span data-lang="pl">Odrzucam</span>
+        <span data-lang="en">Decline</span>
+      </button>
+    </div>
   </div>
 </div>
 
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="script.js" defer></script>
 </body>
 </html>

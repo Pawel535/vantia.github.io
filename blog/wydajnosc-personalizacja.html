@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="pl-PL" data-active-lang="pl" data-theme="dark">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -13,22 +13,34 @@
 <meta property="og:url" content="https://vantia.vercel.app/blog/wydajnosc-personalizacja.html"/>
 <meta property="og:title" content="Szybkość, bezpieczeństwo i personalizacja: nowy trójkąt wartości dla stron premium"/>
 <meta property="og:description" content="Poznaj nowe priorytety dla stron premium: dlaczego szybkość, bezpieczeństwo i personalizacja decydują o konkurencyjności."/>
-<meta property="og:image" content="https://vantia.vercel.app/og-image.png"/>
+<meta property="og:image" content="https://vantia.vercel.app/favicon.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Szybkość, bezpieczeństwo i personalizacja dla stron premium"/>
 <meta name="twitter:description" content="Nowy trójkąt wartości: wydajność, bezpieczeństwo i personalizacja dla nowoczesnych stron."/>
-<meta name="twitter:image" content="https://vantia.vercel.app/og-image.png"/>
+<meta name="twitter:image" content="https://vantia.vercel.app/favicon.png"/>
 <link rel="canonical" href="https://vantia.vercel.app/blog/wydajnosc-personalizacja.html"/>
-<link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Syne:wght@300;400;500;600;700&family=DM+Mono:wght@300;400&display=swap" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Syne:wght@300;400;500;600;700&family=DM+Mono:wght@300;400&display=swap" media="print" onload="this.media='all'" />
-<link rel="stylesheet" href="../styles.css" />
-<noscript>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Syne:wght@300;400;500;600;700&family=DM+Mono:wght@300;400&display=swap" />
-  <link rel="stylesheet" href="../styles.css" />
-</noscript>
+<link rel="shortcut icon" href="../favicon.png" type="image/png">
+<link rel="icon" href="../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="../styles.css">
+<script>
+  (function () {
+    try {
+      var storedLang = localStorage.getItem('vantia-lang');
+      var initialLang = storedLang || 'pl';
+      var storedTheme = localStorage.getItem('vantia-theme');
+      var initialTheme = storedTheme || 'dark';
+      document.documentElement.setAttribute('data-active-lang', initialLang);
+      document.documentElement.setAttribute('lang', initialLang === 'pl' ? 'pl-PL' : 'en');
+      document.documentElement.setAttribute('data-theme', initialTheme);
+    } catch (e) {}
+  })();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -36,24 +48,72 @@
   "headline": "Szybkość, bezpieczeństwo i personalizacja: nowy trójkąt wartości dla stron premium",
   "author": {"@type": "Organization", "name": "VANTIA Studio"},
   "datePublished": "2026-04-13",
-  "image": "https://vantia.vercel.app/og-image.png",
-  "publisher": {"@type": "Organization", "name": "VANTIA Studio", "logo": {"@type": "ImageObject", "url": "https://vantia.vercel.app/favicon.svg"}}
+  "image": "https://vantia.vercel.app/favicon.png",
+  "publisher": {"@type": "Organization", "name": "VANTIA Studio", "logo": {"@type": "ImageObject", "url": "https://vantia.vercel.app/favicon.png"}}
 }
 </script>
 </head>
-<body>
-<nav>
-<a href="https://vantia.vercel.app" class="logo">VANTIA<b>.</b></a>
-<ul class="nav-links">
-<li><a href="https://vantia.vercel.app#uslugi">Usługi</a></li>
-<li><a href="https://vantia.vercel.app#cennik">Cennik</a></li>
-<li><a href="https://vantia.vercel.app/portfolio.html">Portfolio</a></li>
-<li><a href="https://vantia.vercel.app#o-nas">O nas</a></li>
-<li><a href="https://vantia.vercel.app#kontakt">Kontakt</a></li>
-</ul>
-</nav>
-<main>
-<a href="https://vantia.vercel.app#blog" class="back-link">← Powrót do bloga</a>
+<body class="landing-editorial site-bento">
+<a href="#main" class="ed-skip skip-link">
+  <span data-lang="pl">Przejdź do treści</span>
+  <span data-lang="en">Skip to content</span>
+</a>
+<div class="ed-progress scroll-progress" aria-hidden="true"></div>
+
+<header class="ed-nav" data-ed-nav>
+  <a class="ed-nav__brand" href="../index.html"><span>VANTIA</span><span>Studio</span></a>
+  <nav class="ed-nav__links" aria-label="Główna nawigacja">
+    <a href="../index.html#work"><span data-lang="pl">Projekty</span><span data-lang="en">Work</span></a>
+    <a href="../index.html#disciplines"><span data-lang="pl">Usługi</span><span data-lang="en">Services</span></a>
+    <a href="../index.html#pricing"><span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span></a>
+    <a href="../portfolio.html">Portfolio</a>
+    <a href="../blog.html">Blog</a>
+  </nav>
+  <div class="ed-nav__actions">
+    <div class="lang-switch ed-lang-switch">
+      <button class="lang-switch__btn is-active" type="button" data-lang-btn="pl">PL</button>
+      <button class="lang-switch__btn" type="button" data-lang-btn="en">EN</button>
+    </div>
+    <div class="theme-switch ed-theme-switch">
+      <button class="theme-switch__btn is-active" type="button" data-theme-btn="light">
+        <span data-lang="pl">Jasny</span><span data-lang="en">Light</span>
+      </button>
+      <button class="theme-switch__btn" type="button" data-theme-btn="dark">
+        <span data-lang="pl">Ciemny</span><span data-lang="en">Dark</span>
+      </button>
+    </div>
+    <a class="ed-nav__commission magnetic" href="../index.html#contact"><span data-lang="pl">Napisz</span><span data-lang="en">Contact</span></a>
+  </div>
+  <button class="ed-nav__toggle" type="button" aria-label="Otwórz menu" aria-expanded="false" data-ed-menu-toggle><span></span><span></span></button>
+</header>
+
+<div class="ed-mobile" aria-hidden="true" data-ed-mobile-menu>
+  <nav class="ed-mobile__panel" aria-label="Menu mobilne">
+    <div class="ed-mobile__controls">
+      <div class="lang-switch">
+        <button class="lang-switch__btn is-active" type="button" data-lang-btn="pl">PL</button>
+        <button class="lang-switch__btn" type="button" data-lang-btn="en">EN</button>
+      </div>
+      <div class="theme-switch">
+        <button class="theme-switch__btn is-active" type="button" data-theme-btn="light">
+          <span data-lang="pl">Jasny</span><span data-lang="en">Light</span>
+        </button>
+        <button class="theme-switch__btn" type="button" data-theme-btn="dark">
+          <span data-lang="pl">Ciemny</span><span data-lang="en">Dark</span>
+        </button>
+      </div>
+    </div>
+    <a href="../index.html#work"><span data-lang="pl">Projekty</span><span data-lang="en">Work</span></a>
+    <a href="../index.html#disciplines"><span data-lang="pl">Usługi</span><span data-lang="en">Services</span></a>
+    <a href="../index.html#pricing"><span data-lang="pl">Cennik</span><span data-lang="en">Pricing</span></a>
+    <a href="../portfolio.html">Portfolio</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../index.html#contact"><span data-lang="pl">Kontakt</span><span data-lang="en">Contact</span></a>
+  </nav>
+</div>
+
+<main id="main">
+<a href="../blog.html" class="back-link">← <span data-lang="pl">Powrót do bloga</span><span data-lang="en">Back to blog</span></a>
 <article>
 <div class="meta">13.04.2026 | PERFORMANCE</div>
 <h1>Szybkość, bezpieczeństwo i personalizacja: nowy trójkąt wartości dla stron <b>premium</b></h1>
@@ -71,12 +131,12 @@
 <p>Strony premium muszą pokazywać, że dbają o dane. HTTPS to minimum. Certyfikaty, polityka prywatności, cookie banner i jawna informacja o przetwarzaniu danych to elementy, które wzmacniają zaufanie.</p>
 <p>Jeżeli użytkownik ma wątpliwości co do bezpieczeństwa, opuści stronę mimo najlepszej prezentacji oferty.</p>
 <h2>3. Personalizacja, która nie jest nachalna</h2>
-<p>Personalizacja premium nie polega na masowym „cześć, imię”. To dostosowanie komunikacji do segmentu, sytuacji i intencji użytkownika. Bazując na ścieżce wejścia możesz podmieniać perswazyjne treści w kluczowych miejscach.</p>
+<p>Personalizacja premium nie polega na masowym „cześć, imię". To dostosowanie komunikacji do segmentu, sytuacji i intencji użytkownika. Bazując na ścieżce wejścia możesz podmieniać perswazyjne treści w kluczowych miejscach.</p>
 <div class="tech-box">
 <h3>Gdzie zastosować personalizację premium</h3>
 <ul>
 <li>blok pierwszego ekranu według źródła ruchu,</li>
-<li>case’y dopasowane do branży,</li>
+<li>case'y dopasowane do branży,</li>
 <li>CTA, które zmienia się w zależności od celu użytkownika.</li>
 </ul>
 </div>
@@ -86,69 +146,53 @@
 </div>
 </article>
 </main>
-<footer class="fat-footer">
-  <div class="footer-grid">
-    <div class="footer-col brand">
-      <a href="https://vantia.vercel.app" class="foot-logo">VANTIA<b>.</b></a>
-      <p class="foot-manifest">We engineer digital luxury.</p>
-      <button class="email-copy" onclick="copyEmail()" data-tooltip="Skopiowano!">
-        <span class="email-icon">✉</span>
-        <span class="email-text">kikaspawel@gmail.com</span>
+
+<footer class="ed-footer">
+  <div>
+    <a class="ed-footer__brand" href="../index.html">VANTIA Studio</a>
+    <p><span data-lang="pl">Strony premium, landing page i proste aplikacje webowe.</span><span data-lang="en">Premium websites, landing pages and simple web apps.</span></p>
+    <button class="footer__email-btn" type="button" aria-label="kikaspawel@gmail.com - Copy email address">
+      <span class="footer__email-text">kikaspawel@gmail.com</span>
+      <span class="footer__email-tooltip">
+        <span data-lang="pl">Skopiowano</span>
+        <span data-lang="en">Copied</span>
+      </span>
+    </button>
+  </div>
+  <nav class="ed-footer__links" aria-label="Stopka">
+    <a href="../index.html#work"><span data-lang="pl">Projekty</span><span data-lang="en">Work</span></a>
+    <a href="../portfolio.html">Portfolio</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../privacy.html"><span data-lang="pl">Prywatność</span><span data-lang="en">Privacy</span></a>
+    <a href="../terms.html"><span data-lang="pl">Regulamin</span><span data-lang="en">Terms</span></a>
+  </nav>
+  <p class="ed-footer__fine">&copy; 2026 VANTIA Studio. <span data-lang="pl">Wszelkie prawa zastrzeżone.</span><span data-lang="en">All rights reserved.</span></p>
+</footer>
+
+<div class="cookie" role="dialog" aria-label="Cookie consent">
+  <div class="cookie__inner">
+    <div class="cookie__title">
+      <span data-lang="pl">Ciasteczka</span>
+      <span data-lang="en">Cookies</span>
+    </div>
+    <p class="cookie__text">
+      <span data-lang="pl">Uzywamy ciasteczek do analizy ruchu i ulepszania VANTIA. Czy wyrazasz zgode?</span>
+      <span data-lang="en">We use cookies to analyze traffic and improve VANTIA. Do you consent?</span>
+    </p>
+    <div class="cookie__actions">
+      <button class="cookie__btn cookie__btn--accept">
+        <span data-lang="pl">Akceptuje</span>
+        <span data-lang="en">Accept</span>
+      </button>
+      <button class="cookie__btn cookie__btn--decline">
+        <span data-lang="pl">Odrzucam</span>
+        <span data-lang="en">Decline</span>
       </button>
     </div>
-    <div class="footer-col">
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="https://vantia.vercel.app#uslugi">Usługi</a></li>
-        <li><a href="https://vantia.vercel.app/portfolio.html">Portfolio</a></li>
-        <li><a href="https://vantia.vercel.app#o-nas">O nas</a></li>
-        <li><a href="https://vantia.vercel.app#cennik">Cennik</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Blog</h4>
-      <ul>
-        <li><a href="https://vantia.vercel.app/blog/design-sprzedaz.html">Design & Sprzedaż</a></li>
-        <li><a href="https://vantia.vercel.app/blog/seo-2026.html">SEO 2026</a></li>
-        <li><a href="https://vantia.vercel.app/blog/branding-premium.html">Branding premium</a></li>
-        <li><a href="https://vantia.vercel.app/blog/ux-konwersja.html">UX i konwersja</a></li>
-        <li><a href="https://vantia.vercel.app/blog/wydajnosc-personalizacja.html">Wydajność & personalizacja</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Social & Trust</h4>
-      <ul class="social-links">
-        <li><a href="https://discord.com/users/1316090115025670301" target="_blank" rel="noopener">Discord</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="copyright">&copy; 2026 VANTIA Studio. Wszelkie prawa zastrzeżone.</p>
-    <p class="status"><span class="status-dot"></span> All systems operational</p>
-  </div>
-</footer>
-<div class="cookie" role="dialog" aria-label="Cookie consent">
-  <div class="cookie__title">
-    <span data-lang="pl">Ciasteczka 🍪</span>
-    <span data-lang="en">Cookies 🍪</span>
-  </div>
-  <p class="cookie__text">
-    <span data-lang="pl">Używamy ciasteczek, aby analizować ruch i ulepszać VANTIA. Czy wyrażasz na to zgodę?</span>
-    <span data-lang="en">We use cookies to analyze traffic and improve VANTIA. Do you accept?</span>
-  </p>
-  <div class="cookie__actions">
-    <button class="cookie__btn cookie__btn--accept" aria-label="Accept cookies">
-      <span data-lang="pl">Akceptuję</span><span data-lang="en">Accept</span>
-    </button>
-    <button class="cookie__btn cookie__btn--decline" aria-label="Decline cookies">
-      <span data-lang="pl">Odrzucam</span><span data-lang="en">Decline</span>
-    </button>
   </div>
 </div>
+
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="../script.js" defer></script>
 </body>
 </html>
-
-
-

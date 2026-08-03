@@ -1,0 +1,22 @@
+{
+  "name": "VANTIA Studio",
+  "short_name": "VANTIA",
+  "description": "Studio cyfrowe. Design, kod, kierunek.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0D0F13",
+  "theme_color": "#0D0F13",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
