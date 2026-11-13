@@ -87,6 +87,71 @@
   };
 
   /* ══════════════════════════════════════
+     HOVER MOTION — spotlight + 3D case tilt
+     Desktop pointer only; values are CSS vars,
+     so no layout reads happen during paint.
+     ══════════════════════════════════════ */
+  const HoverMotion = {
+    init() {
+      if (isTouchDevice()) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+      const trackRect = (el) => {
+        let rect = null;
+        let frame = null;
+        const update = () => { rect = el.getBoundingClientRect(); };
+        el.addEventListener('pointerenter', update);
+        el.addEventListener('pointermove', (event) => {
+          if (!rect) update();
+          if (!rect || !rect.width || !rect.height) return;
+          if (frame) cancelAnimationFrame(frame);
+          const x = Math.max(0, Math.min(rect.width, event.clientX - rect.left));
+          const y = Math.max(0, Math.min(rect.height, event.clientY - rect.top));
+          frame = requestAnimationFrame(() => {
+            el.style.setProperty('--mx', `${x.toFixed(0)}px`);
+            el.style.setProperty('--my', `${y.toFixed(0)}px`);
+          });
+        });
+        el.addEventListener('pointerleave', () => {
+          if (frame) cancelAnimationFrame(frame);
+          el.style.removeProperty('--mx');
+          el.style.removeProperty('--my');
+        });
+        window.addEventListener('resize', () => { rect = null; }, { passive: true });
+      };
+
+      qsa('.bt-tile--project, .bt-service, .pkg-card, .care-card, .process-step').forEach(trackRect);
+
+      qsa('.case-cover').forEach((cover) => {
+        const win = qs('.mock-window', cover);
+        if (!win) return;
+        let rect = null;
+        let frame = null;
+        const reset = () => {
+          if (frame) cancelAnimationFrame(frame);
+          win.style.setProperty('--tilt-x', '0deg');
+          win.style.setProperty('--tilt-y', '0deg');
+        };
+        cover.addEventListener('pointerenter', () => { rect = cover.getBoundingClientRect(); });
+        cover.addEventListener('pointermove', (event) => {
+          if (!rect) rect = cover.getBoundingClientRect();
+          if (!rect.width || !rect.height) return;
+          const px = (event.clientX - rect.left) / rect.width - 0.5;
+          const py = (event.clientY - rect.top) / rect.height - 0.5;
+          if (frame) cancelAnimationFrame(frame);
+          frame = requestAnimationFrame(() => {
+            win.style.setProperty('--tilt-x', `${(-py * 4).toFixed(2)}deg`);
+            win.style.setProperty('--tilt-y', `${(px * 5).toFixed(2)}deg`);
+          });
+        });
+        cover.addEventListener('pointerleave', reset);
+        window.addEventListener('resize', () => { rect = null; }, { passive: true });
+      });
+    }
+  };
+
+  /* ══════════════════════════════════════
      HERO REVEAL SEQUENCE
      FIX: Use CSS classes instead of inline style mutations.
      Add to styles.css:
@@ -578,7 +643,7 @@
       const btn = qs('.footer__email-btn');
       if (!btn) return;
       btn.addEventListener('click', () => {
-        navigator.clipboard.writeText('kikaspawel@gmail.com').then(() => {
+        navigator.clipboard.writeText('vantia.official@interia.pl').then(() => {
           btn.classList.add('is-copied');
           setTimeout(() => btn.classList.remove('is-copied'), 2000);
         });
@@ -625,7 +690,7 @@
      ══════════════════════════════════════ */
   const ContactForm = {
     form: null,
-    endpoint: 'https://formsubmit.co/ajax/kikaspawel@gmail.com',
+    endpoint: 'https://formsubmit.co/ajax/vantia.official@interia.pl',
     init() {
       this.form = qs('#contact-form');
       if (!this.form) return;
@@ -633,6 +698,17 @@
         field.addEventListener('input', () => this.validateField(field));
       });
       this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+
+      if (new URLSearchParams(window.location.search).get('sent') === '1') {
+        const lang = document.documentElement.getAttribute('data-active-lang') || 'pl';
+        this.showNotification(
+          lang === 'pl'
+            ? 'Wiadomość wysłana! Odpowiem w ciągu 24 h.'
+            : 'Message sent! I will reply within 24 h.',
+          'success'
+        );
+        window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+      }
     },
     getErrorMessage(field) {
       const lang = document.documentElement.getAttribute('data-active-lang') || 'pl';
@@ -718,8 +794,8 @@
       } catch (error) {
         this.showNotification(
           data.lang === 'pl'
-            ? 'Błąd przy wysyłaniu. Spróbuj ponownie.'
-            : 'Error sending. Please try again.',
+            ? 'Nie udało się wysłać formularza. Napisz bezpośrednio na vantia.official@interia.pl.'
+            : 'Could not send the form. Please email vantia.official@interia.pl directly.',
           'error'
         );
         btn.innerHTML = originalText;
@@ -755,10 +831,15 @@
         const buttons = qsa('[data-filter]', group);
 
         buttons.forEach((btn) => {
+          btn.setAttribute('aria-pressed', btn.classList.contains('is-active') ? 'true' : 'false');
           btn.addEventListener('click', () => {
             const filter = btn.dataset.filter;
-            buttons.forEach((b) => b.classList.remove('is-active'));
+            buttons.forEach((b) => {
+              b.classList.remove('is-active');
+              b.setAttribute('aria-pressed', 'false');
+            });
             btn.classList.add('is-active');
+            btn.setAttribute('aria-pressed', 'true');
             items.forEach((item) => {
               const match = filter === 'all' || item.dataset.cat === filter;
               item.style.display = match ? '' : 'none';
@@ -786,8 +867,15 @@
       loadItems.forEach((el, i) => {
         el.style.setProperty('--ed-delay', `${Math.min(i * 0.14, 0.84)}s`);
       });
-      revealItems.forEach((el, i) => {
-        el.style.setProperty('--ed-delay', `${Math.min((i % 4) * 0.08, 0.24)}s`);
+      /* Stagger reveals inside each grid instead of using the global index.
+         This makes cards enter one after another, row by row. */
+      revealItems.forEach((el) => el.style.setProperty('--ed-delay', '0s'));
+      qsa('.bt-grid, .bt-services, .pricing-grid-new, .care-grid, .portfolio-real-grid, .process-grid, .article-grid-clean, .seo-list').forEach((group) => {
+        [...group.children]
+          .filter((child) => child.classList.contains('ed-reveal'))
+          .forEach((child, i) => {
+            child.style.setProperty('--ed-delay', `${Math.min(i * 0.07, 0.42)}s`);
+          });
       });
 
       if (prefersReducedMotion) {
@@ -864,7 +952,7 @@
   };
 
   window.copyEmail = function () {
-    navigator.clipboard.writeText('kikaspawel@gmail.com').then(() => {
+    navigator.clipboard.writeText('vantia.official@interia.pl').then(() => {
       const btn = qs('.email-copy');
       if (btn) {
         btn.classList.add('show-tooltip');
@@ -889,19 +977,7 @@
     EditorialLanding.init();
     FilterSystem.init();
 
-    /* Init Lenis smooth scroll if available */
-    if (typeof Lenis !== 'undefined') {
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true
-      });
-      function lenisRaf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(lenisRaf);
-      }
-      requestAnimationFrame(lenisRaf);
-    }
+    /* Native smooth scrolling handles anchors; no third-party scroll runtime. */
 
     /* Non-critical modules deferred until after load + idle */
     const idle = window.requestIdleCallback
@@ -911,6 +987,7 @@
     window.addEventListener('load', () => {
       idle(() => {
         Magnetics.init();
+        HoverMotion.init();
         CountUp.init();
         ScrollProgress.init();
         EmailCopy.init();

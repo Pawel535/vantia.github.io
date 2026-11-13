@@ -1,94 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-  
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://vantia.vercel.app/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="pl" href="https://vantia.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantia.vercel.app/"/>
   </url>
-  
   <url>
     <loc>https://vantia.vercel.app/portfolio.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="pl" href="https://vantia.vercel.app/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vantia.vercel.app/portfolio.html"/>
   </url>
-  
   <url>
     <loc>https://vantia.vercel.app/blog.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://vantia.vercel.app/blog.html"/>
   </url>
-
   <url>
     <loc>https://vantia.vercel.app/blog/design-sprzedaz.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://vantia.vercel.app/blog/seo-2026.html</loc>
-    <lastmod>2026-04-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://vantia.vercel.app/blog/branding-premium.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://vantia.vercel.app/blog/ux-konwersja.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://vantia.vercel.app/blog/wydajnosc-personalizacja.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <url>
-    <loc>https://vantia.vercel.app/#uslugi</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://vantia.vercel.app/privacy.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
-  
   <url>
-    <loc>https://vantia.vercel.app/#cennik</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://vantia.vercel.app/terms.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
-  
-  <url>
-    <loc>https://vantia.vercel.app/#o-nas</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vantia.vercel.app/#kontakt</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
 </urlset>

@@ -13,11 +13,11 @@ This repository contains the production website for VANTIA:
 ## Tech stack
 
 - HTML5 (semantic structure and SEO metadata)
-- CSS3 (`styles.css` + responsive layout + visual system)
-- Vanilla JavaScript (`script.js`, modular runtime behavior)
+- CSS3 (`styles.css` source, `styles.min.css` served in production)
+- Vanilla JavaScript (`script.js` source, `script.min.js` served in production)
 - FormSubmit (contact form delivery to email inbox)
 
-No React, Node.js or backend API is required to run the site locally.
+No React or backend API is required to run the site. Node.js is only needed if you want to regenerate the minified files.
 
 ## Key features
 
@@ -26,24 +26,28 @@ No React, Node.js or backend API is required to run the site locally.
 - Scroll reveal, counters, preloader, progress bar, canvas background
 - Cookie banner with consent modes
 - Contact form with:
-  - validation (`name`, `email`, `subject`, `phone`, `project`),
+  - validation (`name`, `email`, `project`),
   - anti-spam honeypot field,
   - AJAX submit and request timeout handling,
-  - clear success/error notifications.
+  - clear success/error notifications and a direct e-mail fallback.
 
 ## Project structure
 
 ```text
 Vantia/
 ├── index.html                    # Main homepage
-├── styles.css                    # Global styles and sections
-├── script.js                     # Frontend runtime modules
-├── portfolio.html                # Portfolio page
+├── styles.css                    # Global styles source
+├── styles.min.css                # Minified stylesheet loaded by the HTML
+├── script.js                     # Frontend runtime source
+├── script.min.js                 # Minified runtime loaded by the HTML
+├── portfolio.html                # Portfolio page (case studies + concepts)
+├── demos/                        # Six concept demos (noindex)
 ├── blog.html                     # Blog listing
 ├── blog/                         # Blog post pages
 ├── privacy.html                  # Privacy policy
 ├── terms.html                    # Terms of service
 ├── 404.html                      # Not-found page
+├── assets/                       # Social image and editorial plates
 ├── sitemap.xml                   # SEO sitemap
 └── README.md
 ```
@@ -63,10 +67,21 @@ python -m http.server 5500
 ```
 Then open `http://localhost:5500`.
 
+## Editing styles and scripts
+
+The HTML loads `styles.min.css` and `script.min.js`. Edit the source files (`styles.css`, `script.js`), then regenerate the production files:
+
+```bash
+npx --yes csso-cli styles.css -o styles.min.css
+npx --yes terser script.js -c -m -o script.min.js
+```
+
+Do not edit only the minified files — the next build will overwrite them.
+
 ## Contact form setup
 
 Current integration sends submissions to:
-- `kikaspawel@gmail.com` via FormSubmit AJAX endpoint.
+- `vantia.official@interia.pl` via FormSubmit AJAX endpoint.
 
 If you want to change recipient:
 1. Open `script.js`.
@@ -79,6 +94,8 @@ Recommended:
 - test both PL and EN flows,
 - verify inbox and spam folder after changes.
 
+Important for a new recipient: FormSubmit requires one-time activation. Submit the form once, then click the activation link sent to `vantia.official@interia.pl`. Until the address is activated, the AJAX endpoint returns an error (the site shows a direct e-mail fallback).
+
 ## Content updates
 
 Typical edits:
@@ -90,9 +107,10 @@ Typical edits:
 ## Performance and quality notes
 
 - Fonts and styles are loaded in non-blocking mode where possible.
+- Native smooth scrolling replaces the former third-party scroll runtime.
+- Hover/scroll motion is limited to fine pointers and disabled for `prefers-reduced-motion`.
 - Heavy visual effects degrade gracefully on low-power devices.
-- Preloader behavior is session-optimized.
-- Form submission includes timeout and robust error handling.
+- Form submission includes robust error handling and a direct e-mail fallback.
 
 ## Deployment
 
