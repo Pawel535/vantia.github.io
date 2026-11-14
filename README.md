@@ -81,13 +81,17 @@ Do not edit only the minified files — the next build will overwrite them.
 ## Contact form setup
 
 Current integration sends submissions to:
-- `vantia.official@interia.pl` via FormSubmit AJAX endpoint.
+- `vantia.official@interia.pl` via the activated FormSubmit endpoint.
+- The public HTML and AJAX endpoint use FormSubmit's hashed form ID
+  (`2b3564f146adcea1b08422e8ed1a0c00`), so the e-mail address is not exposed
+  in the page source.
 
 If you want to change recipient:
-1. Open `script.js`.
-2. Edit `ContactForm.endpoint`.
-3. Replace the email in the URL:
-   `https://formsubmit.co/ajax/your-email@example.com`.
+1. Activate the new address with FormSubmit.
+2. Open `index.html` and replace the form `action` URL.
+3. Open `script.js` and edit `ContactForm.endpoint` with the matching
+   `https://formsubmit.co/ajax/<form-id>` URL.
+4. Regenerate `script.min.js`.
 
 Recommended:
 - keep `_captcha` and honeypot enabled,

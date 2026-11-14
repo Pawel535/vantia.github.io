@@ -690,7 +690,7 @@
      ══════════════════════════════════════ */
   const ContactForm = {
     form: null,
-    endpoint: 'https://formsubmit.co/ajax/vantia.official@interia.pl',
+    endpoint: 'https://formsubmit.co/ajax/2b3564f146adcea1b08422e8ed1a0c00',
     init() {
       this.form = qs('#contact-form');
       if (!this.form) return;
