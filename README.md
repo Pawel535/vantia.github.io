@@ -48,9 +48,13 @@ Vantia/
 ├── terms.html                    # Terms of service
 ├── 404.html                      # Not-found page
 ├── assets/                       # Social image and editorial plates
+├── redesign/                     # Swiss-grid redesign of the whole site (noindex)
+├── google5fb8f827439360b7.html   # Google Search Console verification
 ├── sitemap.xml                   # SEO sitemap
 └── README.md
 ```
+
+The `redesign/` folder is a standalone comparison version. It does not replace the production pages and is marked `noindex`.
 
 ## Local development
 
